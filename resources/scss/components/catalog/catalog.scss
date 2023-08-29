@@ -1,0 +1,124 @@
+.catalog {
+    &__top {
+        margin-bottom: 3.44em;
+        padding-left: 2.125em;
+        padding-right: 2.125em;
+    }
+
+    &__title {
+        margin-bottom: 0.625em;
+    }
+
+    &__list {
+        margin-bottom: 3.44em;
+    }
+
+    &__btn {
+        height: 4.25em;
+        width: 16em;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 6.94em;
+    }
+}
+
+.catalog-title {
+    &__text {
+        font-size: $fz_20;
+        letter-spacing: 0.6px;
+        color: $accent;
+    }
+}
+
+.catalog-subtitle {
+    &__text {
+        font-size: $fz_14;
+        color: $midgray;
+    }
+}
+
+.catalog-list {
+    display: flex;
+    flex-direction: column;
+
+    &__item {
+        margin-bottom: 2.125em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.catalog-list-item {
+    $self: &;
+    display: flex;
+    flex-direction: column;
+
+    &__card {
+        margin-bottom: 1.3125em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__cards {
+        margin-top: 1.31em;
+    }
+
+    &--is-open {
+        #{$self} {
+            &__cards {
+                display: none;
+            }
+        }
+    }
+}
+
+.catalog-list-item-top {
+    $self: &;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+
+    &__arrow {
+        flex-shrink: 0;
+        margin-top: 0.43em;
+        width: 1.5em;
+        height: 1.5em;
+        background: url("/images/arrow.png") center center/contain no-repeat;
+        transition: .3s;
+    }
+
+    &__category {
+        font-size: $fz_32;
+        font-weight: 700;
+        letter-spacing: 0.96px;
+        color: $dark;
+        padding-left: 0.3125em;
+        flex-grow: 1;
+    }
+
+    &__count {
+        font-size: $fz_14;
+        padding-top: 0.78em;
+        padding-left: 0.71em;
+        padding-right: 1.5em;
+        color: $midgray;
+        white-space: nowrap;
+    }
+
+    &__cards {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &--is-open {
+        #{$self} {
+            &__arrow {
+                transform: rotate(-90deg);
+            }
+        }
+    }
+}

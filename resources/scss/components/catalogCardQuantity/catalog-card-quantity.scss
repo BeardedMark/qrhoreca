@@ -1,0 +1,29 @@
+.catalog-card-quantity {
+    display: flex;
+
+    &__btn {
+        width: 2.625em;
+        height: 2.625em;
+    }
+
+    &__num {
+        flex-grow: 1;
+        margin-left: 0.81em;
+        margin-right: 0.81em;
+    }
+}
+
+.catalog-card-quantity-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.31em;
+    background-color: $background;
+
+    &__text {
+        font-size: $fz_20;
+        font-weight: 700;
+        letter-spacing: 0.6px;
+        color: $accent;
+    }
+}

@@ -1,0 +1,59 @@
+.footer {
+    padding: 1.31em;
+    border-top-left-radius: 3.44em;
+    border-top-right-radius: 3.44em;
+    background-color: $dark;
+    display: flex;
+    flex-direction: column;
+
+    &__top {
+        margin-bottom: 2.625em;
+    }
+}
+
+.footer-top {
+    display: flex;
+    align-items: center;
+
+    &__btn {
+        width: 4.25em;
+        height: 4.25em;
+    }
+
+    &__company {
+        flex-grow: 1;
+    }
+}
+
+.footer-top-company {
+    padding-left: 1.31em;
+    padding-right: 1.31em;
+
+    &__name {
+        font-size: $fz_24;
+        font-weight: 700;
+        color: $white;
+    }
+}
+
+.footer-top-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $midgray;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &__image {
+        width: 1.5em;
+        height: 1.5em;
+    }
+}
+
+.footer-top-btn-image {
+    display: block;
+
+    &__img {
+        width: 100%;
+    }
+}

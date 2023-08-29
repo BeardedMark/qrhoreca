@@ -1,0 +1,16 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/css/reset.css": "/css/reset.css",
+    "/images/arrow-up.png": "/images/arrow-up.png",
+    "/images/arrow.png": "/images/arrow.png",
+    "/images/dish1.png": "/images/dish1.png",
+    "/images/dish2.png": "/images/dish2.png",
+    "/images/home.png": "/images/home.png",
+    "/images/indicators/child.png": "/images/indicators/child.png",
+    "/images/indicators/ice.png": "/images/indicators/ice.png",
+    "/images/indicators/new.png": "/images/indicators/new.png",
+    "/images/indicators/spicy.png": "/images/indicators/spicy.png",
+    "/images/indicators/veg.png": "/images/indicators/veg.png",
+    "/images/more.png": "/images/more.png"
+}

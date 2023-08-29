@@ -1,0 +1,107 @@
+.catalog-card {
+    display: flex;
+    border-radius: 2.125em;
+    padding: 0.8125em;
+    background-color: $white;
+
+    &__image {
+        width: 11.5em;
+        height: 11.06em;
+    }
+}
+
+.catalog-card-image {
+    flex-shrink: 0;
+    border-radius: 1.3125em;
+    overflow: hidden;
+
+    &__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.catalog-card-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding-top: 0.5em;
+    padding-left: 1.31em;
+
+    &__more {
+        position: absolute;
+        top: 0.5em;
+        right: 0.5em;
+        width: 1.5em;
+        height: 1.5em;
+        background: url("/images/more.png") center center/contain no-repeat;
+    }
+
+    &__descr {
+        display: flex;
+        flex-direction: column;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        margin-bottom: 1.31em;
+    }
+
+    &__name {
+        font-size: $fz_20;
+        font-weight: 700;
+        letter-spacing: 0.6px;
+        color: $dark;
+        margin-bottom: 0.4em;
+        padding-right: 1.85em;
+    }
+
+    &__weight {
+        font-size: $fz_14;
+        color: $midgray;
+        margin-bottom: 0.57em;
+    }
+
+    &__indicators {
+        margin-bottom: 0.57em;
+    }
+
+    &__price {
+        align-self: flex-end;
+        font-size: $fz_24;
+        font-weight: 700;
+        color: $dark;
+    }
+
+    &__button {
+        align-self: flex-end;
+        width: 2.625em;
+        height: 2.625em;
+    }
+}
+
+.catalog-card-content-indicators {
+    display: flex;
+    margin-left: -0.25em;
+    margin-right: -0.25em;
+
+    &__item {
+        margin-left: 0.25em;
+        margin-right: 0.25em;
+    }
+}
+
+.catalog-card-content-indicators-item {
+    &__image {
+        width: 1.5em;
+        height: 1.5em;
+    }
+}
+
+.catalog-card-content-indicators-item-image {
+    display: block;
+
+    &__img {
+        width: 100%;
+    }
+}
