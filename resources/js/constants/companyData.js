@@ -1,10 +1,21 @@
 export const companyData = {
-    name: "Paradise",
-    logo: "",
-    fullNmae: "Ресторан ООО «Парадайз»",
-    address: "ул. Выборная 158/1",
-    tel: "8 (913) 920-84-05",
-    email: "paradise@gmail.com",
+    name: {
+        text: "Paradise",
+    },
+    fullNmae: {
+        text: "Ресторан ООО «Парадайз»",
+    },
+    address: {
+        text: "ул. Выборная 158/1",
+    },
+    tel: {
+        text: "8 (913) 920-84-05",
+        link: true,
+    },
+    email: {
+        text: "paradise@gmail.com",
+        link: true,
+    },
     social: [
         {
             name: "whatsapp",

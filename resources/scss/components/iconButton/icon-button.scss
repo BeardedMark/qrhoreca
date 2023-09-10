@@ -1,0 +1,36 @@
+.icon-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &--light {
+        background-color: $background;
+    }
+
+    &--active {
+        background-color: $dark;
+    }
+
+    &--dark {
+        background-color: $midgray;
+    }
+
+    &--accent {
+        background-color: $accent;
+    }
+
+    &__image {
+        width: 1.5em;
+        height: 1.5em;
+    }
+}
+
+.icon-button-image {
+    display: block;
+
+    &__img {
+        width: 100%;
+    }
+} 

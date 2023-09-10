@@ -38,7 +38,8 @@
     }
 
     &--size-default {
-        border-radius: 2.125em;
+        padding: 0.625em;
+        border-radius: 1.31em;
 
         #{$self}__text {
             font-size: $fz_20;

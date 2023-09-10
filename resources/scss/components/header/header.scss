@@ -1,0 +1,91 @@
+.header {
+    padding: 1.31em;
+    border-bottom-left-radius: 3.44em;
+    border-bottom-right-radius: 3.44em;
+    background-color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__links {
+        display: flex;
+        align-items: center;
+        margin-left: -0.66em;
+        margin-right: -0.66em;
+    }
+
+    &__link {
+        width: 3em;
+        height: 3em;
+        margin-left: 0.66em;
+        margin-right: 0.66em;
+
+        &--0 {
+            width: 4.25em;
+            height: 4.25em;
+        }
+    }
+
+    &__basket {
+        margin-left: 0.66em;
+    }
+}
+
+.header-basket {
+    display: flex;
+
+    &__link {
+        margin-left: 1.31em;
+    }
+}
+
+.header-basket-amount {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    &__text {
+        font-size: $fz_14;
+        color: $midgray;
+        margin-bottom: 0.57em;
+    }
+
+    &__sum {
+        font-size: $fz-24;
+        font-weight: 700;
+        color: $dark;
+    }
+}
+
+.header-basket-link {
+    position: relative;
+
+    &__icon {
+        width: 4.25em;
+        height: 4.25em;
+    }
+
+    &__num {
+        position: absolute;
+        top: -0.19em;
+        right: -0.19em;
+        width: 1.81em;
+        height: 1.81em;
+    }
+}
+
+.header-basket-link-num {
+    background-color: $accent;
+    border-radius: 50%;
+    border: 0.19em solid $white;
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+
+    &__text {
+        font-size: $fz_14;
+        font-weight: 700;
+    }
+}

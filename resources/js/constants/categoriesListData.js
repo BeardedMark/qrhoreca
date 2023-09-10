@@ -1,6 +1,9 @@
-export const catalogListData = [
+export const categoriesListData = [
     {
+        id: 1,
         category: 'Первое',
+        descr: 'Убедитесь что в вашей корзине находится все что нужно. Можете убрать лишнее, изменить колличество',
+        image: 'pervoe.jpg',
         list: [
             {
                 image: 'dish1.png',
@@ -23,7 +26,10 @@ export const catalogListData = [
         ],
     },
     {
+        id: 2,
         category: 'Второе',
+        descr: 'Убедитесь что в вашей корзине находится все что нужно. Можете убрать лишнее, изменить колличество',
+        image: 'vtoroe.jpg',
         list: [
             {
                 image: 'dish1.png',

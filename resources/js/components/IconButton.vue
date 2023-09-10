@@ -1,13 +1,12 @@
 <template>
-    <component 
+    <component
         :is="tag"
-        :href="link"
-        :type="btnType"
         class="icon-button"
+        :class="iconButtonClasses"
     >
         <picture class="icon-button__image icon-button-image">
-            <img 
-                :src="iconLink" 
+            <img
+                :src="iconLink"
                 :alt="alt"
                 class="icon-button-image__img"
             />
@@ -22,11 +21,7 @@
         props: {
             tag: {
                 type: String,
-                default: 'a',
-            },
-            href: {
-                type: String,
-                default: '#',
+                default: 'button',
             },
             iconLink: {
                 type: String,
@@ -34,20 +29,24 @@
             },
             alt: {
                 type: String,
-                required: 'icon',
+                default: 'icon',
+            },
+            mod: {
+                type: String,
+                default: 'light',
             },
         },
         setup(props) {
             /** Vars */
-            const {tag, href} = toRefs(props);
+            const {mod} = toRefs(props);
 
             /** Computed*/
-            const link = computed(() => unref(tag) === 'a' ? unref(href) : null);
-            const btnType = computed(() => unref(tag) === 'button' ? 'button' : null);
+            const iconButtonClasses = computed(() => ({
+                [`icon-button--${unref(mod)}`]: !!unref(mod),
+            }));
 
             return {
-                link,
-                btnType,
+                iconButtonClasses,
             };
         },
     });

@@ -1,6 +1,6 @@
 <template>
     <div class="app">
-        <header class="app__header"></header>
+        <Header class="app__header" />
         <main class="app__main">
             <router-view></router-view>
         </main>
@@ -11,11 +11,13 @@
 <script>
     import { defineComponent } from "vue";
     import Footer from "./Footer.vue";
+    import Header from "./Header.vue";
 
     export default defineComponent({
         name: 'AppComponent',
         components: { 
             Footer,
+            Header,
         },
     });
 </script>

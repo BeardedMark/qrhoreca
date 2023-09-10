@@ -1,4 +1,4 @@
-.catalog-card {
+.product {
     display: flex;
     border-radius: 2.125em;
     padding: 0.8125em;
@@ -10,7 +10,7 @@
     }
 }
 
-.catalog-card-image {
+.product-image {
     flex-shrink: 0;
     border-radius: 1.3125em;
     overflow: hidden;
@@ -22,7 +22,7 @@
     }
 }
 
-.catalog-card-content {
+.product-content {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -80,7 +80,7 @@
     }
 }
 
-.catalog-card-content-indicators {
+.product-content-indicators {
     display: flex;
     margin-left: -0.25em;
     margin-right: -0.25em;
@@ -91,14 +91,14 @@
     }
 }
 
-.catalog-card-content-indicators-item {
+.product-content-indicators-item {
     &__image {
         width: 1.5em;
         height: 1.5em;
     }
 }
 
-.catalog-card-content-indicators-item-image {
+.product-content-indicators-item-image {
     display: block;
 
     &__img {

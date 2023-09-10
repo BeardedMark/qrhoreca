@@ -1,0 +1,57 @@
+.category-page {
+    &__top {
+        margin-bottom: 3.44em;
+        padding-left: 2.125em;
+        padding-right: 2.125em;
+    }
+
+    &__title {
+        margin-bottom: 0.625em;
+    }
+
+    &__list {
+        margin-bottom: 3.44em;
+    }
+
+    &__cards {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 3.44em;
+    }
+
+    &__card {
+        margin-bottom: 1.3125em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__btn {
+        min-width: 13.125em;
+        width: fit-content;
+        height: 4em;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    &__separator {
+        @include separatorStyles;
+    }
+}
+
+
+.category-page-title {
+    &__text {
+        font-size: $fz_20;
+        letter-spacing: 0.6px;
+        color: $accent;
+    }
+}
+
+.category-page-subtitle {
+    &__text {
+        font-size: $fz_14;
+        color: $midgray;
+    }
+}
