@@ -1,33 +1,37 @@
 <template>
-    <div class="catalog-card-quantity">
-        <ButtonMini 
+    <div class="product-quantity">
+        <Button
             @click="doLess"
-            text="&minus;"
+            size="mini"
             theme="light"
-            class="catalog-card-quantity__btn catalog-card-quantity__btn--less"
-        />
-        <p class="catalog-card-quantity__num catalog-card-quantity-num">
-            <span class="catalog-card-quantity-num__text">
+            class="product-quantity__btn product-quantity__btn--less"
+        >
+            &minus;
+        </Button>
+        <p class="product-quantity__num product-quantity-num">
+            <span class="product-quantity-num__text">
                 {{ quantity }}
             </span>
         </p>
-        <ButtonMini 
+        <Button
             @click="doMore"
-            text="+"
+            size="mini"
             theme="light"
-            class="catalog-card-quantity__btn catalog-card-quantity__btn--more"
-        />
+            class="product-quantity__btn product-quantity__btn--more"
+        >
+            +
+        </Button>
     </div>
 </template>
 <script>
     import { defineComponent, ref, unref } from "vue";
-    import ButtonMini from "./ButtonMini.vue";
+    import Button from "./Button.vue";
 
     export default defineComponent({
-        name: "CatalogCardQuantity",
-        components: { ButtonMini },
+        name: "ProductQuantity",
+        components: { Button },
         setup(_, { emit }) {
-            /** Vars */ 
+            /** Vars */
             const quantity = ref(1);
 
             /** Methods */
@@ -49,5 +53,5 @@
     });
 </script>
 <style scoped lang="scss">
-@import "resources/scss/components/catalogCardQuantity/component";
+@import "resources/scss/components/productQuantity/component";
 </style>

@@ -13,15 +13,14 @@
                     </span>
                 </p>
             </div>
-
-            <ul class="catalog__list catalog-list">
-                <li 
+            <div class="catalog__list catalog-list">
+                <div
                     v-for="(item, itemIndex) in catalogList"
                     :key="`catalog-list-item-${itemIndex}`"
                     class="catalog-list__item catalog-list-item"
                     :class="{'catalog-list-item--is-open': item.isOpen}"
                 >
-                    <div 
+                    <div
                         @click="toggleDropDown(itemIndex)"
                         class="catalog-list-item__top catalog-list-item-top"
                         :class="{'catalog-list-item-top--is-open': item.isOpen}"
@@ -35,62 +34,77 @@
                         </div>
                     </div>
                     <div class="catalog-list-item__cards">
-                        <CatalogCard 
+                        <Product
                             v-for="(card, cardIndex) in item.list"
                             :key="`catalog-list-item-${cardIndex}`"
                             :dish="card"
                             class="catalog-list-item__card"
                         />
                     </div>
-                </li>
-            </ul>
-
-            <Button class="catalog__btn">
+                </div>
+            </div>
+            <Button
+                @click="redirectToBasket"
+                class="catalog__btn"
+            >
                 Перейти в корзину
             </Button>
-            <CatalogIndicators class="catalog__indicators" />
+            <Separator class="catalog__separator" />
+            <IndicatorsInfo class="catalog__indicators" />
         </div>
     </div>
 </template>
 
 <script>
-    import { 
-        defineComponent, 
+    import {
+        defineComponent,
         ref,
     } from "vue";
-    import { catalogListData } from "../constants/catalogListData";
-    import CatalogCard from "./CatalogCard.vue";
+    import { categoriesListData } from "../constants/categoriesListData";
+    import {useRouter} from "vue-router";
+    import Product from "./Product.vue";
     import Button from "./Button.vue";
-    import CatalogIndicators from "./CatalogIndicators.vue";
+    import IndicatorsInfo from "./IndicatorsInfo.vue";
+    import Separator from "./Separator.vue";
+    import IconButtonInnerLink from "./IconButtonInnerLink";
 
     export default defineComponent({
         name: "Catalog",
-        components: { 
-            CatalogCard, 
+        components: {
+            IconButtonInnerLink,
+            Product,
             Button,
-            CatalogIndicators,
+            IndicatorsInfo,
+            Separator,
         },
         setup() {
             /** Vars */
-            const catalogList = ref(catalogListData.map((item) => ({
-                ...item, 
+            const catalogList = ref(categoriesListData.map((item) => ({
+                ...item,
                 count: item.list.length,
                 isOpen: false,
             })));
+
+            /** Features */
+            const router = useRouter();
 
             /** Methods */
             const toggleDropDown = (index) => {
                catalogList.value[index].isOpen = !catalogList.value[index].isOpen;
             };
 
+            const redirectToBasket = () => {
+                router.push('/basket');
+            };
+
             return {
                 catalogList,
                 toggleDropDown,
+                redirectToBasket,
             };
         },
     });
 </script>
-
 <style scoped lang="scss">
 @import "resources/scss/components/catalog/component";
 </style>

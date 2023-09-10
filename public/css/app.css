@@ -9,11 +9,12 @@
 }
 .app__main {
   flex-grow: 1;
-  padding: 3.44em 2.125em;
+  padding: 10.31em 2.125em 3.44em;
 }
 .app__header {
-  padding: 1.31em;
-  border-bottom-left-radius: 3.44em;
-  border-bottom-right-radius: 3.44em;
-  background-color: #FFF;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
 }

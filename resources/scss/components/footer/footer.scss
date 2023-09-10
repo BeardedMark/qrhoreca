@@ -9,6 +9,33 @@
     &__top {
         margin-bottom: 2.625em;
     }
+
+    &__middle {
+        margin-bottom: 2.625em;
+        padding-left: 0.66em;
+        padding-right: 0.66em;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__links, 
+    &__info {
+        margin-left: 0.66em;
+        margin-right: 0.66em;
+    }
+
+    &__bottom {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 1.31em;
+        padding-right: 1.31em;
+    }
+
+    &__admin,
+    &__create {
+        font-size: $fz_14;
+        color: $midgray;
+    }
 }
 
 .footer-top {
@@ -36,24 +63,86 @@
     }
 }
 
-.footer-top-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: $midgray;
-    border-radius: 50%;
-    cursor: pointer;
+.footer-links {
+    &__list {
+        display: flex;
+        flex-direction: column;
+    }
 
-    &__image {
-        width: 1.5em;
-        height: 1.5em;
+    &__item {
+        margin-bottom: 1.31em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 }
 
-.footer-top-btn-image {
-    display: block;
+.footer-links-item {
+    &__link {
+        font-size: $fz_20;
+        letter-spacing: 0.6px;
+        color: $white;
+    }
+}
 
-    &__img {
-        width: 100%;
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    &__item {
+        margin-bottom: 0.81em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__social {
+        margin-top: 1.31em;
+    }
+}
+
+.footer-info-item {
+    $self: &;
+
+    &--name {
+        #{$self}__text {
+            font-size: $fz_14;
+            color: $midgray;
+        }
+    }
+
+    &--address,
+    &--email {
+        #{$self}__text {
+            font-size: $fz_16;
+            letter-spacing: 0.48px;
+            color: $white;
+        }
+    }
+
+    &--tel {
+        #{$self}__text {
+            font-size: $fz_24;
+            letter-spacing: 0.72px;
+            color: $white;
+        }
+    }
+}
+
+.footer-info-social {
+    &__wrapper {
+        display: flex;
+        margin-left: -0.66em;
+        margin-right: -0.66em;
+    }
+
+    &__link {
+        width: 2.625em;
+        height: 2.625em;
+        margin-left: 0.66em;
+        margin-right: 0.66em;
     }
 }

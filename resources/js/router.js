@@ -1,26 +1,60 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from "./components/Home.vue";
-import About from "./components/Home.vue";
-import Contacts from "./components/Home.vue";
+import Menu from "./components/Menu.vue";
+import About from "./components/About.vue";
+import Contacts from "./components/Contacts.vue";
 import Catalog from "./components/Catalog.vue";
-
+import Categories from "./components/Categories.vue";
+import CategoryPage from "./components/CategoryPage.vue";
+import Search from "./components/Search.vue";
+import Basket from "./components/Basket.vue";
 
 const routes = [
     {
         path: '/',
+        name: 'home',
         component: Home,
     },
     {
+        path: '/menu',
+        name: 'menu',
+        component: Menu,
+    },
+    {
         path: '/about',
+        name: 'about',
         component: About,
     },
     {
         path: '/contacts',
+        name: 'contacts',
         component: Contacts,
     },
     {
         path: '/catalog',
+        name: 'catalog',
         component: Catalog,
+    },
+    {
+        path: '/categories',
+        name: 'categories',
+        component: Categories,
+    },
+    {
+        path: '/category/:id',
+        name: 'category',
+        component: CategoryPage,
+        props: true,
+    },
+    {
+        path: '/search',
+        name: 'search',
+        component: Search,
+    },
+    {
+        path: '/basket',
+        name: 'basket',
+        component: Basket,
     },
 ];
 
@@ -31,5 +65,9 @@ const router = createRouter({
     routes, // Подключаем массив routes, который содержит конфигурацию маршрутов
 });
 
+// это хук (колбэк функция), предоставляемая Vue Router для выполнения действий после каждого успешного завершения перехода между маршрутами
+router.afterEach(() => {
+    window.scrollTo(0, 0);
+});
 
 export default router;
