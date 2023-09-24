@@ -22,6 +22,7 @@
 </template>
 <script>
     import { computed, defineComponent, toRefs, unref } from "vue";
+    import {products} from "../constants/categoriesListData";
 
     export default defineComponent({
         name: "Category",
@@ -36,9 +37,7 @@
             const {category} = toRefs(props);
 
             /** Computed */
-            const categoryCount = computed(() => unref(category).list?.length ?? 0);
-
-            /** Methods */
+            const categoryCount = computed(() => products.filter((item) => item.categoryId === unref(category).id)?.length || 0);
             const getLink = computed(() => `/category/${unref(category).id}`);
 
             return {

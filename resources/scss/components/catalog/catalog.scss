@@ -90,11 +90,11 @@
 
     &__arrow {
         flex-shrink: 0;
-        margin-top: 0.43em;
         width: 1.5em;
         height: 1.5em;
         background: url("/images/arrow.png") center center/contain no-repeat;
         transition: .3s;
+        margin-right: 0.625em;
     }
 
     &__category {
@@ -102,17 +102,16 @@
         font-weight: 700;
         letter-spacing: 0.96px;
         color: $dark;
-        padding-left: 0.42em;
         flex-grow: 1;
     }
 
     &__count {
         font-size: $fz_14;
-        padding-top: 0.78em;
         padding-left: 0.71em;
         padding-right: 1.5em;
         color: $midgray;
         white-space: nowrap;
+        line-height: 2;
     }
 
     &__cards {

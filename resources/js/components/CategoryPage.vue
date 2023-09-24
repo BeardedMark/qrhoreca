@@ -14,9 +14,9 @@
         </div>
         <div class="category-page__cards">
             <Product
-                v-for="(dish, dishIndex) in category.list"
-                :key="`category-page-dish-${dishIndex}`"
-                :dish="dish"
+                v-for="(product, productIndex) in productsList"
+                :key="`category-page-dish-${productIndex}`"
+                :product="product"
                 class="category-page__card"
             />
         </div>
@@ -38,7 +38,7 @@
         toRefs,
         unref,
     } from "vue";
-    import { categoriesListData } from "../constants/categoriesListData";
+    import {categoriesListData, products} from "../constants/categoriesListData";
     import Product from "./Product.vue";
     import Button from "./Button.vue";
     import IndicatorsInfo from "./IndicatorsInfo.vue";
@@ -68,13 +68,16 @@
 
             /** Computed */
             const category = computed(() => categoriesListData.find((item) => item.id === Number(unref(id))));
+            const productsList = computed(() => products.filter((product) => product.categoryId === Number(unref(id))))
 
+            /** Methods */
             const redirectToCategories = () => {
                 router.push('/categories');
             };
 
             return {
                 category,
+                productsList,
                 redirectToCategories,
             };
         },

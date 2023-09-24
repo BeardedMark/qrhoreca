@@ -37,7 +37,7 @@
                         <Product
                             v-for="(card, cardIndex) in item.list"
                             :key="`catalog-list-item-${cardIndex}`"
-                            :dish="card"
+                            :product="card"
                             class="catalog-list-item__card"
                         />
                     </div>
@@ -60,7 +60,7 @@
         defineComponent,
         ref,
     } from "vue";
-    import { categoriesListData } from "../constants/categoriesListData";
+    import {categoriesListData, products} from "../constants/categoriesListData";
     import {useRouter} from "vue-router";
     import Product from "./Product.vue";
     import Button from "./Button.vue";
@@ -79,11 +79,16 @@
         },
         setup() {
             /** Vars */
-            const catalogList = ref(categoriesListData.map((item) => ({
-                ...item,
-                count: item.list.length,
-                isOpen: false,
-            })));
+            const catalogList = ref(categoriesListData.map((item) => {
+                const productsList = products.filter((product) => product.categoryId === item.id);
+
+                return {
+                    ...item,
+                    count: productsList.length,
+                    list: productsList,
+                    isOpen: false,
+                };
+            }));
 
             /** Features */
             const router = useRouter();

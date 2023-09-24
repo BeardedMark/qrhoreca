@@ -79,29 +79,3 @@
         height: 2.625em;
     }
 }
-
-.product-content-indicators {
-    display: flex;
-    margin-left: -0.25em;
-    margin-right: -0.25em;
-
-    &__item {
-        margin-left: 0.25em;
-        margin-right: 0.25em;
-    }
-}
-
-.product-content-indicators-item {
-    &__image {
-        width: 1.5em;
-        height: 1.5em;
-    }
-}
-
-.product-content-indicators-item-image {
-    display: block;
-
-    &__img {
-        width: 100%;
-    }
-}
