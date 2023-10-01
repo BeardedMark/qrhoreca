@@ -9,15 +9,29 @@
 </template>
 
 <script>
-    import { defineComponent } from "vue";
+    import {computed, defineComponent, unref, watch} from "vue";
     import Footer from "./Footer.vue";
     import Header from "./Header.vue";
+    import {siteStore} from "../constants/store";
 
     export default defineComponent({
         name: 'AppComponent',
-        components: { 
+        components: {
             Footer,
             Header,
+        },
+        setup() {
+            if(JSON.parse(localStorage.getItem('order')).length) {
+                unref(siteStore).setOrder(JSON.parse(localStorage.getItem('order')));
+            }
+
+            /** Computed */
+            const currentOrder = computed(() => siteStore.getOrder);
+
+            /** Watchers */
+            watch(currentOrder, (newValue) => {
+                localStorage.setItem('order', JSON.stringify(newValue));
+            });
         },
     });
 </script>

@@ -29,6 +29,7 @@ export const products = [
         indicators: [
             'new',
         ],
+        blank: 'Мясо',
     },
     {
         id: 2,
@@ -42,6 +43,7 @@ export const products = [
         indicators: [
             'spicy',
         ],
+        blank: '',
     },
     {
         id: 3,
@@ -59,6 +61,7 @@ export const products = [
             'veg',
             'spicy',
         ],
+        blank: '',
     },
     {
         id: 4,
@@ -72,5 +75,6 @@ export const products = [
         indicators: [
             'ice',
         ],
+        blank: '',
     },
 ];

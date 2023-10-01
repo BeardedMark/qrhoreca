@@ -58,7 +58,13 @@
             class="product-content__quantity"
         />
         <Separator class="product-page__separator" />
-        <Info class="product-page__info" />
+        <Info
+            title="Подробности"
+            text="Все детали или интересующие вас вопросы по блюду вы можете задать нашим сотрудникам"
+            linkName="Контакты"
+            link="/contacts"
+            class="product-page__info"
+        />
     </div>
 </template>
 

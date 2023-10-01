@@ -9,20 +9,24 @@
                 >
             </picture>
             <p class="info__title">
-                Подробности
+                {{ title }}
             </p>
         </div>
-        <p class="info__text info-text">
+        <p
+            v-if="text"
+            class="info__text info-text"
+        >
             <span class="info-text__label">
-                Все детали или интересующие вас вопросы по блюду вы можете задать нашим сотрудникам
+                {{ text }}
             </span>
         </p>
         <router-link
-            to="/contacts"
+            v-if="linkName"
+            :to="link"
             class="info__link info-link"
         >
             <span class="info-link__label">
-                Контакты
+                {{ linkName }}
             </span>
         </router-link>
     </div>
@@ -32,6 +36,24 @@
 
     export default defineComponent({
         name: "Info",
+        props: {
+            title: {
+               type: String,
+               required: true,
+            },
+            text: {
+                type: String,
+                default: '',
+            },
+            linkName: {
+                type: String,
+                default: '',
+            },
+            link: {
+                type: String,
+                default: '',
+            },
+        },
     });
 </script>
 <style scoped lang="scss">

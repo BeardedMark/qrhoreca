@@ -1,7 +1,7 @@
 <template>
     <div class="product-quantity">
         <Button
-            @click="doLess"
+            @click="removeProduct"
             size="mini"
             theme="light"
             class="product-quantity__btn product-quantity__btn--less"
@@ -17,7 +17,7 @@
             </span>
         </p>
         <Button
-            @click="doMore"
+            @click="addProduct"
             size="mini"
             theme="light"
             class="product-quantity__btn product-quantity__btn--more"
@@ -27,7 +27,7 @@
     </div>
 </template>
 <script>
-import {defineComponent, ref, unref, toRefs, computed} from "vue";
+    import {defineComponent, ref, unref, toRefs, computed} from "vue";
     import Button from "./Button.vue";
 
     export default defineComponent({
@@ -50,10 +50,17 @@ import {defineComponent, ref, unref, toRefs, computed} from "vue";
           }));
 
             /** Methods */
-            const doMore = () => quantity.value++;
-            const doLess = () => {
+            const addProduct = () => {
+                quantity.value++;
+
+                emit('updateOrder', unref(quantity));
+            };
+
+            const removeProduct = () => {
                 if(unref(quantity) > 1) {
-                    return quantity.value--;
+                    quantity.value--;
+                    emit('updateOrder', unref(quantity));
+                    return;
                 }
 
                 emit('hideQuantitySelection');
@@ -61,9 +68,9 @@ import {defineComponent, ref, unref, toRefs, computed} from "vue";
 
             return {
               productQuantityNumClasses,
-                doMore,
-                doLess,
                 quantity,
+                removeProduct,
+                addProduct,
             };
         },
     });

@@ -28,7 +28,13 @@
                 </div>
             </div>
             <Separator class="categories__separator" />
-            <Info class="categories__info" />
+            <Info
+                title="Подробности"
+                text="Все детали или интересующие вас вопросы по блюду вы можете задать нашим сотрудникам"
+                linkName="Контакты"
+                link="/contacts"
+                class="categories__info"
+            />
         </div>
     </div>
 </template>

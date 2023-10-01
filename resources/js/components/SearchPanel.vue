@@ -1,16 +1,30 @@
 <template>
     <div class="search-panel">
-        <input
-            type="text"
-            placeholder="Поиск..."
-            v-model="searchText"
-            class="search-panel__input"
-        />
+        <div class="search-panel__field">
+            <input
+                type="text"
+                placeholder="Поиск..."
+                v-model="searchText"
+                class="search-panel__input"
+            />
+            <div
+                @click="clearSearchInput"
+                class="search-panel__clear search-panel-clear"
+            >
+                <picture class="search-panel-clear__picture">
+                    <img
+                        src="/images/close.png"
+                        alt="clear"
+                        class="search-panel-clear__img"
+                    >
+                </picture>
+            </div>
+        </div>
         <IconButtonAction
             @click="sendSearchRequest"
-            iconLink="/images/search-dark.png"
+            iconLink="/images/search-blue.png"
             alt="search"
-            mod="dark"
+            mod="frame"
             class="search-panel__btn"
         />
     </div>
@@ -28,10 +42,15 @@
 
             /** Methods */
             const sendSearchRequest = () => emit('searchRequest', unref(searchText));
+            const clearSearchInput = () => {
+                searchText.value = '';
+                sendSearchRequest();
+            };
 
             return {
                 searchText,
                 sendSearchRequest,
+                clearSearchInput,
             };
         },
     });

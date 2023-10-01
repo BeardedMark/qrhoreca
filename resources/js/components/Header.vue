@@ -13,12 +13,15 @@
             />
         </div>
         <div class="header__basket header-basket">
-            <div class="header-basket__amount header-basket-amount">
+            <div
+                v-if="orderSum"
+                class="header-basket__amount header-basket-amount"
+            >
                 <p class="header-basket-amount__text">
                     Итого:
                 </p>
                 <p class="header-basket-amount__sum">
-                    1 020р
+                    {{ orderSum }}
                 </p>
             </div>
             <div class="header-basket__link header-basket-link">
@@ -31,7 +34,7 @@
                 />
                 <p class="header-basket-link__num header-basket-link-num">
                     <span class="header-basket-link-num__text">
-                        4
+                        {{ orderQuantity }}
                     </span>
                 </p>
             </div>
@@ -39,8 +42,10 @@
     </div>
 </template>
 <script>
-import {defineComponent, ref, unref, watch} from "vue";
+    import {computed, defineComponent, ref, unref, watch} from "vue";
     import {useRoute} from 'vue-router';
+    import {siteStore} from "../constants/store";
+    import {products} from "../constants/categoriesListData";
     import IconButtonInnerLink from "./IconButtonInnerLink";
 
     export default defineComponent({
@@ -49,7 +54,6 @@ import {defineComponent, ref, unref, watch} from "vue";
         setup() {
             /** Vars */
             const currentRoute = ref();
-
             const headerLinks = ref([
                 {
                     link: 'menu',
@@ -81,6 +85,20 @@ import {defineComponent, ref, unref, watch} from "vue";
                 },
             ]);
 
+            /** Computed */
+            const order = computed(() => siteStore.getOrder);
+            const orderSum = computed(() => {
+                if(unref(order).length) {
+                    return unref(order).reduce((acc, item) => {
+                        const sum = Number(products.find((product) => product.id === item.id).price.replace(/\s|р/gi, '')) * item.quantity;
+                        acc += sum;
+                        return acc;
+                    }, 0);
+                }
+                return null;
+            });
+            const orderQuantity = computed(() => unref(order).length || 0);
+
             /** Features */
             const route = useRoute();
 
@@ -103,6 +121,8 @@ import {defineComponent, ref, unref, watch} from "vue";
                 headerLinks,
                 getIconInnerLink,
                 getInnerLinkMod,
+                orderSum,
+                orderQuantity,
             };
         },
     });
