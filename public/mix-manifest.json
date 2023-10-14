@@ -11,6 +11,7 @@
     "/images/catalog-light.png": "/images/catalog-light.png",
     "/images/categories-dark.png": "/images/categories-dark.png",
     "/images/categories-light.png": "/images/categories-light.png",
+    "/images/close.png": "/images/close.png",
     "/images/contacts-dark.png": "/images/contacts-dark.png",
     "/images/dish1.png": "/images/dish1.png",
     "/images/dish2.png": "/images/dish2.png",
@@ -26,11 +27,10 @@
     "/images/menu-light.png": "/images/menu-light.png",
     "/images/more.png": "/images/more.png",
     "/images/pervoe.jpg": "/images/pervoe.jpg",
+    "/images/search-blue.png": "/images/search-blue.png",
     "/images/search-dark.png": "/images/search-dark.png",
     "/images/search-light.png": "/images/search-light.png",
     "/images/telegram.png": "/images/telegram.png",
     "/images/vtoroe.jpg": "/images/vtoroe.jpg",
-    "/images/whatsapp.png": "/images/whatsapp.png",
-    "/images/search-blue.png": "/images/search-blue.png",
-    "/images/close.png": "/images/close.png"
+    "/images/whatsapp.png": "/images/whatsapp.png"
 }
