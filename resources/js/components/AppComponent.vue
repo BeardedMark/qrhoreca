@@ -9,10 +9,17 @@
 </template>
 
 <script>
-    import {computed, defineComponent, unref, watch} from "vue";
+    import {
+        computed,
+        defineComponent,
+        onMounted,
+        unref,
+        watch,
+    } from "vue";
     import Footer from "./Footer.vue";
     import Header from "./Header.vue";
     import {siteStore} from "../constants/store";
+    import {getOrder} from "../constants/storeGetters";
 
     export default defineComponent({
         name: 'AppComponent',
@@ -21,20 +28,24 @@
             Header,
         },
         setup() {
-            if(JSON.parse(localStorage.getItem('order')).length) {
-                unref(siteStore).setOrder(JSON.parse(localStorage.getItem('order')));
-            }
-
             /** Computed */
-            const currentOrder = computed(() => siteStore.getOrder);
+            const currentOrder = computed(() => unref(getOrder));
 
             /** Watchers */
             watch(currentOrder, (newValue) => {
                 localStorage.setItem('order', JSON.stringify(newValue));
             });
+
+            /** Life cycles */
+            onMounted(() => {
+                if(JSON.parse(localStorage.getItem('order'))?.length) {
+                    unref(siteStore).setOrder(JSON.parse(localStorage.getItem('order')));
+                }
+            });
         },
     });
 </script>
+
 <style scoped lang="scss">
     @import "resources/scss/app.scss";
 </style>

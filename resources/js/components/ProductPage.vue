@@ -54,6 +54,8 @@
         <ProductQuantity
             v-else
             @hideQuantitySelection="hideQuantitySelection"
+            @updateOrder="updateOrder"
+            :startQuantity="productQuantity"
             mod="light"
             class="product-content__quantity"
         />
@@ -69,7 +71,7 @@
 </template>
 
 <script>
-    import {computed, ref, toRefs, unref} from "vue";
+    import {computed, ref, toRefs, unref, watch} from "vue";
     import {products} from "../constants/categoriesListData";
     import {indicators} from "../constants/indicators";
     import Button from "./Button";
@@ -77,6 +79,8 @@
     import Info from "./Info";
     import Indicators from "./Indicators";
     import ProductQuantity from "./ProductQuantity.vue";
+    import {getOrder} from "../constants/storeGetters";
+    import {changeOrderFunc} from "../constants/changeOrderFunc";
 
     export default {
         name: "ProductPage",
@@ -96,27 +100,38 @@
         setup(props) {
             /** Vars */
             const {id} = toRefs(props);
-            const showQuantitySelection = ref(false);
+            const productQuantity = ref(unref(getOrder).find((item) => item.id === Number(unref(id)))?.quantity || 0);
 
             /** Computed */
+            const showQuantitySelection = computed(() => unref(productQuantity) >= 1);
             const product = computed(() => products.find((item) => item.id === Number(unref(id))));
 
             /** Methods */
             const getIndicatorImage = (index) => indicators.find((item) => item.index === index).icon;
+            const updateOrder = (quantity) => {
+                productQuantity.value = quantity;
+            };
             const buttonHandler = () => {
-                showQuantitySelection.value = true;
+                updateOrder(1);
             };
             const hideQuantitySelection = () => {
-                showQuantitySelection.value = false;
+                updateOrder(0);
             };
 
-          return {
+            /** Wathers */
+            watch(productQuantity, (newValue) => {
+                changeOrderFunc(newValue, Number(unref(id)));
+            });
+
+            return {
               product,
               getIndicatorImage,
               buttonHandler,
               showQuantitySelection,
               hideQuantitySelection,
-          };
+              productQuantity,
+              updateOrder,
+            };
         },
     }
 </script>

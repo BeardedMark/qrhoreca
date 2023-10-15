@@ -1,16 +1,15 @@
-import {reactive, readonly, computed} from "vue";
+import {reactive, readonly} from "vue";
 
 const state = reactive({
     order: [],
 });
 
 const setOrder = (value) => {
+    // console.log(value);
     state.order = value;
 };
 
-const getOrder = computed(() => state.order);
-
 export const siteStore = readonly({
     setOrder,
-    getOrder,
+    state,
 });

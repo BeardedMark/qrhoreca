@@ -36,7 +36,7 @@
                     <div class="catalog-list-item__cards">
                         <Product
                             v-for="(card, cardIndex) in item.list"
-                            :key="`catalog-list-item-${cardIndex}`"
+                            :key="`catalog-list-item-${itemIndex}-${cardIndex}`"
                             :product="card"
                             class="catalog-list-item__card"
                         />

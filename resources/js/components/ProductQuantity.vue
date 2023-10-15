@@ -34,20 +34,24 @@
         name: "ProductQuantity",
         components: { Button },
         props: {
-          mod: {
+            mod: {
             type: String,
             default: 'default',
-          },
+            },
+            startQuantity: {
+                type: Number,
+                default: 1,
+            },
         },
         setup(props, { emit }) {
             /** Vars */
-            const {mod} = toRefs(props);
-            const quantity = ref(1);
+            const {mod, startQuantity} = toRefs(props);
+            const quantity = ref(unref(startQuantity));
 
-          /** Computed */
-          const productQuantityNumClasses = computed(() => ({
+            /** Computed */
+            const productQuantityNumClasses = computed(() => ({
               [`product-quantity-num--${unref(mod)}`]: !!unref(mod),
-          }));
+            }));
 
             /** Methods */
             const addProduct = () => {
@@ -67,7 +71,7 @@
             };
 
             return {
-              productQuantityNumClasses,
+                productQuantityNumClasses,
                 quantity,
                 removeProduct,
                 addProduct,

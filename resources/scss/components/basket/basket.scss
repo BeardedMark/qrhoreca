@@ -1,0 +1,62 @@
+.basket {
+    &__top {
+        margin-bottom: 3.44em;
+        padding-left: 2.125em;
+        padding-right: 2.125em;
+    }
+
+    &__title {
+        margin-bottom: 0.625em;
+    }
+
+    &__cards {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 3.44em;
+    }
+
+    &__card {
+        margin-bottom: 1.3125em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__btn {
+        min-width: 14.56em;
+        width: fit-content;
+        height: 4em;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    &__separator {
+        @include separatorStyles;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.basket-title {
+    &__text {
+        font-size: $fz_20;
+        letter-spacing: 0.6px;
+        color: $accent;
+    }
+}
+
+.basket-subtitle {
+    &__text {
+        font-size: $fz_14;
+        color: $midgray;
+    }
+
+    &__link {
+        color: $accent;
+        text-decoration: underline;
+    }
+}

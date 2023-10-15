@@ -13,10 +13,7 @@
             />
         </div>
         <div class="header__basket header-basket">
-            <div
-                v-if="orderSum"
-                class="header-basket__amount header-basket-amount"
-            >
+            <div class="header-basket__amount header-basket-amount">
                 <p class="header-basket-amount__text">
                     Итого:
                 </p>
@@ -44,9 +41,9 @@
 <script>
     import {computed, defineComponent, ref, unref, watch} from "vue";
     import {useRoute} from 'vue-router';
-    import {siteStore} from "../constants/store";
     import {products} from "../constants/categoriesListData";
     import IconButtonInnerLink from "./IconButtonInnerLink";
+    import {getOrder} from "../constants/storeGetters";
 
     export default defineComponent({
         name: "Header",
@@ -86,16 +83,18 @@
             ]);
 
             /** Computed */
-            const order = computed(() => siteStore.getOrder);
+            const order = computed(() => unref(getOrder));
             const orderSum = computed(() => {
                 if(unref(order).length) {
-                    return unref(order).reduce((acc, item) => {
+                    const sum = unref(order).reduce((acc, item) => {
                         const sum = Number(products.find((product) => product.id === item.id).price.replace(/\s|р/gi, '')) * item.quantity;
                         acc += sum;
                         return acc;
                     }, 0);
+
+                    return sum.toLocaleString() + 'p';
                 }
-                return null;
+                return '0р';
             });
             const orderQuantity = computed(() => unref(order).length || 0);
 

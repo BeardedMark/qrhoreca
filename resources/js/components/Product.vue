@@ -1,8 +1,7 @@
 <template>
     <div class="product">
-
         <router-link
-            :to="getLink"
+            :to="productLink"
             class="product__image product-image"
         >
             <picture class="product-image__picture">
@@ -14,15 +13,14 @@
             </picture>
         </router-link>
         <div class="product__content product-content">
-            <button
+            <router-link
                 v-if="product.description.length"
-                @click="redirectToProductPage"
-                type="button"
+                :to="productLink"
                 class="product-content__more"
-            ></button>
+            ></router-link>
             <div class="product-content__descr">
                 <router-link
-                    :to="getLink"
+                    :to="productLink"
                     class="product-content__name"
                 >
                     {{ product.name }}
@@ -50,6 +48,7 @@
                 v-else
                 @hideQuantitySelection="hideQuantitySelection"
                 @updateOrder="updateOrder"
+                :startQuantity="productQuantity"
                 class="product-content__quantity"
             />
         </div>
@@ -61,8 +60,8 @@
     import Button from "./Button.vue";
     import ProductQuantity from "./ProductQuantity.vue";
     import Indicators from "./Indicators";
-    import {useRouter} from "vue-router";
-    import {siteStore} from "../constants/store";
+    import {getOrder} from "../constants/storeGetters";
+    import {changeOrderFunc} from "../constants/changeOrderFunc";
 
     export default defineComponent({
         name: "Product",
@@ -80,68 +79,28 @@
         setup(props) {
             /** Var */
             const {product} = toRefs(props);
-            const showQuantitySelection = ref(false);
-            const productQuantity = ref(0);
-
-            /** Features */
-            const router = useRouter();
+            const productId = unref(product).id;
+            const productLink = `/product/${productId}`;
+            const productQuantity = ref(unref(getOrder).find((item) => item.id === productId)?.quantity || 0);
 
             /** Computed */
-            const getLink = computed(() => `/product/${unref(product).id}`);
-            const order = computed(() => siteStore.getOrder);
+            const showQuantitySelection = computed(() => unref(productQuantity) >= 1);
 
             /** Methods */
             const getIndicatorImage = (index) => indicators.find((item) => item.index === index).icon;
-            const buttonHandler = () => {
-                showQuantitySelection.value = true;
-                productQuantity.value = 1;
-            };
-            const hideQuantitySelection = () => {
-                showQuantitySelection.value = false;
-                productQuantity.value = 0;
-            };
-            const redirectToProductPage = () => {
-                router.push(`product/${unref(product).id}`);
-            };
             const updateOrder = (quantity) => {
                 productQuantity.value = quantity;
+            };
+            const buttonHandler = () => {
+                updateOrder(1);
+            };
+            const hideQuantitySelection = () => {
+                updateOrder(0);
             };
 
             /** Wathers */
             watch(productQuantity, (newValue) => {
-                const currentProduct = {
-                    id: unref(product).id,
-                    quantity: newValue,
-                };
-
-                if(newValue !== 0) {
-                    const newOrder = [...unref(order)];
-
-                    if(newOrder.find((item) => item.id === currentProduct.id)) {
-                        // Изменение количества
-                        newOrder.map((item) => {
-                            if(item.id === currentProduct.id) {
-                                item.quantity = currentProduct.quantity;
-                            }
-                        });
-                    } else {
-                        // Добавление в заказ
-                        newOrder.push(currentProduct);
-                    }
-
-                    unref(siteStore).setOrder(newOrder);
-                } else {
-                    // Удаление из заказа
-                    const newOrder = unref(order).reduce((acc, item) => {
-                        if(item.id !== currentProduct.id) {
-                            acc.push(item);
-                        }
-
-                        return acc;
-                    },[]);
-
-                    unref(siteStore).setOrder(newOrder);
-                }
+                changeOrderFunc(newValue, productId);
             });
 
             return {
@@ -150,8 +109,8 @@
                 updateOrder,
                 getIndicatorImage,
                 buttonHandler,
-                getLink,
-                redirectToProductPage,
+                productLink,
+                productQuantity,
             };
         },
     });
