@@ -1,4 +1,4 @@
-.offer-form {
+.offer-form-personal {
     $self: &;
     border-radius: 2.125em;
     padding: 0.81em;
@@ -37,35 +37,13 @@
         margin-bottom: 0.5em;
     }
 
-    &__field {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: $background;
-        border-radius: 1.31em;
-        padding: 1.31em;
-
-        #{$self}__input {
-            background-color: transparent;
-            pointer-events: none;
-        }
-    }
-
     &__input {
         color: $dark;
         font-size: $fz_20;
         letter-spacing: 0.6px;
-
-        &--comment {
-            resize: none;
-            height: 9.5em;
-        }
-
-        &:not(.offer-form__input--place) {
-            background-color: $background;
-            border-radius: 1.31em;
-            padding: 1.31em;
-        }
+        background-color: $background;
+        border-radius: 1.31em;
+        padding: 1.31em;
     }
 
     &__checkbox {
@@ -77,7 +55,7 @@
     }
 }
 
-.offer-form-placeholder {
+.offer-form-personal-placeholder {
     padding: 0.5em 1.31em;
 
     &__text {
@@ -87,16 +65,7 @@
     }
 }
 
-.offer-form-btn {
-    background-color: transparent;
-
-    &__text {
-        color: $accent;
-        font-size: $fz_14;
-    }
-}
-
-.offer-form-checkbox {
+.offer-form-personal-checkbox {
     display: flex;
     align-items: center;
 

@@ -38,10 +38,10 @@
         <div class="offer-form__block">
             <div class="offer-form__checkbox offer-form-checkbox">
                 <input
-                    type="radio"
+                    type="checkbox"
                     id="check1"
                     value="packWithYou"
-                    v-model="checkboxValue"
+                    v-model="packWithYou"
                     class="offer-form-checkbox__input"
                 />
                 <label
@@ -53,10 +53,10 @@
             </div>
             <div class="offer-form__checkbox offer-form-checkbox">
                 <input
-                    type="radio"
+                    type="checkbox"
                     id="check2"
                     value="takeOutWhenReady"
-                    v-model="checkboxValue"
+                    v-model="takeOutWhenReady"
                     class="offer-form-checkbox__input"
                 />
                 <label
@@ -70,7 +70,7 @@
     </div>
 </template>
 <script>
-    import { defineComponent, ref } from "vue";
+    import { defineComponent, ref, watch } from "vue";
     import {placeNum} from "../constants";
 
     export default defineComponent({
@@ -78,12 +78,28 @@
         setup() {
             const placeValue = ref(placeNum);
             const commentValue = ref('');
-            const checkboxValue = ref(null);
+            const packWithYou = ref(false);
+            const takeOutWhenReady = ref(false);
+
+            watch(packWithYou, (newValue) => {
+                if(newValue) {
+                    takeOutWhenReady.value = false;
+
+                }
+            });
+
+            watch(takeOutWhenReady, (newValue) => {
+                if(newValue) {
+                    packWithYou.value = false;
+
+                }
+            });
 
             return {
                 placeValue,
                 commentValue,
-                checkboxValue,
+                packWithYou,
+                takeOutWhenReady,
             };
         },
     });

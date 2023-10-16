@@ -21077,11 +21077,23 @@ __webpack_require__.r(__webpack_exports__);
   setup: function setup() {
     var placeValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(_constants__WEBPACK_IMPORTED_MODULE_1__.placeNum);
     var commentValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
-    var checkboxValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+    var packWithYou = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
+    var takeOutWhenReady = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(packWithYou, function (newValue) {
+      if (newValue) {
+        takeOutWhenReady.value = false;
+      }
+    });
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(takeOutWhenReady, function (newValue) {
+      if (newValue) {
+        packWithYou.value = false;
+      }
+    });
     return {
       placeValue: placeValue,
       commentValue: commentValue,
-      checkboxValue: checkboxValue
+      packWithYou: packWithYou,
+      takeOutWhenReady: takeOutWhenReady
     };
   }
 }));
@@ -21102,7 +21114,55 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
-  name: "OfferFormPersonal"
+  name: "OfferFormPersonal",
+  setup: function setup() {
+    /** Vars */
+    var nameValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
+    var phoneValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
+    var phonePastValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
+    var emailValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
+
+    /** Methods */
+    var formatPhoneNumber = function formatPhoneNumber(event) {
+      var input = phoneValue.value.replace(/\D/g, '').substring(0, 11); // Удалить все не цифры и ограничить ввод 11 символами
+
+      var firstPart = input.substring(0, 1); // Первая цифра
+      var middlePart1 = input.substring(1, 4); // Три цифры после первой
+      var middlePart2 = input.substring(4, 7); // Три цифры после первых четырех
+      var lastPart1 = input.substring(7, 9); // Две цифры после первых семи
+      var lastPart2 = input.substring(9); // Оставшиеся цифры
+
+      if (input.length > 9) {
+        phoneValue.value = "".concat(firstPart, " ").concat(middlePart1, " ").concat(middlePart2, " ").concat(lastPart1, "-").concat(lastPart2);
+      } else if (input.length > 6) {
+        phoneValue.value = "".concat(firstPart, " ").concat(middlePart1, " ").concat(middlePart2, " ").concat(lastPart1);
+      } else if (input.length > 3) {
+        phoneValue.value = "".concat(firstPart, " ").concat(middlePart1, " ").concat(middlePart2);
+      } else if (input.length > 1) {
+        phoneValue.value = "".concat(firstPart, " ").concat(middlePart1);
+      } else if (input.length > 0) {
+        phoneValue.value = "".concat(firstPart);
+      } else {
+        phoneValue.value = '';
+      }
+    };
+    var deleteActionOnBtn = function deleteActionOnBtn(event) {
+      if (event.keyCode === 8) {
+        // event.preventDefault();
+        console.log(event);
+      }
+    };
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(phoneValue, function (newVal, oldVal) {
+      console.log(oldVal + ' - ' + newVal);
+    });
+    return {
+      nameValue: nameValue,
+      phoneValue: phoneValue,
+      emailValue: emailValue,
+      formatPhoneNumber: formatPhoneNumber,
+      deleteActionOnBtn: deleteActionOnBtn
+    };
+  }
 }));
 
 /***/ }),
@@ -22627,30 +22687,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     "class": "offer-form__input offer-form__input--comment"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.commentValue]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "radio",
+    type: "checkbox",
     id: "check1",
     value: "packWithYou",
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-      return _ctx.checkboxValue = $event;
+      return _ctx.packWithYou = $event;
     }),
     "class": "offer-form-checkbox__input"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, _ctx.checkboxValue]]), _hoisted_10]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "radio",
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, _ctx.packWithYou]]), _hoisted_10]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "checkbox",
     id: "check2",
     value: "takeOutWhenReady",
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-      return _ctx.checkboxValue = $event;
+      return _ctx.takeOutWhenReady = $event;
     }),
     "class": "offer-form-checkbox__input"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, _ctx.checkboxValue]]), _hoisted_12])])]);
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, _ctx.takeOutWhenReady]]), _hoisted_12])])]);
 }
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/OfferFormPersonal.vue?vue&type=template&id=5f475676":
-/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/OfferFormPersonal.vue?vue&type=template&id=5f475676 ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/OfferFormPersonal.vue?vue&type=template&id=5f475676&scoped=true":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/OfferFormPersonal.vue?vue&type=template&id=5f475676&scoped=true ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -22660,11 +22720,70 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+var _withScopeId = function _withScopeId(n) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-5f475676"), n = n(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)(), n;
+};
 var _hoisted_1 = {
   "class": "offer-form-personal"
 };
+var _hoisted_2 = {
+  "class": "offer-form-personal__block"
+};
+var _hoisted_3 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+    "class": "offer-form-personal__placeholder offer-form-personal-placeholder"
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    "class": "offer-form-personal-placeholder__text"
+  }, " Ваше имя ")], -1 /* HOISTED */);
+});
+var _hoisted_4 = {
+  "class": "offer-form-personal__block"
+};
+var _hoisted_5 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+    "class": "offer-form-personal__placeholder offer-form-personal-placeholder"
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    "class": "offer-form-personal-placeholder__text"
+  }, " Телефон ")], -1 /* HOISTED */);
+});
+var _hoisted_6 = {
+  "class": "offer-form-personal__block"
+};
+var _hoisted_7 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+    "class": "offer-form-personal__placeholder offer-form-personal-placeholder"
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    "class": "offer-form-personal-placeholder__text"
+  }, " Почта ")], -1 /* HOISTED */);
+});
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return _ctx.nameValue = $event;
+    }),
+    "class": "offer-form-personal__input"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.nameValue]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    onInput: _cache[1] || (_cache[1] = function () {
+      return _ctx.formatPhoneNumber && _ctx.formatPhoneNumber.apply(_ctx, arguments);
+    }),
+    onKeydown: _cache[2] || (_cache[2] = function () {
+      return _ctx.deleteActionOnBtn && _ctx.deleteActionOnBtn.apply(_ctx, arguments);
+    }),
+    placeholder: "# ### ### ##-##",
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return _ctx.phoneValue = $event;
+    }),
+    "class": "offer-form-personal__input"
+  }, null, 544 /* HYDRATE_EVENTS, NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.phoneValue]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "email",
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+      return _ctx.emailValue = $event;
+    }),
+    "class": "offer-form-personal__input"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.emailValue]])])]);
 }
 
 /***/ }),
@@ -29863,7 +29982,31 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".offer-form[data-v-f809d136] {\n  border-radius: 2.125em;\n  padding: 0.81em;\n  background-color: #FFF;\n}\n.offer-form__block[data-v-f809d136] {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 1.31em;\n}\n.offer-form__block[data-v-f809d136]:last-child {\n  margin-bottom: 0;\n}\n.offer-form__block--is-required .offer-form__placeholder[data-v-f809d136] {\n  position: relative;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n.offer-form__block--is-required .offer-form__placeholder[data-v-f809d136]::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  width: 0.375em;\n  height: 0.375em;\n  background-color: #FA5252;\n  border-radius: 50%;\n  top: 0.5em;\n  right: 0.625em;\n}\n.offer-form__placeholder[data-v-f809d136] {\n  margin-bottom: 0.5em;\n}\n.offer-form__field[data-v-f809d136] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  background-color: #F5F6F8;\n  border-radius: 1.31em;\n  padding: 1.31em;\n}\n.offer-form__field .offer-form__input[data-v-f809d136] {\n  background-color: transparent;\n  pointer-events: none;\n}\n.offer-form__input[data-v-f809d136] {\n  color: #333333;\n  font-size: 1.25em;\n  letter-spacing: 0.6px;\n}\n.offer-form__input--comment[data-v-f809d136] {\n  resize: none;\n  height: 9.5em;\n}\n.offer-form__input[data-v-f809d136]:not(.offer-form__input--place) {\n  background-color: #F5F6F8;\n  border-radius: 1.31em;\n  padding: 1.31em;\n}\n.offer-form__checkbox[data-v-f809d136] {\n  margin-bottom: 1.31em;\n}\n.offer-form__checkbox[data-v-f809d136]:last-child {\n  margin-bottom: 0;\n}\n.offer-form-placeholder[data-v-f809d136] {\n  padding: 0.5em 1.31em;\n}\n.offer-form-placeholder__text[data-v-f809d136] {\n  font-size: 1em;\n  letter-spacing: 0.48px;\n  color: #737373;\n}\n.offer-form-btn[data-v-f809d136] {\n  background-color: transparent;\n}\n.offer-form-btn__text[data-v-f809d136] {\n  color: #2977B5;\n  font-size: 0.875em;\n}\n.offer-form-checkbox[data-v-f809d136] {\n  display: flex;\n  align-items: center;\n}\n.offer-form-checkbox__input[data-v-f809d136] {\n  position: relative;\n  font-size: 1em;\n  display: block;\n  border: none;\n  outline: none;\n  width: 3.94em;\n  height: 2.625em;\n}\n.offer-form-checkbox__input[data-v-f809d136]::before {\n  content: \"\";\n  display: block;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 110%;\n  height: 110%;\n  transform: translate(-50%, -50%);\n  background-color: #FFF;\n  pointer-events: none;\n}\n.offer-form-checkbox__input[data-v-f809d136]::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 2.625em;\n  height: 2.625em;\n  border-radius: 50%;\n  background-color: #F5F6F8;\n  transition: background-color 0.3s;\n}\n.offer-form-checkbox__input[data-v-f809d136]:checked::after {\n  background: #2977B5 url(\"/images/check.png\") no-repeat;\n  background-position: center;\n  background-size: 1.5em 1.5em;\n}\n.offer-form-checkbox__label[data-v-f809d136] {\n  display: block;\n  color: #737373;\n  font-size: 1em;\n  letter-spacing: 0.48px;\n  z-index: 1;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".offer-form[data-v-f809d136] {\n  border-radius: 2.125em;\n  padding: 0.81em;\n  background-color: #FFF;\n}\n.offer-form__block[data-v-f809d136] {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 1.31em;\n}\n.offer-form__block[data-v-f809d136]:last-child {\n  margin-bottom: 0;\n}\n.offer-form__block--is-required .offer-form__placeholder[data-v-f809d136] {\n  position: relative;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n.offer-form__block--is-required .offer-form__placeholder[data-v-f809d136]::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  width: 0.375em;\n  height: 0.375em;\n  background-color: #FA5252;\n  border-radius: 50%;\n  top: 0.5em;\n  right: 0.625em;\n}\n.offer-form__placeholder[data-v-f809d136] {\n  margin-bottom: 0.5em;\n}\n.offer-form__field[data-v-f809d136] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  background-color: #F5F6F8;\n  border-radius: 1.31em;\n  padding: 1.31em;\n}\n.offer-form__field .offer-form__input[data-v-f809d136] {\n  background-color: transparent;\n  pointer-events: none;\n}\n.offer-form__input[data-v-f809d136] {\n  color: #333333;\n  font-size: 1.25em;\n  letter-spacing: 0.6px;\n}\n.offer-form__input--comment[data-v-f809d136] {\n  resize: none;\n  height: 9.5em;\n}\n.offer-form__input[data-v-f809d136]:not(.offer-form__input--place) {\n  background-color: #F5F6F8;\n  border-radius: 1.31em;\n  padding: 1.31em;\n}\n.offer-form__checkbox[data-v-f809d136] {\n  margin-bottom: 1.31em;\n}\n.offer-form__checkbox[data-v-f809d136]:last-child {\n  margin-bottom: 0;\n}\n.offer-form-placeholder[data-v-f809d136] {\n  padding: 0.5em 1.31em;\n}\n.offer-form-placeholder__text[data-v-f809d136] {\n  font-size: 1em;\n  letter-spacing: 0.48px;\n  color: #737373;\n}\n.offer-form-btn[data-v-f809d136] {\n  background-color: transparent;\n}\n.offer-form-btn__text[data-v-f809d136] {\n  color: #2977B5;\n  font-size: 0.875em;\n}\n.offer-form-checkbox[data-v-f809d136] {\n  display: flex;\n  align-items: center;\n}\n.offer-form-checkbox__input[data-v-f809d136] {\n  position: relative;\n  font-size: 1em;\n  display: block;\n  border: none;\n  outline: none;\n  width: 3.94em;\n  height: 2.625em;\n}\n.offer-form-checkbox__input[data-v-f809d136]::before {\n  content: \"\";\n  display: block;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 110%;\n  height: 110%;\n  transform: translate(-50%, -50%);\n  background-color: #FFF;\n  pointer-events: none;\n}\n.offer-form-checkbox__input[data-v-f809d136]::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 2.625em;\n  height: 2.625em;\n  border-radius: 50%;\n  background-color: #F5F6F8;\n  transition: background-color 0.3s;\n}\n.offer-form-checkbox__input[data-v-f809d136]:checked::after {\n  background: #2977B5 url(\"/images/check.png\") no-repeat;\n  background-position: center;\n  background-size: 1.5em 1.5em;\n}\n.offer-form-checkbox__label[data-v-f809d136] {\n  position: relative;\n  display: block;\n  color: #737373;\n  font-size: 1em;\n  letter-spacing: 0.48px;\n  padding-right: 0.69em;\n  z-index: 1;\n}\n.offer-form-checkbox__label--has-note[data-v-f809d136]::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  top: -0.375em;\n  right: 0;\n  width: 0.375em;\n  height: 0.375em;\n  background-color: #FCC419;\n  border-radius: 50%;\n}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-13.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/OfferFormPersonal.vue?vue&type=style&index=0&id=5f475676&scoped=true&lang=scss":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-13.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/OfferFormPersonal.vue?vue&type=style&index=0&id=5f475676&scoped=true&lang=scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".offer-form-personal[data-v-5f475676] {\n  border-radius: 2.125em;\n  padding: 0.81em;\n  background-color: #FFF;\n}\n.offer-form-personal__block[data-v-5f475676] {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 1.31em;\n}\n.offer-form-personal__block[data-v-5f475676]:last-child {\n  margin-bottom: 0;\n}\n.offer-form-personal__block--is-required .offer-form-personal__placeholder[data-v-5f475676] {\n  position: relative;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n.offer-form-personal__block--is-required .offer-form-personal__placeholder[data-v-5f475676]::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  width: 0.375em;\n  height: 0.375em;\n  background-color: #FA5252;\n  border-radius: 50%;\n  top: 0.5em;\n  right: 0.625em;\n}\n.offer-form-personal__placeholder[data-v-5f475676] {\n  margin-bottom: 0.5em;\n}\n.offer-form-personal__input[data-v-5f475676] {\n  color: #333333;\n  font-size: 1.25em;\n  letter-spacing: 0.6px;\n  background-color: #F5F6F8;\n  border-radius: 1.31em;\n  padding: 1.31em;\n}\n.offer-form-personal__checkbox[data-v-5f475676] {\n  margin-bottom: 1.31em;\n}\n.offer-form-personal__checkbox[data-v-5f475676]:last-child {\n  margin-bottom: 0;\n}\n.offer-form-personal-placeholder[data-v-5f475676] {\n  padding: 0.5em 1.31em;\n}\n.offer-form-personal-placeholder__text[data-v-5f475676] {\n  font-size: 1em;\n  letter-spacing: 0.48px;\n  color: #737373;\n}\n.offer-form-personal-checkbox[data-v-5f475676] {\n  display: flex;\n  align-items: center;\n}\n.offer-form-personal-checkbox__input[data-v-5f475676] {\n  position: relative;\n  font-size: 1em;\n  display: block;\n  border: none;\n  outline: none;\n  width: 3.94em;\n  height: 2.625em;\n}\n.offer-form-personal-checkbox__input[data-v-5f475676]::before {\n  content: \"\";\n  display: block;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 110%;\n  height: 110%;\n  transform: translate(-50%, -50%);\n  background-color: #FFF;\n  pointer-events: none;\n}\n.offer-form-personal-checkbox__input[data-v-5f475676]::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 2.625em;\n  height: 2.625em;\n  border-radius: 50%;\n  background-color: #F5F6F8;\n  transition: background-color 0.3s;\n}\n.offer-form-personal-checkbox__input[data-v-5f475676]:checked::after {\n  background: #2977B5 url(\"/images/check.png\") no-repeat;\n  background-position: center;\n  background-size: 1.5em 1.5em;\n}\n.offer-form-personal-checkbox__label[data-v-5f475676] {\n  position: relative;\n  display: block;\n  color: #737373;\n  font-size: 1em;\n  letter-spacing: 0.48px;\n  padding-right: 0.69em;\n  z-index: 1;\n}\n.offer-form-personal-checkbox__label--has-note[data-v-5f475676]::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  top: -0.375em;\n  right: 0;\n  width: 0.375em;\n  height: 0.375em;\n  background-color: #FCC419;\n  border-radius: 50%;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -30703,6 +30846,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_13_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_13_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_13_use_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_OfferForm_vue_vue_type_style_index_0_id_f809d136_scoped_true_lang_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-13.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/OfferFormPersonal.vue?vue&type=style&index=0&id=5f475676&scoped=true&lang=scss":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-13.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/OfferFormPersonal.vue?vue&type=style&index=0&id=5f475676&scoped=true&lang=scss ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_13_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_13_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_13_use_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_OfferFormPersonal_vue_vue_type_style_index_0_id_5f475676_scoped_true_lang_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-13.use[1]!../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13.use[2]!../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13.use[3]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./OfferFormPersonal.vue?vue&type=style&index=0&id=5f475676&scoped=true&lang=scss */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-13.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/OfferFormPersonal.vue?vue&type=style&index=0&id=5f475676&scoped=true&lang=scss");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_13_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_13_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_13_use_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_OfferFormPersonal_vue_vue_type_style_index_0_id_5f475676_scoped_true_lang_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_13_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_13_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_13_use_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_OfferFormPersonal_vue_vue_type_style_index_0_id_5f475676_scoped_true_lang_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
@@ -31862,15 +32035,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _OfferFormPersonal_vue_vue_type_template_id_5f475676__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OfferFormPersonal.vue?vue&type=template&id=5f475676 */ "./resources/js/components/OfferFormPersonal.vue?vue&type=template&id=5f475676");
+/* harmony import */ var _OfferFormPersonal_vue_vue_type_template_id_5f475676_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OfferFormPersonal.vue?vue&type=template&id=5f475676&scoped=true */ "./resources/js/components/OfferFormPersonal.vue?vue&type=template&id=5f475676&scoped=true");
 /* harmony import */ var _OfferFormPersonal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OfferFormPersonal.vue?vue&type=script&lang=js */ "./resources/js/components/OfferFormPersonal.vue?vue&type=script&lang=js");
-/* harmony import */ var D_Projects_qrhoreca_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _OfferFormPersonal_vue_vue_type_style_index_0_id_5f475676_scoped_true_lang_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./OfferFormPersonal.vue?vue&type=style&index=0&id=5f475676&scoped=true&lang=scss */ "./resources/js/components/OfferFormPersonal.vue?vue&type=style&index=0&id=5f475676&scoped=true&lang=scss");
+/* harmony import */ var D_Projects_qrhoreca_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,D_Projects_qrhoreca_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_OfferFormPersonal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_OfferFormPersonal_vue_vue_type_template_id_5f475676__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/OfferFormPersonal.vue"]])
+
+
+const __exports__ = /*#__PURE__*/(0,D_Projects_qrhoreca_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_OfferFormPersonal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_OfferFormPersonal_vue_vue_type_template_id_5f475676_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-5f475676"],['__file',"resources/js/components/OfferFormPersonal.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -32881,18 +33057,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/OfferFormPersonal.vue?vue&type=template&id=5f475676":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/components/OfferFormPersonal.vue?vue&type=template&id=5f475676 ***!
-  \*************************************************************************************/
+/***/ "./resources/js/components/OfferFormPersonal.vue?vue&type=template&id=5f475676&scoped=true":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/OfferFormPersonal.vue?vue&type=template&id=5f475676&scoped=true ***!
+  \*************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_OfferFormPersonal_vue_vue_type_template_id_5f475676__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_OfferFormPersonal_vue_vue_type_template_id_5f475676_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_OfferFormPersonal_vue_vue_type_template_id_5f475676__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./OfferFormPersonal.vue?vue&type=template&id=5f475676 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/OfferFormPersonal.vue?vue&type=template&id=5f475676");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_OfferFormPersonal_vue_vue_type_template_id_5f475676_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./OfferFormPersonal.vue?vue&type=template&id=5f475676&scoped=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/OfferFormPersonal.vue?vue&type=template&id=5f475676&scoped=true");
 
 
 /***/ }),
@@ -33197,6 +33373,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_13_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_13_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_13_use_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_OfferForm_vue_vue_type_style_index_0_id_f809d136_scoped_true_lang_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-13.use[1]!../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13.use[2]!../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13.use[3]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./OfferForm.vue?vue&type=style&index=0&id=f809d136&scoped=true&lang=scss */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-13.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/OfferForm.vue?vue&type=style&index=0&id=f809d136&scoped=true&lang=scss");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/OfferFormPersonal.vue?vue&type=style&index=0&id=5f475676&scoped=true&lang=scss":
+/*!****************************************************************************************************************!*\
+  !*** ./resources/js/components/OfferFormPersonal.vue?vue&type=style&index=0&id=5f475676&scoped=true&lang=scss ***!
+  \****************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_13_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_13_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_13_use_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_OfferFormPersonal_vue_vue_type_style_index_0_id_5f475676_scoped_true_lang_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-13.use[1]!../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13.use[2]!../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13.use[3]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./OfferFormPersonal.vue?vue&type=style&index=0&id=5f475676&scoped=true&lang=scss */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-13.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/OfferFormPersonal.vue?vue&type=style&index=0&id=5f475676&scoped=true&lang=scss");
 
 
 /***/ }),
