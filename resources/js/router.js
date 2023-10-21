@@ -8,6 +8,9 @@ import Categories from "./components/Categories.vue";
 import CategoryPage from "./components/CategoryPage.vue";
 import Search from "./components/Search.vue";
 import Basket from "./components/Basket.vue";
+import ProductPage from "./components/ProductPage.vue";
+import Offer from "./components/Offer.vue";
+import Order from "./components/Order.vue";
 
 const routes = [
     {
@@ -55,6 +58,22 @@ const routes = [
         path: '/basket',
         name: 'basket',
         component: Basket,
+    },
+    {
+        path: '/offer',
+        name: 'offer',
+        component: Offer,
+    },
+    {
+        path: '/order',
+        name: 'order',
+        component: Order,
+    },
+    {
+        path: '/product/:id',
+        name: 'product',
+        component: ProductPage,
+        props: true,
     },
 ];
 

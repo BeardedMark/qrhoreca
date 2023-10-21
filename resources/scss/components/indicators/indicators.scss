@@ -1,0 +1,27 @@
+.indicators {
+    display: flex;
+
+    &__item {
+        &:not(:first-child) {
+            margin-left: 0.25em;
+        }
+        &:not(:last-child) {
+            margin-right: 0.25em;
+        }
+    }
+}
+
+.indicators-item {
+    &__image {
+        width: 1.5em;
+        height: 1.5em;
+    }
+}
+
+.indicators-item-image {
+    display: block;
+
+    &__img {
+        width: 100%;
+    }
+}

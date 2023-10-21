@@ -1,0 +1,43 @@
+.search-panel {
+    display: flex;
+
+    &__field {
+        display: flex;
+        border-radius: 2.125em;
+        background-color: $white;
+        flex-grow: 1;
+        overflow: hidden;
+    }
+
+    &__btn {
+        width: 4.25em;
+        height: 4.25em;
+        margin-left: 1.31em;
+        flex-shrink: 0;
+    }
+
+    &__input {
+        flex-grow: 1;
+        font-size: $fz_20;
+        letter-spacing: 0.6px;
+        color: $midgray;
+        padding: 1.1em;
+    }
+}
+
+.search-panel-clear {
+    display: flex;
+    align-items: center;
+    padding-left: 0.625em;
+    padding-right: 1.375em;
+    cursor: pointer;
+
+    &__picture {
+        width: 1.5em;
+        height: 1.5em;
+    }
+
+    &__img {
+        width: 100%;
+    }
+}

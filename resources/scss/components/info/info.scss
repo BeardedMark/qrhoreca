@@ -6,7 +6,6 @@
     &__top {
         display: flex;
         align-items: center;
-        margin-bottom: 0.5em;
     }
 
     &__icon {
@@ -21,8 +20,14 @@
         color: $dark;
     }
 
-    &__text {
+    &__top,
+    &__text,
+    &__link {
         margin-bottom: 0.5em;
+    }
+
+    &__container {
+        margin-bottom: -0.5em;
     }
 }
 
@@ -34,10 +39,19 @@
 }
 
 .info-link {
+    display: block;
+
     &__label {
         color: $accent;
         font-size: $fz_14;
         letter-spacing: 0.42px;
         text-decoration-line: underline;
+    }
+}
+
+.info-icon {
+    &__img {
+        object-fit: contain;
+        width: 100%;
     }
 }

@@ -1,20 +1,23 @@
 <template>
     <div class="product-quantity">
         <Button
-            @click="doLess"
+            @click="removeProduct"
             size="mini"
             theme="light"
             class="product-quantity__btn product-quantity__btn--less"
         >
             &minus;
         </Button>
-        <p class="product-quantity__num product-quantity-num">
+        <p
+            class="product-quantity__num product-quantity-num"
+            :class="productQuantityNumClasses"
+        >
             <span class="product-quantity-num__text">
                 {{ quantity }}
             </span>
         </p>
         <Button
-            @click="doMore"
+            @click="addProduct"
             size="mini"
             theme="light"
             class="product-quantity__btn product-quantity__btn--more"
@@ -24,30 +27,54 @@
     </div>
 </template>
 <script>
-    import { defineComponent, ref, unref } from "vue";
+    import {defineComponent, ref, unref, toRefs, computed} from "vue";
     import Button from "./Button.vue";
 
     export default defineComponent({
         name: "ProductQuantity",
         components: { Button },
-        setup(_, { emit }) {
+        props: {
+            mod: {
+            type: String,
+            default: 'default',
+            },
+            startQuantity: {
+                type: Number,
+                default: 1,
+            },
+        },
+        setup(props, { emit }) {
             /** Vars */
-            const quantity = ref(1);
+            const {mod, startQuantity} = toRefs(props);
+            const quantity = ref(unref(startQuantity));
+
+            /** Computed */
+            const productQuantityNumClasses = computed(() => ({
+              [`product-quantity-num--${unref(mod)}`]: !!unref(mod),
+            }));
 
             /** Methods */
-            const doMore = () => quantity.value++;
-            const doLess = () => {
+            const addProduct = () => {
+                quantity.value++;
+
+                emit('updateOrder', unref(quantity));
+            };
+
+            const removeProduct = () => {
                 if(unref(quantity) > 1) {
-                    return quantity.value--;
+                    quantity.value--;
+                    emit('updateOrder', unref(quantity));
+                    return;
                 }
 
                 emit('hideQuantitySelection');
             };
 
             return {
-                doMore,
-                doLess,
+                productQuantityNumClasses,
                 quantity,
+                removeProduct,
+                addProduct,
             };
         },
     });

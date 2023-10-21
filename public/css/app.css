@@ -4,8 +4,26 @@
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   background-color: #F5F6F8;
+}
+@media (min-width: 1921px) {
+  .app {
+    font-size: 0.8328995315vw;
+  }
+}
+@media (max-width: 577px) {
+  .app {
+    font-size: 2.7729636049vw;
+  }
+}
+.app__layout {
+  max-width: 64em;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
 }
 .app__main {
   flex-grow: 1;
@@ -14,7 +32,13 @@
 .app__header {
   position: fixed;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
   z-index: 99;
+}
+@media (min-width: 1025px) {
+  .app__header {
+    max-width: 64em;
+  }
 }

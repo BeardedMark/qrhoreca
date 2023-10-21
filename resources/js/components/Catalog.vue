@@ -36,8 +36,8 @@
                     <div class="catalog-list-item__cards">
                         <Product
                             v-for="(card, cardIndex) in item.list"
-                            :key="`catalog-list-item-${cardIndex}`"
-                            :dish="card"
+                            :key="`catalog-list-item-${itemIndex}-${cardIndex}`"
+                            :product="card"
                             class="catalog-list-item__card"
                         />
                     </div>
@@ -50,7 +50,11 @@
                 Перейти в корзину
             </Button>
             <Separator class="catalog__separator" />
-            <IndicatorsInfo class="catalog__indicators" />
+            <Descriptions
+                :descriptions="indicators"
+                mode="indicators"
+                class="catalog__indicators"
+            />
         </div>
     </div>
 </template>
@@ -60,13 +64,14 @@
         defineComponent,
         ref,
     } from "vue";
-    import { categoriesListData } from "../constants/categoriesListData";
+    import {categoriesListData, products} from "../constants/categoriesListData";
     import {useRouter} from "vue-router";
     import Product from "./Product.vue";
     import Button from "./Button.vue";
-    import IndicatorsInfo from "./IndicatorsInfo.vue";
+    import Descriptions from "./Descriptions.vue";
     import Separator from "./Separator.vue";
     import IconButtonInnerLink from "./IconButtonInnerLink";
+    import {indicators} from "./../constants/indicators";
 
     export default defineComponent({
         name: "Catalog",
@@ -74,16 +79,21 @@
             IconButtonInnerLink,
             Product,
             Button,
-            IndicatorsInfo,
+            Descriptions,
             Separator,
         },
         setup() {
             /** Vars */
-            const catalogList = ref(categoriesListData.map((item) => ({
-                ...item,
-                count: item.list.length,
-                isOpen: false,
-            })));
+            const catalogList = ref(categoriesListData.map((item) => {
+                const productsList = products.filter((product) => product.categoryId === item.id);
+
+                return {
+                    ...item,
+                    count: productsList.length,
+                    list: productsList,
+                    isOpen: false,
+                };
+            }));
 
             /** Features */
             const router = useRouter();
@@ -101,6 +111,7 @@
                 catalogList,
                 toggleDropDown,
                 redirectToBasket,
+                indicators,
             };
         },
     });

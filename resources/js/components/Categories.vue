@@ -13,7 +13,12 @@
                     </span>
                     <span class="categories-subtitle__text categories-subtitle-text">
                         Вы можете посмотреть все
-                        <router-link to="/menu" class="categories-subtitle-text__link">Меню</router-link>
+                        <router-link
+                            to="/menu"
+                            class="categories-subtitle-text__link"
+                        >
+                            Меню
+                        </router-link>
                         целиком
                     </span>
                 </p>
@@ -28,7 +33,18 @@
                 </div>
             </div>
             <Separator class="categories__separator" />
-            <Info class="categories__info" />
+            <Info
+                linkName="Контакты"
+                link="/contacts"
+                class="categories__info"
+            >
+                <template #title>
+                    Подробности
+                </template>
+                <template #text>
+                    Все детали или интересующие вас вопросы по блюду вы можете задать нашим сотрудникам
+                </template>
+            </Info>
         </div>
     </div>
 </template>

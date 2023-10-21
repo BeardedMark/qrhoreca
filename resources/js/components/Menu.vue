@@ -38,7 +38,18 @@
             </router-link>
         </div>
         <Separator class="menu__separator" />
-        <Info class="menu__info" />
+        <Info
+            linkName="Контакты"
+            link="/contacts"
+            class="menu__info"
+        >
+            <template #title>
+                Подробности
+            </template>
+            <template #text>
+                Все детали или интересующие вас вопросы по блюду вы можете задать нашим сотрудникам
+            </template>
+        </Info>
     </div>
 </template>
 <script>

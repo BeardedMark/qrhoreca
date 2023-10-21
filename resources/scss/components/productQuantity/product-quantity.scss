@@ -18,7 +18,14 @@
     align-items: center;
     justify-content: center;
     border-radius: 1.31em;
-    background-color: $background;
+
+    &--default {
+        background-color: $background;
+    }
+
+    &--light {
+        background-color: $white;
+    }
 
     &__text {
         font-size: $fz_20;
