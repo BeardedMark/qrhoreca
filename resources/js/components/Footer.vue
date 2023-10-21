@@ -81,7 +81,10 @@
             </div>
         </div>
         <div class="footer__bottom">
-            <div class="footer__admin">
+            <div
+                @click="onAdminClick"
+                class="footer__admin"
+            >
                 Администрирование
             </div>
             <div class="footer__create">
@@ -91,12 +94,14 @@
     </div>
 </template>
 <script>
-    import { defineComponent } from "vue";
+    import { defineComponent, unref } from "vue";
     import { companyData } from "./../constants/companyData";
     import { footerLinks } from "../constants/footerLinks";
     import IconButtonInnerLink from "./IconButtonInnerLink.vue";
     import IconButtonOuterLink from "./IconButtonOuterLink.vue";
     import IconButtonAction from "./IconButtonAction.vue";
+    import {userId} from "../constants/storeGetters";
+    import {useRouter} from "vue-router";
 
     export default defineComponent({
         name: "Footer",
@@ -106,6 +111,9 @@
             IconButtonAction,
         },
         setup() {
+            /** Features */
+            const router = useRouter();
+
             /** Methods */
             const scrollTop = () => {
                 window.scrollTo({
@@ -115,6 +123,14 @@
             };
             const getPhoneLink = (tel) => tel.link ? 'tel:' + tel.text.replace(/[\s()-]/g, '') : null;
             const getEmailLink = (email) => email.link ? `mailto:${email.text}` : '';
+            const onAdminClick = () => {
+                if(unref(userId)) {
+                    router.push('/profile');
+                    return;
+                }
+
+                router.push('/login');
+            };
 
             return {
                 companyData,
@@ -122,6 +138,7 @@
                 footerLinks,
                 getPhoneLink,
                 getEmailLink,
+                onAdminClick,
             };
         },
     });

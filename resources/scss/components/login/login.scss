@@ -1,0 +1,72 @@
+.login {
+    &__container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__top {
+        margin-bottom: 3.44em;
+        padding-left: 2.125em;
+        padding-right: 2.125em;
+    }
+
+    &__title {
+        margin-bottom: 0.625em;
+    }
+
+    &__form {
+        margin-bottom: 3.44em;
+    }
+
+    &__separator {
+        @include separatorStyles;
+    }
+
+    &__btns {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -1.06em;
+        margin-right: -1.06em;
+    }
+
+    &__reg,
+    &__auth {
+        margin-left: 1.06em;
+        margin-right: 1.06em;
+    }
+
+    &__auth {
+        min-width: 8em;
+        height: 4em;
+    }
+}
+
+.login-title {
+    &__text {
+        font-size: $fz_20;
+        letter-spacing: 0.6px;
+        color: $accent;
+    }
+}
+
+.login-subtitle {
+    &__text {
+        font-size: $fz_14;
+        color: $midgray;
+    }
+
+    &__link {
+        color: $accent;
+        text-decoration: underline;
+    }
+}
+
+.login-reg {
+    &__text {
+        color: $accent;
+        font-size: $fz_20;
+        line-height: 1.1;
+        letter-spacing: 0.6px;
+    }
+}

@@ -11,6 +11,9 @@ import Basket from "./components/Basket.vue";
 import ProductPage from "./components/ProductPage.vue";
 import Offer from "./components/Offer.vue";
 import Order from "./components/Order.vue";
+import Profile from "./components/Profile.vue";
+import Login from "./components/Login.vue";
+import Registration from "./components/Registration.vue";
 
 const routes = [
     {
@@ -68,6 +71,21 @@ const routes = [
         path: '/order',
         name: 'order',
         component: Order,
+    },
+    {
+        path: '/profile',
+        name: 'profile',
+        component: Profile,
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: Login,
+    },
+    {
+        path: '/registration',
+        name: 'registration',
+        component: Registration,
     },
     {
         path: '/product/:id',
