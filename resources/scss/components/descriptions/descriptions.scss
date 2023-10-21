@@ -1,4 +1,4 @@
-.indicators-info {
+.descriptions {
     background-color: $white;
     border-radius: 2.125em;
     padding: 1.31em 2.125em;
@@ -17,7 +17,7 @@
     }
 }
 
-.indicators-info-item {
+.descriptions-item {
     display: flex;
     flex-direction: column;
 
@@ -31,24 +31,41 @@
     }
 }
 
-.indicators-info-item-title {
+.descriptions-item-title {
+    $self: &;
     display: flex;
     align-items: center;
 
     &__image {
-        width: 1.5em;
-        height: 1.5em;
+        margin-right: 0.5em;
     }
 
     &__name {
         font-size: $fz_14;
         font-weight: 700;
-        padding-left: 0.5em;
         color: $dark;
+    }
+
+    &--indicators {
+        #{$self} {
+            &__image {
+                width: 1.5em;
+                height: 1.5em;
+            }
+        }
+    }
+
+    &--notes {
+        #{$self} {
+            &__image {
+                width: 0.375em;
+                height: 0.375em;
+            }
+        }
     }
 }
 
-.indicators-info-item-title-image {
+.descriptions-item-title-image {
     display: block;
 
     &__img {

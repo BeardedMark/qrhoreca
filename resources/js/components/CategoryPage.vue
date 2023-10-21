@@ -28,7 +28,11 @@
             Все категории
         </Button>
         <Separator class="category-page__separator" />
-        <IndicatorsInfo class="category-page__indicators" />
+        <Descriptions
+            :descriptions="indicators"
+            mode="indicators"
+            class="category-page__indicators"
+        />
     </div>
 </template>
 <script>
@@ -39,9 +43,10 @@
         unref,
     } from "vue";
     import {categoriesListData, products} from "../constants/categoriesListData";
+    import {indicators} from "./../constants/indicators";
     import Product from "./Product.vue";
     import Button from "./Button.vue";
-    import IndicatorsInfo from "./IndicatorsInfo.vue";
+    import Descriptions from "./Descriptions.vue";
     import Separator from "./Separator.vue";
     import {useRouter} from "vue-router";
 
@@ -50,7 +55,7 @@
         components: {
             Product,
             Button,
-            IndicatorsInfo,
+            Descriptions,
             Separator,
         },
         props: {
@@ -79,6 +84,7 @@
                 category,
                 productsList,
                 redirectToCategories,
+                indicators,
             };
         },
     });

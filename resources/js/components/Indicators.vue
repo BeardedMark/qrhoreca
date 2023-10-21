@@ -7,7 +7,7 @@
         >
             <picture class="indicators-item__image indicators-item-image">
                 <img
-                    :src="`/images/indicators/${getIndicatorImage(indicator)}`"
+                    :src="`/images/${getIndicatorImage(indicator)}`"
                     :alt="indicator"
                     class="indicators-item-image__img"
                 />

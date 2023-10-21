@@ -50,7 +50,11 @@
                 Перейти в корзину
             </Button>
             <Separator class="catalog__separator" />
-            <IndicatorsInfo class="catalog__indicators" />
+            <Descriptions
+                :descriptions="indicators"
+                mode="indicators"
+                class="catalog__indicators"
+            />
         </div>
     </div>
 </template>
@@ -64,9 +68,10 @@
     import {useRouter} from "vue-router";
     import Product from "./Product.vue";
     import Button from "./Button.vue";
-    import IndicatorsInfo from "./IndicatorsInfo.vue";
+    import Descriptions from "./Descriptions.vue";
     import Separator from "./Separator.vue";
     import IconButtonInnerLink from "./IconButtonInnerLink";
+    import {indicators} from "./../constants/indicators";
 
     export default defineComponent({
         name: "Catalog",
@@ -74,7 +79,7 @@
             IconButtonInnerLink,
             Product,
             Button,
-            IndicatorsInfo,
+            Descriptions,
             Separator,
         },
         setup() {
@@ -106,6 +111,7 @@
                 catalogList,
                 toggleDropDown,
                 redirectToBasket,
+                indicators,
             };
         },
     });

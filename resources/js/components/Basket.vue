@@ -40,11 +40,11 @@
                 {{ basketBtnText }}
             </Button>
             <Separator class="basket__separator" />
-            <Info
-                title="Справка"
-                text="После оформления заказа ваша корзина очиститься для того что бы вы могли заказать добавку"
-                class="basket__info"
-            />
+            <Info class="basket__info">
+                <template #text>
+                    После оформления заказа ваша корзина очиститься для того что бы вы могли заказать добавку
+                </template>
+            </Info>
         </div>
     </div>
 </template>

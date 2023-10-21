@@ -37,11 +37,14 @@
             </div>
         </div>
         <Separator class="search__separator" />
-        <Info
-            title="Как работает поиск"
-            text="Введеные вами слова в поле будут по отдельности искаться во всей информации о каждом блюде"
-            class="search__info"
-        />
+        <Info class="search__info">
+            <template #title>
+                Как работает поиск
+            </template>
+            <template #text>
+                Введеные вами слова в поле будут по отдельности искаться во всей информации о каждом блюде
+            </template>
+        </Info>
     </div>
 </template>
 <script>

@@ -1,31 +1,31 @@
 export const indicators = [
     {
         index: 'spicy',
-        icon: 'spicy.png',
+        icon: 'indicators/spicy.png',
         name: 'Острое',
         descr: 'Изначально мы стараемся выносить все основные блюда разом, для того что бы каждый клиент за столом смог начать трапезу',
     },
     {
         index: 'veg',
-        icon: 'veg.png',
+        icon: 'indicators/veg.png',
         name: 'Вегетарианское',
         descr: 'Обязательные поля для заполнения нужны для корректной работы функционала нашего сайта',
     },
     {
         index: 'child',
-        icon: 'child.png',
+        icon: 'indicators/child.png',
         name: 'Детское',
         descr: 'Обязательные поля для заполнения нужны для корректной работы функционала нашего сайта',
     },
     {
         index: 'ice',
-        icon: 'ice.png',
+        icon: 'indicators/ice.png',
         name: 'Со льдом',
         descr: 'Обязательные поля для заполнения нужны для корректной работы функционала нашего сайта',
     },
     {
         index: 'new',
-        icon: 'new.png',
+        icon: 'indicators/new.png',
         name: 'Новинка',
         descr: 'Обязательные поля для заполнения нужны для корректной работы функционала нашего сайта',
     },

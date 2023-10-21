@@ -6,13 +6,13 @@
                     Место
                 </span>
             </p>
-            <div class="offer-form__field">
+            <div class="offer-form__field offer-form__field--place">
                 <input
                     type="text"
                     v-model="placeValue"
                     readonly
                     required
-                    class="offer-form__input offer-form__input--place"
+                    class="offer-form__input"
                 >
                 <button
                     type="button"
@@ -30,10 +30,12 @@
                     Комментарий
                 </span>
             </p>
-            <textarea
-                v-model="commentValue"
-                class="offer-form__input offer-form__input--comment"
-            ></textarea>
+            <div class="offer-form__field offer-form__field--comment">
+                <textarea
+                    v-model="commentValue"
+                    class="offer-form__input"
+                ></textarea>
+            </div>
         </div>
         <div class="offer-form__block">
             <div class="offer-form__checkbox offer-form-checkbox">
@@ -76,11 +78,13 @@
     export default defineComponent({
         name: "OfferForm",
         setup() {
+            /** Vars */
             const placeValue = ref(placeNum);
             const commentValue = ref('');
             const packWithYou = ref(false);
             const takeOutWhenReady = ref(false);
 
+            /** Watchers */
             watch(packWithYou, (newValue) => {
                 if(newValue) {
                     takeOutWhenReady.value = false;

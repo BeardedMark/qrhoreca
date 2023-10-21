@@ -1,0 +1,59 @@
+.order {
+    &__top {
+        margin-bottom: 3.44em;
+        padding-left: 2.125em;
+        padding-right: 2.125em;
+    }
+
+    &__title {
+        margin-bottom: 0.625em;
+    }
+
+    &__separator {
+        @include separatorStyles;
+    }
+
+    &__list {
+        margin-bottom: 3.44em;
+    }
+
+    &__additional {
+        margin-top: 3.44em;
+    }
+
+    &__btn {
+        margin-left: 2.125em;
+        margin-right: 2.125em;
+    }
+}
+
+.order-title {
+    &__text {
+        font-size: $fz_20;
+        letter-spacing: 0.6px;
+        color: $accent;
+    }
+}
+
+.order-subtitle {
+    &__text {
+        font-size: $fz_14;
+        color: $midgray;
+    }
+
+    &__link {
+        color: $accent;
+        text-decoration: underline;
+    }
+}
+
+.order-btn {
+    background-color: transparent;
+
+    &__text {
+        color: $accent;
+        font-size: $fz_14;
+        line-height: 1.1;
+        text-decoration-line: underline;
+    }
+}

@@ -27,24 +27,63 @@
                 </p>
             </div>
             <OfferFormPersonal class="offer__form"/>
+            <div class="offer__btns">
+                <router-link
+                    to="/basket"
+                    class="offer__cansel offer-cansel"
+                >
+                    <span class="offer-cansel__text">
+                        Отмена
+                    </span>
+                </router-link>
+                <Button
+                    @click="sendOrder"
+                    class="offer__order"
+                >
+                    Заказать
+                </Button>
+            </div>
+            <Separator class="offer__separator" />
+            <Descriptions
+                :descriptions="notes"
+                mode="notes"
+                class="offer__dscriptions"
+            />
         </div>
     </div>
 </template>
 
 <script>
-    import { defineComponent } from "vue";
+import {defineComponent, unref} from "vue";
+    import {useRouter} from "vue-router";
     import OfferForm from "./OfferForm";
     import OfferFormPersonal from "./OfferFormPersonal";
+    import Button from "./Button";
+    import Separator from "./Separator";
+    import Descriptions from "./Descriptions.vue";
+    import {notes} from "../constants/nots";
 
     export default defineComponent({
         name: "Offer",
         components: {
+            Button,
             OfferFormPersonal,
             OfferForm,
+            Separator,
+            Descriptions,
         },
         setup() {
-            return {
+            /** Features */
+            const router = useRouter();
 
+            /** Methods */
+            const sendOrder = () => {
+                router.push('/order');
+            };
+
+            return {
+                sendOrder,
+                notes,
             };
         },
     });

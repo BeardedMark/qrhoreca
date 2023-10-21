@@ -1,0 +1,94 @@
+.order-list {
+    background-color: $white;
+    border-radius: 2.125em;
+    padding: 1.31em 2.125em;
+    display: flex;
+    flex-direction: column;
+
+    &__item {
+        margin-bottom: 1.31em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.order-list-item {
+    $self: &;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &::after {
+        content: '';
+        display: block;
+        order: 2;
+        flex-grow: 1;
+        border-bottom: 1px dashed $lightgray;
+        align-self: flex-end;
+        margin-right: 0.5em;
+        margin-left: 0.5em;
+    }
+
+    &__name {
+        order: 1;
+        max-width: 50%;
+    }
+
+    &__value {
+        order: 3;
+    }
+
+    &--is-divided {
+        flex-wrap: wrap;
+
+        &::after {
+            display: none;
+        }
+
+        #{$self} {
+            &__name {
+                max-width: 100%;
+                flex-basis: 100%;
+                margin-bottom: 0.5em;
+            }
+        }
+
+        .order-list-item-name {
+            &__label {
+                &::after {
+                    content: ':';
+                    display: inline;
+                }
+            }
+        }
+    }
+}
+
+.order-list-item-name {
+    &__label {
+        font-size: $fz_16;
+        letter-spacing: 0.48px;
+        color: $midgray;
+    }
+}
+
+.order-list-item-value {
+    &__text {
+        color: $dark;
+        font-size: $fz_20;
+        letter-spacing: 0.6px;
+
+        &--is-sum {
+            font-weight: 700;
+        }
+
+        &--is-count {
+            color: $midgray;
+            font-size: $fz_16;
+            letter-spacing: 0.48px;
+            padding-right: 0.5em;
+        }
+    }
+}

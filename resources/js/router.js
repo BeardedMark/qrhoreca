@@ -10,6 +10,7 @@ import Search from "./components/Search.vue";
 import Basket from "./components/Basket.vue";
 import ProductPage from "./components/ProductPage.vue";
 import Offer from "./components/Offer.vue";
+import Order from "./components/Order.vue";
 
 const routes = [
     {
@@ -62,6 +63,11 @@ const routes = [
         path: '/offer',
         name: 'offer',
         component: Offer,
+    },
+    {
+        path: '/order',
+        name: 'order',
+        component: Order,
     },
     {
         path: '/product/:id',

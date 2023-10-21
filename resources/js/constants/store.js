@@ -5,7 +5,6 @@ const state = reactive({
 });
 
 const setOrder = (value) => {
-    // console.log(value);
     state.order = value;
 };
 

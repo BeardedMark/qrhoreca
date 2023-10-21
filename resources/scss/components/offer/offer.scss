@@ -17,6 +17,29 @@
     &__form {
         margin-bottom: 3.44em;
     }
+
+    &__separator {
+        @include separatorStyles;
+    }
+
+    &__btns {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -1.06em;
+        margin-right: -1.06em;
+    }
+
+    &__cansel,
+    &__order {
+        margin-left: 1.06em;
+        margin-right: 1.06em;
+    }
+
+    &__order {
+        min-width: 10em;
+        height: 4em;
+    }
 }
 
 .offer-title {
@@ -31,5 +54,14 @@
     &__text {
         font-size: $fz_14;
         color: $midgray;
+    }
+}
+
+.offer-cansel {
+    &__text {
+        color: $accent;
+        font-size: $fz_20;
+        line-height: 1.1;
+        letter-spacing: 0.6px;
     }
 }
