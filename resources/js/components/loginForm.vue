@@ -8,6 +8,7 @@
             </p>
             <div class="login-form__field">
                 <input
+                    @input="changeInputValue"
                     type="text"
                     v-model="loginValue"
                     required
@@ -23,6 +24,7 @@
             </p>
             <div class="login-form__field">
                 <input
+                    @input="changeInputValue"
                     type="password"
                     v-model="passwordValue"
                     required
@@ -33,17 +35,31 @@
     </div>
 </template>
 <script>
-    import { defineComponent, ref } from "vue";
+import {defineComponent, ref, unref} from "vue";
 
     export default defineComponent({
         name: "LoginForm",
-        setup() {
+        setup(_, {emit}) {
+            /** Vars */
             const loginValue = ref('');
             const passwordValue = ref('');
+
+            /** Methods */
+            const changeInputValue = () => {
+                loginValue.value = unref(loginValue).replace(/\s/g, '');
+                passwordValue.value = unref(passwordValue).replace(/\s/g, '');
+
+                if(!!unref(loginValue) && !!unref(passwordValue)) {
+                    emit('formIsFilled');
+                } else {
+                    emit('formIsNotFilled');
+                }
+            };
 
             return {
                 loginValue,
                 passwordValue,
+                changeInputValue,
             };
         },
     });

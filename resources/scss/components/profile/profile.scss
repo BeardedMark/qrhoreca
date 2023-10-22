@@ -1,0 +1,127 @@
+.profile {
+    &__top {
+        margin-bottom: 3.44em;
+        padding-left: 2.125em;
+        padding-right: 2.125em;
+    }
+
+    &__title {
+        margin-bottom: 0.625em;
+    }
+
+    &__subtitle {
+        margin-bottom: 0.625em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__separator {
+        @include separatorStyles;
+    }
+
+    &__links {
+        margin-bottom: 3.44em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.profile-title {
+    &__text {
+        font-size: $fz_20;
+        letter-spacing: 0.6px;
+        color: $accent;
+    }
+}
+
+.profile-subtitle {
+    &__text {
+        font-size: $fz_14;
+        color: $midgray;
+    }
+}
+
+.profile-links {
+    border-radius: 2.125em;
+    background-color: $white;
+    padding: 0.81em;
+
+    &__item {
+        margin-bottom: 0.81em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.profile-links-item {
+    display: flex;
+    align-items: center;
+
+    &__icon {
+        width: 2.625em;
+        height: 2.625em;
+        margin-right: 0.81em;
+    }
+
+    &:hover {
+        .profile-links-item-icon {
+            background-color: $background;
+        }
+    }
+
+    &:active {
+        .profile-links-item-icon {
+            background-color: $background;
+        }
+
+        .profile-links-item-page {
+            $self: &;
+
+            &__text {
+                color: $accent;
+            }
+
+            &.profile-links-item-page--is-red {
+                .profile-links-item-page__text {
+                    color: $red;
+                }
+            }
+        }
+    }
+}
+
+.profile-links-item-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: .3s;
+
+    &__img {
+        width: 1.5em;
+        height: 1.5em;
+    }
+}
+
+.profile-links-item-page {
+    $self: &;
+
+    &__text {
+        transition: .3s;
+        font-size: $fz_20;
+        letter-spacing: 0.6px;
+        color: $dark;
+    }
+
+    &--is-red {
+        #{$self}__text {
+            color: $red;
+        }
+    }
+}

@@ -18,7 +18,7 @@
         justify-content: space-between;
     }
 
-    &__links, 
+    &__links,
     &__info {
         margin-left: 0.66em;
         margin-right: 0.66em;
@@ -35,6 +35,10 @@
     &__create {
         font-size: $fz_14;
         color: $midgray;
+    }
+
+    &__admin {
+        background-color: transparent;
     }
 }
 
