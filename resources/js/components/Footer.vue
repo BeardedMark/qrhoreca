@@ -81,12 +81,13 @@
             </div>
         </div>
         <div class="footer__bottom">
-            <div
+            <button
                 @click="onAdminClick"
+                type="button"
                 class="footer__admin"
             >
                 Администрирование
-            </div>
+            </button>
             <div class="footer__create">
                 2023 ⓒ DEVIRS
             </div>
@@ -102,10 +103,12 @@
     import IconButtonAction from "./IconButtonAction.vue";
     import {userId} from "../constants/storeGetters";
     import {useRouter} from "vue-router";
+    import Button from "./Button";
 
     export default defineComponent({
         name: "Footer",
         components: {
+            Button,
             IconButtonInnerLink,
             IconButtonOuterLink,
             IconButtonAction,

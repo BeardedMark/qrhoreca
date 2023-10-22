@@ -20,7 +20,11 @@
                     </span>
                 </p>
             </div>
-            <LoginForm class="login__form" />
+            <LoginForm
+                class="login__form"
+                @formIsFilled="loginFormIsFilled"
+                @formIsNotFilled="loginFormIsNotFilled"
+            />
             <div class="login__btns">
                 <router-link
                     to="/registration"
@@ -32,6 +36,7 @@
                 </router-link>
                 <Button
                     @click="onAuthClick"
+                    :disabled="isDisabledLoginBtn"
                     theme="light"
                     class="login__auth"
                 >
@@ -44,8 +49,8 @@
                 link="/support"
                 class="login__info"
             >
-                <template #Помощь>
-                    Если вы забыли данные для входа то обратитесь к службе поддержки
+                <template #title>
+                    Помощь
                 </template>
                 <template #text>
                     Если вы забыли данные для входа то обратитесь к службе поддержки
@@ -55,11 +60,13 @@
     </div>
 </template>
 <script>
-    import { defineComponent } from "vue";
+    import {defineComponent, onBeforeMount, ref, unref} from "vue";
     import LoginForm from "./loginForm.vue";
     import Separator from "./Separator.vue";
     import Info from "./Info.vue";
     import Button from "./Button";
+    import {useRouter} from "vue-router";
+    import {userId} from "../constants/storeGetters";
 
     export default defineComponent({
         name: "Login",
@@ -70,13 +77,37 @@
             Info,
         },
         setup() {
+            /** Vars */
+            const isDisabledLoginBtn = ref(true);
+
+            /** Features */
+            const router = useRouter();
+
             /** Methods */
             const onAuthClick = () => {
                 alert('Вход');
             };
 
+            const loginFormIsFilled = () => {
+                isDisabledLoginBtn.value = false;
+            };
+
+            const loginFormIsNotFilled = () => {
+                isDisabledLoginBtn.value = true;
+            };
+
+            /** Life cycles */
+            onBeforeMount(() => {
+                if(unref(userId)) {
+                    router.push('/profile');
+                }
+            });
+
             return {
                 onAuthClick,
+                isDisabledLoginBtn,
+                loginFormIsFilled,
+                loginFormIsNotFilled,
             };
         },
     });

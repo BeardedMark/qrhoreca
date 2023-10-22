@@ -1,0 +1,80 @@
+.registration {
+    &__container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__top {
+        margin-bottom: 3.44em;
+        padding-left: 2.125em;
+        padding-right: 2.125em;
+    }
+
+    &__title {
+        margin-bottom: 0.625em;
+    }
+
+    &__subtitle {
+        margin-bottom: 0.625em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__form {
+        margin-bottom: 3.44em;
+    }
+
+    &__separator {
+        @include separatorStyles;
+    }
+
+    &__btns {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -1.06em;
+        margin-right: -1.06em;
+    }
+
+    &__login,
+    &__reg {
+        margin-left: 1.06em;
+        margin-right: 1.06em;
+    }
+
+    &__reg {
+        min-width: 12.19em;
+        height: 4em;
+    }
+}
+
+.registration-title {
+    &__text {
+        font-size: $fz_20;
+        letter-spacing: 0.6px;
+        color: $accent;
+    }
+}
+
+.registration-subtitle {
+    &__text {
+        font-size: $fz_14;
+        color: $midgray;
+    }
+
+    &__link {
+        color: $accent;
+        text-decoration: underline;
+    }
+}
+
+.registration-login {
+    &__text {
+        color: $accent;
+        font-size: $fz_20;
+        line-height: 1.1;
+        letter-spacing: 0.6px;
+    }
+}
