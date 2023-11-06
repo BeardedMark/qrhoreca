@@ -9,7 +9,12 @@ const setOrder = (value) => {
     state.order = value;
 };
 
+const logOut = () => {
+    state.userId = 0;
+};
+
 export const siteStore = readonly({
     setOrder,
     state,
+    logOut,
 });

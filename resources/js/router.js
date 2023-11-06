@@ -14,6 +14,7 @@ import Order from "./components/Order.vue";
 import Profile from "./components/Profile.vue";
 import Login from "./components/Login.vue";
 import Registration from "./components/Registration.vue";
+import NewCategory from "./components/NewCategory.vue";
 
 const routes = [
     {
@@ -86,6 +87,11 @@ const routes = [
         path: '/registration',
         name: 'registration',
         component: Registration,
+    },
+    {
+        path: '/new-category',
+        name: 'new-category',
+        component: NewCategory,
     },
     {
         path: '/product/:id',
