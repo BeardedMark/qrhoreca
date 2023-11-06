@@ -11,7 +11,7 @@
                     <span class="registration-subtitle__text">
                         Если у вас уже есть данные для доступа, то вы можете использовать их для
                         <router-link
-                            to="/registration"
+                            to="/login"
                             class="registration-subtitle__link"
                         >
                             Входа

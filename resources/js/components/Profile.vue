@@ -23,10 +23,12 @@
                 :key="`profile-links-${profileLinksIndex}`"
                 class="profile__links profile-links"
             >
-                <router-link
+                <component
                     v-for="(profileLink, profileLinkIndex) in profileLinks"
                     :key="`profile-links-item-${profileLinkIndex}`"
+                    :is="getLinkTag(profileLink.isLink)"
                     :to="profileLink.link"
+                    @click="profileLink.onClickAction"
                     class="profile-links__item profile-links-item"
                 >
                     <picture class="profile-links-item__icon profile-links-item-icon">
@@ -44,7 +46,7 @@
                             {{ profileLink.page }}
                         </span>
                     </p>
-                </router-link>
+                </component>
             </div>
             <Separator class="profile__separator" />
             <Info
@@ -68,6 +70,7 @@
     import {userId} from "../constants/storeGetters";
     import Separator from "./Separator";
     import Info from "./Info";
+    import {siteStore} from "../constants/store";
 
     export default defineComponent({
         name: "Profile",
@@ -76,18 +79,30 @@
             Separator,
         },
         setup() {
+            /** Features */
+            const router = useRouter();
+
+            /** Methods */
+            const getLinkTag = (isLink) => isLink ? 'router-link' : 'button';
+            const logOut = () => {
+                unref(siteStore).logOut();
+                router.push('/');
+            };
+
             /** Vars */
             const profileLinksLists = [
                 [
                     {
                         page: 'Новая категория',
-                        link: '/category-form',
+                        link: '/new-category',
                         icon: 'add-category',
+                        isLink: true,
                     },
                     {
                         page: 'Новое предложение',
                         link: '/offer-form',
                         icon: 'add-offer',
+                        isLink: true,
                     },
                 ],
                 [
@@ -95,16 +110,19 @@
                         page: 'Данные компании',
                         link: '/',
                         icon: 'company-data',
+                        isLink: true,
                     },
                     {
                         page: 'Метки предложений',
                         link: '/',
                         icon: 'tags',
+                        isLink: true,
                     },
                     {
                         page: 'Быстрый поиск',
                         link: '/',
                         icon: 'quick-search',
+                        isLink: true,
                     },
                 ],
                 [
@@ -112,24 +130,28 @@
                         page: 'Сменить пароль',
                         link: '/',
                         icon: 'password-icon',
+                        isLink: true,
                     },
                     {
                         page: 'Сменить почту',
                         link: '/',
                         icon: 'email-icon',
+                        isLink: true,
                     },
                     {
                         page: 'Выйти из профиля',
                         link: '/',
                         icon: 'exit',
                         mod: 'red',
-                        hasLink: false,
+                        isLink: false,
+                        onClickAction: () => {
+                            logOut();
+                        },
                     },
                 ],
             ];
 
-            /** Features */
-            const router = useRouter();
+
 
             /** Life cycles */
             onBeforeMount(() => {
@@ -140,6 +162,7 @@
 
             return {
                 profileLinksLists,
+                getLinkTag,
             };
         },
     });
