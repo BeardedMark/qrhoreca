@@ -1,0 +1,39 @@
+.page-head {
+    &__title {
+        margin-bottom: 0.625em;
+    }
+
+    &__subtitle {
+
+    }
+}
+
+.page-head-title {
+    ::v-deep {
+        &>* {
+            font-size: $fz_20;
+            letter-spacing: 0.6px;
+            color: $accent;
+        }
+    }
+}
+
+.page-head-subtitle {
+    ::v-deep {
+        &>* {
+            display: block;
+            font-size: $fz_14;
+            color: $midgray;
+            margin-bottom: 0.71em;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        router-link {
+            color: $accent;
+            text-decoration: underline;
+        }
+    }
+}
