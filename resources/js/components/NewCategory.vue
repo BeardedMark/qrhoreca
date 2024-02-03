@@ -16,23 +16,6 @@
             <NewCategoryForm
                 class="new-category__form"
             />
-            <div class="new-category__btns">
-                <router-link
-                    to="/profile"
-                    class="new-category__cansel new-category-cansel"
-                >
-                    <span class="new-category-cansel__text">
-                        Отмена
-                    </span>
-                </router-link>
-                <Button
-                    @click="onSaveClick"
-                    theme="light"
-                    class="new-category__save"
-                >
-                    Сохранить
-                </Button>
-            </div>
             <Separator class="new-category__separator" />
             <Info
                 linkName="Контакты"
@@ -54,7 +37,6 @@
     import NewCategoryForm from "./NewCategoryForm.vue";
     import Separator from "./Separator";
     import Info from "./Info";
-    import Button from "./Button";
 
     export default defineComponent({
         name: "NewCategory",
@@ -62,16 +44,9 @@
             NewCategoryForm,
             Separator,
             Info,
-            Button,
         },
         setup() {
-            const onSaveClick = () => {
-                alert('Сохранить');
-            };
 
-            return {
-                onSaveClick,
-            };
         },
     });
 </script>

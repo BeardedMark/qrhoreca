@@ -22,31 +22,8 @@
         }
     }
 
-    &__form {
-        margin-bottom: 3.44em;
-    }
-
     &__separator {
         @include separatorStyles;
-    }
-
-    &__btns {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-left: -1.06em;
-        margin-right: -1.06em;
-    }
-
-    &__cansel,
-    &__save {
-        margin-left: 1.06em;
-        margin-right: 1.06em;
-    }
-
-    &__save {
-        min-width: 10.875em;
-        height: 4em;
     }
 }
 
@@ -62,14 +39,5 @@
     &__text {
         font-size: $fz_14;
         color: $midgray;
-    }
-}
-
-.new-category-cansel {
-    &__text {
-        color: $accent;
-        font-size: $fz_20;
-        line-height: 1.1;
-        letter-spacing: 0.6px;
     }
 }

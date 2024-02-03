@@ -5,10 +5,6 @@
         padding-right: 2.125em;
     }
 
-    &__title {
-        margin-bottom: 0.625em;
-    }
-
     &__list {
         margin-left: -0.65em;
         margin-right: -0.65em;
@@ -17,34 +13,6 @@
 
     &__separator {
         @include separatorStyles;
-    }
-}
-
-.categories-title {
-    &__text {
-        font-size: $fz_20;
-        letter-spacing: 0.6px;
-        color: $accent;
-    }
-}
-
-.categories-subtitle {
-    &__text {
-        display: block;
-        font-size: $fz_14;
-        color: $midgray;
-        margin-bottom: 0.71em;
-
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
-}
-
-.categories-subtitle-text {
-    &__link {
-        color: $accent;
-        text-decoration: underline;
     }
 }
 

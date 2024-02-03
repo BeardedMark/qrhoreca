@@ -1,8 +1,11 @@
 .new-category-form {
     $self: &;
-    border-radius: 2.125em;
-    padding: 0.81em;
-    background-color: $white;
+
+    &__body {
+        border-radius: 2.125em;
+        padding: 0.81em;
+        background-color: $white;
+    }
 
     &__block {
         display: flex;
@@ -52,6 +55,26 @@
         width: 100%;
         padding: 1.05em;
     }
+
+    &__btns {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -1.06em;
+        margin-right: -1.06em;
+        padding-top: 3.44em;
+    }
+
+    &__cansel,
+    &__save {
+        margin-left: 1.06em;
+        margin-right: 1.06em;
+    }
+
+    &__save {
+        min-width: 10.875em;
+        height: 4em;
+    }
 }
 
 .new-category-form-placeholder {
@@ -61,5 +84,14 @@
         font-size: $fz_16;
         letter-spacing: 0.48px;
         color: $midgray;
+    }
+}
+
+.new-category-form-cansel {
+    &__text {
+        color: $accent;
+        font-size: $fz_20;
+        line-height: 1.1;
+        letter-spacing: 0.6px;
     }
 }
