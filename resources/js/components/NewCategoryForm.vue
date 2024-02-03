@@ -36,17 +36,12 @@
                     Описание
                 </span>
             </p>
-            <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
         </div>
+        <textarea ref="editor"></textarea>
     </div>
 </template>
 <script>
-    import {defineComponent, ref, onMounted} from "vue";
-    // import Editor from "../htmlEditor";
-    import ClassicEditor from '@ckeditor/ckeditor5-editor-classic';
-    import List from '@ckeditor/ckeditor5-list';
-
-    // import TodoList from '@ckeditor/ckeditor5-list/src/todolist';
+    import {defineComponent, ref, onMounted, watch} from "vue";
 
     export default defineComponent({
         name: "NewCategoryForm",
@@ -54,32 +49,38 @@
             /** Vars */
             const categoryName = ref('');
             const imageLink = ref('');
-            const editorContent = ref(null);
-            const editorElement = ref(null);
+            const editor = ref(null);
+            const editorData = ref('');
 
+            /** life cycles */
+            onMounted(() => {
+                CKEDITOR.replace(editor.value, {
+                    // Настройки CKEditor
+                    language: 'ru',
+                    height: 300,
+                    toolbar: [
+                        ['Bold', 'Italic', 'Underline', 'Strike'],
+                        ['NumberedList', 'BulletedList', 'Outdent', 'Indent'],
+                        ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+                        ['Link', 'Unlink', 'Image', 'Table'],
+                        ['Undo', 'Redo'],
+                    ],
+                    on: {
+                        change: function (event) {
+                            editorData.value = event.editor.getData();
+                        }
+                    }
+                });
+            });
+
+            watch(editorData, (val) => {
+                console.log(val);
+            });
 
             return {
                 categoryName,
                 imageLink,
-                editorContent,
-                // editor,
-                editorElement,
-                editor: ClassicEditor,
-                editorData: '<p>Content of the editor.</p>',
-                editorConfig: {
-                    plugins: [
-                        List,
-                    ],
-                    toolbar: {
-                        items: [
-                            'bold',
-                            'italic',
-                            'link',
-                            'undo',
-                            'redo'
-                        ],
-                    },
-                },
+                editor,
             };
         },
     });
