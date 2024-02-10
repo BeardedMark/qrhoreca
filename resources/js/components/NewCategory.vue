@@ -13,9 +13,7 @@
                     </span>
                 </p>
             </div>
-            <NewCategoryForm
-                class="new-category__form"
-            />
+            <NewCategoryForm class="new-category__form"/>
             <Separator class="new-category__separator" />
             <Info
                 linkName="Контакты"

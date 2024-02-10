@@ -77,13 +77,10 @@
             const editorData = ref('');
             const editor = ref(null);
 
-            console.log(unref(categories));
-
             /** Methods */
             const onSaveClick = () => {
                 alert('Сохранить');
                 siteStore.setNewCategory(unref(categoryName), unref(imageLink), unref(editorData));
-                console.log(unref(categories));
             };
 
             /** life cycles */
@@ -102,6 +99,7 @@
                     on: {
                         change: function (event) {
                             editorData.value = event.editor.getData();
+                            console.log(editorData.value);
                         }
                     }
                 });
