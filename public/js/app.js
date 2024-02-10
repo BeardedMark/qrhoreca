@@ -21220,13 +21220,11 @@ __webpack_require__.r(__webpack_exports__);
     var imageLink = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
     var editorData = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
     var editor = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-    console.log((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(_constants_storeGetters_js__WEBPACK_IMPORTED_MODULE_3__.categories));
 
     /** Methods */
     var onSaveClick = function onSaveClick() {
       alert('Сохранить');
       _constants_store_js__WEBPACK_IMPORTED_MODULE_1__.siteStore.setNewCategory((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(categoryName), (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(imageLink), (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(editorData));
-      console.log((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(_constants_storeGetters_js__WEBPACK_IMPORTED_MODULE_3__.categories));
     };
 
     /** life cycles */
@@ -21239,6 +21237,7 @@ __webpack_require__.r(__webpack_exports__);
         on: {
           change: function change(event) {
             editorData.value = event.editor.getData();
+            console.log(editorData.value);
           }
         }
       });
@@ -21526,6 +21525,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.mjs");
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
   name: "PageHead",
@@ -21538,6 +21542,47 @@ __webpack_require__.r(__webpack_exports__);
       type: String,
       "default": ''
     }
+  },
+  setup: function setup() {
+    /** Vars */
+    var subtitleRef = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+
+    /** Features */
+    var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_1__.useRouter)();
+
+    /** Methods */
+    var onInnerLinkClick = function onInnerLinkClick(link) {
+      return function (event) {
+        event.preventDefault();
+        router.push(link);
+      };
+    };
+
+    /** Life cycles */
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
+      var links = subtitleRef.value.getElementsByTagName('a');
+      var _iterator = _createForOfIteratorHelper(links),
+        _step;
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var link = _step.value;
+          var href = link.getAttribute('href');
+          if (href) {
+            var url = new URL(href, window.location.origin);
+            if (url.host === window.location.host) {
+              link.addEventListener('click', onInnerLinkClick(url.pathname));
+            }
+          }
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+    });
+    return {
+      subtitleRef: subtitleRef
+    };
   }
 }));
 
@@ -23915,12 +23960,13 @@ var _hoisted_3 = ["innerHTML"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_ctx.title ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     key: 0,
-    "class": "page-head__title page-head-title",
-    innerHTML: _ctx.title
+    innerHTML: _ctx.title,
+    "class": "page-head__title page-head-title"
   }, null, 8 /* PROPS */, _hoisted_2)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.subtitle ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     key: 1,
-    "class": "page-head__subtitle page-head-subtitle",
-    innerHTML: _ctx.subtitle
+    innerHTML: _ctx.subtitle,
+    ref: "subtitleRef",
+    "class": "page-head-subtitle"
   }, null, 8 /* PROPS */, _hoisted_3)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
 }
 
@@ -31684,7 +31730,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".page-head__title[data-v-6c74bafa] {\n  margin-bottom: 0.625em;\n}\n.page-head-title[data-v-6c74bafa] > * {\n  font-size: 1.25em;\n  letter-spacing: 0.6px;\n  color: #2977B5;\n}\n.page-head-subtitle[data-v-6c74bafa] > * {\n  display: block;\n  font-size: 0.875em;\n  color: #737373;\n  margin-bottom: 0.71em;\n}\n.page-head-subtitle[data-v-6c74bafa] > *:last-child {\n  margin-bottom: 0;\n}\n.page-head-subtitle[data-v-6c74bafa] router-link {\n  color: #2977B5;\n  text-decoration: underline;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".page-head__title[data-v-6c74bafa] {\n  margin-bottom: 0.625em;\n}\n.page-head-title[data-v-6c74bafa] > * {\n  font-size: 1.25em;\n  letter-spacing: 0.6px;\n  color: #2977B5;\n}\n.page-head-subtitle[data-v-6c74bafa] > * {\n  display: block;\n  font-size: 0.875em;\n  color: #737373;\n  margin-bottom: 0.71em;\n}\n.page-head-subtitle[data-v-6c74bafa] > *:last-child {\n  margin-bottom: 0;\n}\n.page-head-subtitle[data-v-6c74bafa] a {\n  color: #2977B5;\n  text-decoration: underline;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -41045,7 +41091,7 @@ var state = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
     page: {
       name: 'categories',
       pageTitle: '<p>Категории</p>',
-      pageSubtitle: '<p>Начиная от аппетитных завтраков и заканчивая изысканными десертами, каждая категория приглашает вас на неповторимое кулинарное путешествие</p><p>Вы можете посмотреть все&nbsp;<router-link to="/menu">Меню</router-link>&nbsp;целиком</p>'
+      pageSubtitle: '<p>Начиная от аппетитных завтраков и заканчивая изысканными десертами, каждая категория приглашает вас на неповторимое кулинарное путешествие</p><p>Вы можете посмотреть все&nbsp;<a href="menu">Меню</a>&nbsp;целиком</p>'
     }
   }],
   categories: []
