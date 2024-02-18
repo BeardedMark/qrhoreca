@@ -1,0 +1,55 @@
+.field-form {
+    $self: &;
+
+    display: flex;
+    flex-direction: column;
+
+    &__placeholder {
+        margin-bottom: 0.5em;
+    }
+
+    &__field {
+        display: flex;
+        background-color: $background;
+        border-radius: 1.31em;
+        overflow: hidden;
+    }
+
+    &__input {
+        color: $dark;
+        font-size: $fz_20;
+        letter-spacing: 0.6px;
+        background-color: transparent;
+        width: 100%;
+        padding: 1.05em;
+    }
+
+    &--is-required {
+        #{$self}__placeholder {
+            position: relative;
+            width: fit-content;
+
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                width: 0.375em;
+                height: 0.375em;
+                background-color: $red;
+                border-radius: 50%;
+                top: 0.5em;
+                right: 0.625em;
+            }
+        }
+    }
+}
+
+.field-form-placeholder {
+    padding: 0.5em 1.31em;
+
+    &__text {
+        font-size: $fz_16;
+        letter-spacing: 0.48px;
+        color: $midgray;
+    }
+}
