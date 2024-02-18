@@ -1,44 +1,25 @@
 <template>
     <form class="new-category-form">
         <div class="new-category-form__body">
-            <div class="new-category-form__block new-category-form__block--is-required">
-                <p class="new-category-form__placeholder new-category-form-placeholder">
-                <span class="new-category-form-placeholder__text">
-                    Наименование
-                </span>
-                </p>
-                <div class="new-category-form__field">
-                    <input
-                        type="text"
-                        v-model="categoryName"
-                        required
-                        class="new-category-form__input"
-                    >
-                </div>
-            </div>
-            <div class="new-category-form__block">
-                <p class="new-category-form__placeholder new-category-form-placeholder">
-                <span class="new-category-form-placeholder__text">
-                    Изображение
-                </span>
-                </p>
-                <div class="new-category-form__field">
-                    <input
-                        type="text"
-                        v-model="imageLink"
-                        required
-                        class="new-category-form__input"
-                    >
-                </div>
-            </div>
-            <div class="new-category-form__block">
-                <p class="new-category-form__placeholder new-category-form-placeholder">
-                <span class="new-category-form-placeholder__text">
-                    Описание
-                </span>
-                </p>
-            </div>
-            <textarea ref="editor"></textarea>
+            <FieldForm
+                @updateInputValue="updateCategoryName"
+                label="Наименование"
+                required
+                class="new-category-form__block"
+            />
+            <FieldForm
+                @updateInputValue="updateImageLink"
+                label="Изображение"
+                class="new-category-form__block"
+            />
+            <FieldForm
+                label="Описание"
+                class="new-category-form__block"
+            >
+                <template #customInput>
+                    <textarea ref="editor"></textarea>
+                </template>
+            </FieldForm>
         </div>
         <div class="new-category-form__btns">
             <router-link
@@ -63,11 +44,12 @@
     import {defineComponent, ref, onMounted, unref} from "vue";
     import {siteStore} from "../constants/store.js";
     import Button from "./Button";
-    import {categories} from "../constants/storeGetters.js";
+    import FieldForm from "./FieldForm.vue";
 
     export default defineComponent({
         name: "NewCategoryForm",
         components: {
+            FieldForm,
             Button,
         },
         setup() {
@@ -78,6 +60,12 @@
             const editor = ref(null);
 
             /** Methods */
+            const updateCategoryName = (value) => {
+                categoryName.value = value;
+            };
+            const updateImageLink = (value) => {
+                imageLink.value = value;
+            };
             const onSaveClick = () => {
                 alert('Сохранить');
                 siteStore.setNewCategory(unref(categoryName), unref(imageLink), unref(editorData));
@@ -88,7 +76,7 @@
                 CKEDITOR.replace(editor.value, {
                     // Настройки CKEditor
                     language: 'ru',
-                    height: 300,
+                    height: 152,
                     toolbar: [
                         ['Bold', 'Italic', 'Underline', 'Strike'],
                         ['NumberedList', 'BulletedList', 'Outdent', 'Indent'],
@@ -99,21 +87,22 @@
                     on: {
                         change: function (event) {
                             editorData.value = event.editor.getData();
-                            console.log(editorData.value);
                         }
                     }
                 });
             });
 
             return {
-                categoryName,
-                imageLink,
                 editor,
                 onSaveClick,
+                updateCategoryName,
+                updateImageLink,
+
             };
         },
     });
 </script>
+
 <style scoped lang="scss">
 @import "resources/scss/components/newCategoryForm/component";
 </style>
