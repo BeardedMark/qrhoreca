@@ -1,89 +1,56 @@
 <template>
     <div class="offer-form-personal">
+        <FieldForm
+            @updateInputValue="updateNameValue"
+            label="Ваше имя"
+            class="offer-form-personal__block"
+        />
+        <FieldForm
+            @updateInputValue="updatePhoneValue"
+            type="tel"
+            label="Телефон"
+            required
+            class="offer-form-personal__block"
+        />
+        <FieldForm
+            @updateInputValue="updateEmailValue"
+            type="email"
+            label="Почта"
+            required
+            class="offer-form-personal__block"
+        />
         <div class="offer-form-personal__block">
-            <p class="offer-form-personal__placeholder offer-form-personal-placeholder">
-                <span class="offer-form-personal-placeholder__text">
-                    Ваше имя
-                </span>
-            </p>
-            <div class="offer-form-personal__field">
-                <input
-                    type="text"
-                    v-model="nameValue"
-                    class="offer-form-personal__input"
-                >
-            </div>
-        </div>
-        <div class="offer-form-personal__block offer-form-personal__block--is-required">
-            <p class="offer-form-personal__placeholder offer-form-personal-placeholder">
-                <span class="offer-form-personal-placeholder__text">
-                    Телефон
-                </span>
-            </p>
-            <div class="offer-form-personal__field">
-                <input
-                    type="text"
-                    v-model="phoneValue"
-                    required
-                    class="offer-form-personal__input"
-                >
-            </div>
-        </div>
-        <div class="offer-form-personal__block offer-form-personal__block--is-required">
-            <p class="offer-form-personal__placeholder offer-form-personal-placeholder">
-                <span class="offer-form-personal-placeholder__text">
-                    Почта
-                </span>
-            </p>
-            <div class="offer-form-personal__field">
-                <input
-                    type="email"
-                    v-model="emailValue"
-                    required
-                    class="offer-form-personal__input"
-                >
-            </div>
-        </div>
-        <div class="offer-form-personal__block">
-            <div class="offer-form-personal__checkbox offer-form-personal-checkbox">
-                <input
-                    type="checkbox"
-                    id="check3"
-                    value="sendReport"
-                    v-model="sendReport"
-                    class="offer-form-personal-checkbox__input"
-                />
-                <label
-                    for="check3"
-                    class="offer-form-personal-checkbox__label"
-                >
-                    Отправить электронный отчет
-                </label>
-            </div>
-            <div class="offer-form-personal__checkbox offer-form-personal-checkbox">
-                <input
-                    type="checkbox"
-                    id="check4"
-                    value="User agrees with the privacy policy"
-                    v-model="agreement"
-                    required
-                    class="offer-form-personal-checkbox__input"
-                />
-                <label
-                    for="check4"
-                    class="offer-form-personal-checkbox__label offer-form-personal-checkbox__label--is-required"
-                >
-                    Я согласен с <a class="offer-form-personal-checkbox__link" href="#">Политикой конфидициальности</a>
-                </label>
-            </div>
+            <CheckboxForm
+                @updateCheckboxValue="updateCheckboxValue1"
+                id="check3"
+                value="Send report"
+                label="Отправить электронный отчет"
+                class="offer-form-personal__checkbox"
+            />
+            <CheckboxForm
+                @updateCheckboxValue="updateCheckboxValue2"
+                id="check4"
+                value="User agrees with the privacy policy"
+                required
+                checked
+                class="offer-form-personal__checkbox offer-form-personal-checkbox"
+            >
+                Я согласен с <a class="offer-form-personal-checkbox__link" href="#">Политикой конфидициальности</a>
+            </CheckboxForm>
         </div>
     </div>
 </template>
 <script>
     import { defineComponent, ref } from "vue";
+    import FieldForm from "./FieldForm.vue";
+    import CheckboxForm from "./CheckboxForm.vue";
 
 export default defineComponent({
     name: "OfferFormPersonal",
+    components: {
+        FieldForm,
+        CheckboxForm,
+    },
     setup() {
         /** Vars */
         const nameValue = ref('');
@@ -92,12 +59,29 @@ export default defineComponent({
         const sendReport = ref(false);
         const agreement = ref(true);
 
+        /** Methods */
+        const updateNameValue = (value) => {
+            nameValue.value = value;
+        };
+        const updatePhoneValue = (value) => {
+            phoneValue.value = value;
+        };
+        const updateEmailValue = (value) => {
+            emailValue.value = value;
+        };
+        const updateCheckboxValue1 = (value) => {
+            sendReport.value = value;
+        };
+        const updateCheckboxValue2 = (value) => {
+            agreement.value = value;
+        };
+
         return {
-            nameValue,
-            phoneValue,
-            emailValue,
-            agreement,
-            sendReport,
+            updateNameValue,
+            updatePhoneValue,
+            updateEmailValue,
+            updateCheckboxValue1,
+            updateCheckboxValue2,
         };
     },
 });

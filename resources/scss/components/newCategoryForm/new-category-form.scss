@@ -83,10 +83,15 @@
             border: none;
             padding: 0.65em 1.31em;
             font-size: initial;
+            color: $midgray;
 
             &_ltr {
                 margin-right: 0;
             }
+        }
+
+        &_path_item {
+            color: $midgray;
         }
 
         &_contents {

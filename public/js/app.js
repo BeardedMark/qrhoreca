@@ -20516,6 +20516,78 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/CheckboxForm.vue?vue&type=script&lang=js":
+/*!******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/CheckboxForm.vue?vue&type=script&lang=js ***!
+  \******************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+  name: 'CheckboxForm',
+  props: {
+    id: {
+      type: String,
+      required: true
+    },
+    label: {
+      type: String,
+      "default": ''
+    },
+    required: {
+      type: Boolean,
+      "default": false
+    },
+    checked: {
+      type: Boolean,
+      "default": false
+    },
+    value: {
+      type: String,
+      "default": ''
+    },
+    isNote: {
+      type: Boolean,
+      "default": false
+    }
+  },
+  setup: function setup(props, _ref) {
+    var emit = _ref.emit;
+    /** Vars */
+    var _toRefs = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toRefs)(props),
+      required = _toRefs.required,
+      checked = _toRefs.checked,
+      isNote = _toRefs.isNote;
+    var toggleCheckbox = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(checked));
+
+    /** Computed */
+    var checkboxClasses = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(function () {
+      return {
+        'checkbox-form--is-required': (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(required),
+        'checkbox-form--is-note': (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(isNote)
+      };
+    });
+
+    /** Methods */
+    var updateCheckboxValue = function updateCheckboxValue() {
+      emit('updateCheckboxValue', toggleCheckbox.value);
+    };
+    return {
+      checkboxClasses: checkboxClasses,
+      updateCheckboxValue: updateCheckboxValue,
+      toggleCheckbox: toggleCheckbox
+    };
+  }
+}));
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Contacts.vue?vue&type=script&lang=js":
 /*!**************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Contacts.vue?vue&type=script&lang=js ***!
@@ -21390,16 +21462,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants */ "./resources/js/constants/index.js");
+/* harmony import */ var _FieldForm_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FieldForm.vue */ "./resources/js/components/FieldForm.vue");
+/* harmony import */ var _CheckboxForm_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CheckboxForm.vue */ "./resources/js/components/CheckboxForm.vue");
+
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
   name: "OfferForm",
+  components: {
+    FieldForm: _FieldForm_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    CheckboxForm: _CheckboxForm_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+  },
   setup: function setup() {
     /** Vars */
     var placeValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(_constants__WEBPACK_IMPORTED_MODULE_1__.placeNum);
     var commentValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
     var packWithYou = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     var takeOutWhenReady = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
+
+    /** Methods */
+    var updateCheckboxValue1 = function updateCheckboxValue1(value) {
+      packWithYou.value = value;
+    };
+    var updateCheckboxValue2 = function updateCheckboxValue2(value) {
+      takeOutWhenReady.value = value;
+    };
 
     /** Watchers */
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(packWithYou, function (newValue) {
@@ -21415,8 +21503,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       placeValue: placeValue,
       commentValue: commentValue,
-      packWithYou: packWithYou,
-      takeOutWhenReady: takeOutWhenReady
+      updateCheckboxValue1: updateCheckboxValue1,
+      updateCheckboxValue2: updateCheckboxValue2
     };
   }
 }));
@@ -21435,9 +21523,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _FieldForm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FieldForm.vue */ "./resources/js/components/FieldForm.vue");
+/* harmony import */ var _CheckboxForm_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CheckboxForm.vue */ "./resources/js/components/CheckboxForm.vue");
+
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
   name: "OfferFormPersonal",
+  components: {
+    FieldForm: _FieldForm_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    CheckboxForm: _CheckboxForm_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
   setup: function setup() {
     /** Vars */
     var nameValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
@@ -21445,12 +21541,29 @@ __webpack_require__.r(__webpack_exports__);
     var emailValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
     var sendReport = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     var agreement = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(true);
+
+    /** Methods */
+    var updateNameValue = function updateNameValue(value) {
+      nameValue.value = value;
+    };
+    var updatePhoneValue = function updatePhoneValue(value) {
+      phoneValue.value = value;
+    };
+    var updateEmailValue = function updateEmailValue(value) {
+      emailValue.value = value;
+    };
+    var updateCheckboxValue1 = function updateCheckboxValue1(value) {
+      sendReport.value = value;
+    };
+    var updateCheckboxValue2 = function updateCheckboxValue2(value) {
+      agreement.value = value;
+    };
     return {
-      nameValue: nameValue,
-      phoneValue: phoneValue,
-      emailValue: emailValue,
-      agreement: agreement,
-      sendReport: sendReport
+      updateNameValue: updateNameValue,
+      updatePhoneValue: updatePhoneValue,
+      updateEmailValue: updateEmailValue,
+      updateCheckboxValue1: updateCheckboxValue1,
+      updateCheckboxValue2: updateCheckboxValue2
     };
   }
 }));
@@ -22775,6 +22888,48 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/CheckboxForm.vue?vue&type=template&id=43528b92&scoped=true":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/CheckboxForm.vue?vue&type=template&id=43528b92&scoped=true ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _withScopeId = function _withScopeId(n) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-43528b92"), n = n(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)(), n;
+};
+var _hoisted_1 = ["id", "required", "value"];
+var _hoisted_2 = ["for"];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["checkbox-form", _ctx.checkboxClasses])
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    onChange: _cache[0] || (_cache[0] = function () {
+      return _ctx.updateCheckboxValue && _ctx.updateCheckboxValue.apply(_ctx, arguments);
+    }),
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return _ctx.toggleCheckbox = $event;
+    }),
+    type: "checkbox",
+    name: "checkbox",
+    id: _ctx.id,
+    required: _ctx.required,
+    value: _ctx.value,
+    "class": "checkbox-form__input"
+  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, _ctx.toggleCheckbox]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+    "for": _ctx.id,
+    "class": "checkbox-form__label"
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.label) + " ", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default", {}, undefined, true)], 8 /* PROPS */, _hoisted_2)], 2 /* CLASS */);
+}
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Contacts.vue?vue&type=template&id=6766143e":
 /*!******************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Contacts.vue?vue&type=template&id=6766143e ***!
@@ -23719,19 +23874,9 @@ var _hoisted_1 = {
   "class": "offer-form"
 };
 var _hoisted_2 = {
-  "class": "offer-form__block offer-form__block--is-required"
-};
-var _hoisted_3 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-    "class": "offer-form__placeholder offer-form-placeholder"
-  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    "class": "offer-form-placeholder__text"
-  }, " Место ")], -1 /* HOISTED */);
-});
-var _hoisted_4 = {
   "class": "offer-form__field offer-form__field--place"
 };
-var _hoisted_5 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_3 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "offer-form__btn offer-form-btn"
@@ -23739,72 +23884,60 @@ var _hoisted_5 = /*#__PURE__*/_withScopeId(function () {
     "class": "offer-form-btn__text"
   }, " QR-code ")], -1 /* HOISTED */);
 });
-var _hoisted_6 = {
-  "class": "offer-form__block"
-};
-var _hoisted_7 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-    "class": "offer-form__placeholder offer-form-placeholder"
-  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    "class": "offer-form-placeholder__text"
-  }, " Комментарий ")], -1 /* HOISTED */);
-});
-var _hoisted_8 = {
+var _hoisted_4 = {
   "class": "offer-form__field offer-form__field--comment"
 };
-var _hoisted_9 = {
+var _hoisted_5 = {
   "class": "offer-form__block"
 };
-var _hoisted_10 = {
-  "class": "offer-form__checkbox offer-form-checkbox"
-};
-var _hoisted_11 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-    "for": "check1",
-    "class": "offer-form-checkbox__label"
-  }, " Упаковать с собой ", -1 /* HOISTED */);
-});
-var _hoisted_12 = {
-  "class": "offer-form__checkbox offer-form-checkbox"
-};
-var _hoisted_13 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-    "for": "check2",
-    "class": "offer-form-checkbox__label offer-form-checkbox__label--has-note"
-  }, " Выносить по готовности ", -1 /* HOISTED */);
-});
-
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "text",
-    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.placeValue = $event;
-    }),
-    readonly: "",
+  var _component_FieldForm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("FieldForm");
+  var _component_CheckboxForm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("CheckboxForm");
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_FieldForm, {
+    label: "Место",
     required: "",
-    "class": "offer-form__input"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.placeValue]]), _hoisted_5])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
-    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      return _ctx.commentValue = $event;
+    "class": "offer-form__block"
+  }, {
+    customInput: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        type: "text",
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+          return _ctx.placeValue = $event;
+        }),
+        readonly: "",
+        required: "",
+        "class": "offer-form__input"
+      }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.placeValue]]), _hoisted_3])];
     }),
-    "class": "offer-form__input"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.commentValue]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "checkbox",
+    _: 1 /* STABLE */
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_FieldForm, {
+    label: "Комментарий",
+    "class": "offer-form__block"
+  }, {
+    customInput: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+        "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+          return _ctx.commentValue = $event;
+        }),
+        "class": "offer-form__input"
+      }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.commentValue]])])];
+    }),
+    _: 1 /* STABLE */
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CheckboxForm, {
+    onUpdateCheckboxValue: _ctx.updateCheckboxValue1,
     id: "check1",
-    value: "packWithYou",
-    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-      return _ctx.packWithYou = $event;
-    }),
-    "class": "offer-form-checkbox__input"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, _ctx.packWithYou]]), _hoisted_11]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "checkbox",
+    value: "Pack with you",
+    label: "Упаковать с собой",
+    "class": "offer-form__checkbox"
+  }, null, 8 /* PROPS */, ["onUpdateCheckboxValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CheckboxForm, {
+    onUpdateCheckboxValue: _ctx.updateCheckboxValue2,
     id: "check2",
-    value: "takeOutWhenReady",
-    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-      return _ctx.takeOutWhenReady = $event;
-    }),
-    "class": "offer-form-checkbox__input"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, _ctx.takeOutWhenReady]]), _hoisted_13])])]);
+    value: "Take out when ready",
+    label: "Выносить по готовности",
+    isNote: "",
+    checked: "",
+    "class": "offer-form__checkbox"
+  }, null, 8 /* PROPS */, ["onUpdateCheckboxValue"])])]);
 }
 
 /***/ }),
@@ -23832,105 +23965,50 @@ var _hoisted_2 = {
   "class": "offer-form-personal__block"
 };
 var _hoisted_3 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-    "class": "offer-form-personal__placeholder offer-form-personal-placeholder"
-  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    "class": "offer-form-personal-placeholder__text"
-  }, " Ваше имя ")], -1 /* HOISTED */);
-});
-var _hoisted_4 = {
-  "class": "offer-form-personal__field"
-};
-var _hoisted_5 = {
-  "class": "offer-form-personal__block offer-form-personal__block--is-required"
-};
-var _hoisted_6 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-    "class": "offer-form-personal__placeholder offer-form-personal-placeholder"
-  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    "class": "offer-form-personal-placeholder__text"
-  }, " Телефон ")], -1 /* HOISTED */);
-});
-var _hoisted_7 = {
-  "class": "offer-form-personal__field"
-};
-var _hoisted_8 = {
-  "class": "offer-form-personal__block offer-form-personal__block--is-required"
-};
-var _hoisted_9 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-    "class": "offer-form-personal__placeholder offer-form-personal-placeholder"
-  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    "class": "offer-form-personal-placeholder__text"
-  }, " Почта ")], -1 /* HOISTED */);
-});
-var _hoisted_10 = {
-  "class": "offer-form-personal__field"
-};
-var _hoisted_11 = {
-  "class": "offer-form-personal__block"
-};
-var _hoisted_12 = {
-  "class": "offer-form-personal__checkbox offer-form-personal-checkbox"
-};
-var _hoisted_13 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-    "for": "check3",
-    "class": "offer-form-personal-checkbox__label"
-  }, " Отправить электронный отчет ", -1 /* HOISTED */);
-});
-var _hoisted_14 = {
-  "class": "offer-form-personal__checkbox offer-form-personal-checkbox"
-};
-var _hoisted_15 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-    "for": "check4",
-    "class": "offer-form-personal-checkbox__label offer-form-personal-checkbox__label--is-required"
-  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Я согласен с "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     "class": "offer-form-personal-checkbox__link",
     href: "#"
-  }, "Политикой конфидициальности")], -1 /* HOISTED */);
+  }, "Политикой конфидициальности", -1 /* HOISTED */);
 });
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "text",
-    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.nameValue = $event;
-    }),
-    "class": "offer-form-personal__input"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.nameValue]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "text",
-    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      return _ctx.phoneValue = $event;
-    }),
+  var _component_FieldForm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("FieldForm");
+  var _component_CheckboxForm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("CheckboxForm");
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_FieldForm, {
+    onUpdateInputValue: _ctx.updateNameValue,
+    label: "Ваше имя",
+    "class": "offer-form-personal__block"
+  }, null, 8 /* PROPS */, ["onUpdateInputValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_FieldForm, {
+    onUpdateInputValue: _ctx.updatePhoneValue,
+    type: "tel",
+    label: "Телефон",
     required: "",
-    "class": "offer-form-personal__input"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.phoneValue]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "offer-form-personal__block"
+  }, null, 8 /* PROPS */, ["onUpdateInputValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_FieldForm, {
+    onUpdateInputValue: _ctx.updateEmailValue,
     type: "email",
-    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-      return _ctx.emailValue = $event;
-    }),
+    label: "Почта",
     required: "",
-    "class": "offer-form-personal__input"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.emailValue]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "checkbox",
+    "class": "offer-form-personal__block"
+  }, null, 8 /* PROPS */, ["onUpdateInputValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CheckboxForm, {
+    onUpdateCheckboxValue: _ctx.updateCheckboxValue1,
     id: "check3",
-    value: "sendReport",
-    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-      return _ctx.sendReport = $event;
-    }),
-    "class": "offer-form-personal-checkbox__input"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, _ctx.sendReport]]), _hoisted_13]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "checkbox",
+    value: "Send report",
+    label: "Отправить электронный отчет",
+    "class": "offer-form-personal__checkbox"
+  }, null, 8 /* PROPS */, ["onUpdateCheckboxValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CheckboxForm, {
+    onUpdateCheckboxValue: _ctx.updateCheckboxValue2,
     id: "check4",
     value: "User agrees with the privacy policy",
-    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-      return _ctx.agreement = $event;
-    }),
     required: "",
-    "class": "offer-form-personal-checkbox__input"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, _ctx.agreement]]), _hoisted_15])])]);
+    checked: "",
+    "class": "offer-form-personal__checkbox offer-form-personal-checkbox"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Я согласен с "), _hoisted_3];
+    }),
+    _: 1 /* STABLE */
+  }, 8 /* PROPS */, ["onUpdateCheckboxValue"])])]);
 }
 
 /***/ }),
@@ -31374,6 +31452,30 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".category-page__top[data-v-3f658bd0] {
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-13.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/CheckboxForm.vue?vue&type=style&index=0&id=43528b92&scoped=true&lang=scss":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-13.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/CheckboxForm.vue?vue&type=style&index=0&id=43528b92&scoped=true&lang=scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".checkbox-form[data-v-43528b92] {\n  display: flex;\n  align-items: center;\n}\n.checkbox-form__input[data-v-43528b92] {\n  position: relative;\n  font-size: 1em;\n  display: block;\n  border: none;\n  outline: none;\n  width: 3.94em;\n  height: 2.625em;\n  cursor: pointer;\n}\n.checkbox-form__input[data-v-43528b92]::before {\n  content: \"\";\n  display: block;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 110%;\n  height: 110%;\n  transform: translate(-50%, -50%);\n  background-color: #FFF;\n  pointer-events: none;\n}\n.checkbox-form__input[data-v-43528b92]::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 2.625em;\n  height: 2.625em;\n  border-radius: 50%;\n  background-color: #F5F6F8;\n  transition: background-color 0.3s;\n}\n.checkbox-form__input[data-v-43528b92]:checked::after {\n  background: #2977B5 url(\"/images/check.png\") no-repeat;\n  background-position: center;\n  background-size: 1.5em 1.5em;\n}\n.checkbox-form__label[data-v-43528b92] {\n  position: relative;\n  display: block;\n  color: #737373;\n  font-size: 1em;\n  letter-spacing: 0.48px;\n  padding-right: 0.69em;\n  z-index: 1;\n  cursor: pointer;\n}\n.checkbox-form__label[data-v-43528b92]::after {\n  display: block;\n  position: absolute;\n  top: -0.375em;\n  right: 0;\n  width: 0.375em;\n  height: 0.375em;\n  border-radius: 50%;\n}\n.checkbox-form--is-required .checkbox-form__label[data-v-43528b92]::after {\n  content: \"\";\n  background-color: #FA5252;\n}\n.checkbox-form--is-note .checkbox-form__label[data-v-43528b92]::after {\n  content: \"\";\n  background-color: #FCC419;\n}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-13.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Descriptions.vue?vue&type=style&index=0&id=ebdcc73c&scoped=true&lang=scss":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-13.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Descriptions.vue?vue&type=style&index=0&id=ebdcc73c&scoped=true&lang=scss ***!
@@ -31631,7 +31733,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".new-category-form__body[data-v-47760807] {\n  border-radius: 2.125em;\n  padding: 0.81em;\n  background-color: #FFF;\n}\n.new-category-form__block[data-v-47760807] {\n  margin-bottom: 1.31em;\n}\n.new-category-form__block[data-v-47760807]:last-child {\n  margin-bottom: 0;\n}\n.new-category-form__btns[data-v-47760807] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin-left: -1.06em;\n  margin-right: -1.06em;\n  padding-top: 3.44em;\n}\n.new-category-form__cansel[data-v-47760807], .new-category-form__save[data-v-47760807] {\n  margin-left: 1.06em;\n  margin-right: 1.06em;\n}\n.new-category-form__save[data-v-47760807] {\n  min-width: 10.875em;\n  height: 4em;\n}\n.new-category-form-cansel__text[data-v-47760807] {\n  color: #2977B5;\n  font-size: 1.25em;\n  line-height: 1.1;\n  letter-spacing: 0.6px;\n}\n[data-v-47760807] .cke {\n  border-radius: 2.125em;\n  border: none;\n  overflow: hidden;\n}\n[data-v-47760807] .cke_top {\n  border-bottom: none;\n  padding: 0.93em 1.06em;\n  font-size: initial;\n  background-color: #F5F6F8;\n}\n[data-v-47760807] .cke_bottom {\n  font-size: initial;\n  padding: 0.65em 1.31em;\n  background-color: #F5F6F8;\n  border-top: none;\n}\n[data-v-47760807] .cke_inner {\n  background: unset;\n}\n[data-v-47760807] .cke_toolgroup {\n  margin-bottom: 0;\n}\n[data-v-47760807] .cke_resizer {\n  position: absolute;\n  right: 0;\n  bottom: 0;\n  width: auto;\n  height: auto;\n  margin: 0;\n  border: none;\n  padding: 0.65em 1.31em;\n  font-size: initial;\n}\n[data-v-47760807] .cke_resizer_ltr {\n  margin-right: 0;\n}\n[data-v-47760807] .cke_contents {\n  border: 1px solid #F5F6F8;\n}\n[data-v-47760807] .cke_reset {\n  box-sizing: border-box;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".new-category-form__body[data-v-47760807] {\n  border-radius: 2.125em;\n  padding: 0.81em;\n  background-color: #FFF;\n}\n.new-category-form__block[data-v-47760807] {\n  margin-bottom: 1.31em;\n}\n.new-category-form__block[data-v-47760807]:last-child {\n  margin-bottom: 0;\n}\n.new-category-form__btns[data-v-47760807] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin-left: -1.06em;\n  margin-right: -1.06em;\n  padding-top: 3.44em;\n}\n.new-category-form__cansel[data-v-47760807], .new-category-form__save[data-v-47760807] {\n  margin-left: 1.06em;\n  margin-right: 1.06em;\n}\n.new-category-form__save[data-v-47760807] {\n  min-width: 10.875em;\n  height: 4em;\n}\n.new-category-form-cansel__text[data-v-47760807] {\n  color: #2977B5;\n  font-size: 1.25em;\n  line-height: 1.1;\n  letter-spacing: 0.6px;\n}\n[data-v-47760807] .cke {\n  border-radius: 2.125em;\n  border: none;\n  overflow: hidden;\n}\n[data-v-47760807] .cke_top {\n  border-bottom: none;\n  padding: 0.93em 1.06em;\n  font-size: initial;\n  background-color: #F5F6F8;\n}\n[data-v-47760807] .cke_bottom {\n  font-size: initial;\n  padding: 0.65em 1.31em;\n  background-color: #F5F6F8;\n  border-top: none;\n}\n[data-v-47760807] .cke_inner {\n  background: unset;\n}\n[data-v-47760807] .cke_toolgroup {\n  margin-bottom: 0;\n}\n[data-v-47760807] .cke_resizer {\n  position: absolute;\n  right: 0;\n  bottom: 0;\n  width: auto;\n  height: auto;\n  margin: 0;\n  border: none;\n  padding: 0.65em 1.31em;\n  font-size: initial;\n  color: #737373;\n}\n[data-v-47760807] .cke_resizer_ltr {\n  margin-right: 0;\n}\n[data-v-47760807] .cke_path_item {\n  color: #737373;\n}\n[data-v-47760807] .cke_contents {\n  border: 1px solid #F5F6F8;\n}\n[data-v-47760807] .cke_reset {\n  box-sizing: border-box;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -31679,7 +31781,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".offer-form[data-v-f809d136] {\n  border-radius: 2.125em;\n  padding: 0.81em;\n  background-color: #FFF;\n}\n.offer-form__block[data-v-f809d136] {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 1.31em;\n}\n.offer-form__block[data-v-f809d136]:last-child {\n  margin-bottom: 0;\n}\n.offer-form__block--is-required .offer-form__placeholder[data-v-f809d136] {\n  position: relative;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n.offer-form__block--is-required .offer-form__placeholder[data-v-f809d136]::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  width: 0.375em;\n  height: 0.375em;\n  background-color: #FA5252;\n  border-radius: 50%;\n  top: 0.5em;\n  right: 0.625em;\n}\n.offer-form__placeholder[data-v-f809d136] {\n  margin-bottom: 0.5em;\n}\n.offer-form__field[data-v-f809d136] {\n  display: flex;\n  background-color: #F5F6F8;\n  border-radius: 1.31em;\n  overflow: hidden;\n}\n.offer-form__field--comment[data-v-f809d136] {\n  height: 9.5em;\n}\n.offer-form__field--comment .offer-form__input[data-v-f809d136] {\n  resize: none;\n}\n.offer-form__field--place[data-v-f809d136] {\n  align-items: center;\n  justify-content: space-between;\n  padding: 1.31em;\n}\n.offer-form__field--place .offer-form__input[data-v-f809d136] {\n  pointer-events: none;\n  padding: 0;\n}\n.offer-form__input[data-v-f809d136] {\n  color: #333333;\n  font-size: 1.25em;\n  letter-spacing: 0.6px;\n  background-color: transparent;\n  width: 100%;\n  padding: 1.05em;\n}\n.offer-form__checkbox[data-v-f809d136] {\n  margin-bottom: 1.31em;\n}\n.offer-form__checkbox[data-v-f809d136]:last-child {\n  margin-bottom: 0;\n}\n.offer-form-placeholder[data-v-f809d136] {\n  padding: 0.5em 1.31em;\n}\n.offer-form-placeholder__text[data-v-f809d136] {\n  font-size: 1em;\n  letter-spacing: 0.48px;\n  color: #737373;\n}\n.offer-form-btn[data-v-f809d136] {\n  background-color: transparent;\n}\n.offer-form-btn__text[data-v-f809d136] {\n  color: #2977B5;\n  font-size: 0.875em;\n  white-space: nowrap;\n}\n.offer-form-checkbox[data-v-f809d136] {\n  display: flex;\n  align-items: center;\n}\n.offer-form-checkbox__input[data-v-f809d136] {\n  position: relative;\n  font-size: 1em;\n  display: block;\n  border: none;\n  outline: none;\n  width: 3.94em;\n  height: 2.625em;\n  cursor: pointer;\n}\n.offer-form-checkbox__input[data-v-f809d136]::before {\n  content: \"\";\n  display: block;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 110%;\n  height: 110%;\n  transform: translate(-50%, -50%);\n  background-color: #FFF;\n  pointer-events: none;\n}\n.offer-form-checkbox__input[data-v-f809d136]::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 2.625em;\n  height: 2.625em;\n  border-radius: 50%;\n  background-color: #F5F6F8;\n  transition: background-color 0.3s;\n}\n.offer-form-checkbox__input[data-v-f809d136]:checked::after {\n  background: #2977B5 url(\"/images/check.png\") no-repeat;\n  background-position: center;\n  background-size: 1.5em 1.5em;\n}\n.offer-form-checkbox__label[data-v-f809d136] {\n  position: relative;\n  display: block;\n  color: #737373;\n  font-size: 1em;\n  letter-spacing: 0.48px;\n  padding-right: 0.69em;\n  z-index: 1;\n  cursor: pointer;\n}\n.offer-form-checkbox__label--has-note[data-v-f809d136]::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  top: -0.375em;\n  right: 0;\n  width: 0.375em;\n  height: 0.375em;\n  background-color: #FCC419;\n  border-radius: 50%;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".offer-form[data-v-f809d136] {\n  border-radius: 2.125em;\n  padding: 0.81em;\n  background-color: #FFF;\n}\n.offer-form__block[data-v-f809d136] {\n  margin-bottom: 1.31em;\n}\n.offer-form__block[data-v-f809d136]:last-child {\n  margin-bottom: 0;\n}\n.offer-form__field[data-v-f809d136] {\n  display: flex;\n  background-color: #F5F6F8;\n  border-radius: 1.31em;\n  overflow: hidden;\n}\n.offer-form__field--comment[data-v-f809d136] {\n  height: 9.5em;\n}\n.offer-form__field--comment .offer-form__input[data-v-f809d136] {\n  resize: none;\n}\n.offer-form__field--place[data-v-f809d136] {\n  align-items: center;\n  justify-content: space-between;\n  padding: 1.31em;\n}\n.offer-form__field--place .offer-form__input[data-v-f809d136] {\n  pointer-events: none;\n  padding: 0;\n}\n.offer-form__input[data-v-f809d136] {\n  color: #333333;\n  font-size: 1.25em;\n  letter-spacing: 0.6px;\n  background-color: transparent;\n  width: 100%;\n  padding: 1.05em;\n}\n.offer-form__checkbox[data-v-f809d136] {\n  margin-bottom: 1.31em;\n}\n.offer-form__checkbox[data-v-f809d136]:last-child {\n  margin-bottom: 0;\n}\n.offer-form-btn[data-v-f809d136] {\n  background-color: transparent;\n}\n.offer-form-btn__text[data-v-f809d136] {\n  color: #2977B5;\n  font-size: 0.875em;\n  white-space: nowrap;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -31703,7 +31805,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".offer-form-personal[data-v-5f475676] {\n  border-radius: 2.125em;\n  padding: 0.81em;\n  background-color: #FFF;\n}\n.offer-form-personal__block[data-v-5f475676] {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 1.31em;\n}\n.offer-form-personal__block[data-v-5f475676]:last-child {\n  margin-bottom: 0;\n}\n.offer-form-personal__block--is-required .offer-form-personal__placeholder[data-v-5f475676] {\n  position: relative;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n.offer-form-personal__block--is-required .offer-form-personal__placeholder[data-v-5f475676]::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  width: 0.375em;\n  height: 0.375em;\n  background-color: #FA5252;\n  border-radius: 50%;\n  top: 0.5em;\n  right: 0.625em;\n}\n.offer-form-personal__placeholder[data-v-5f475676] {\n  margin-bottom: 0.5em;\n}\n.offer-form-personal__field[data-v-5f475676] {\n  display: flex;\n  background-color: #F5F6F8;\n  border-radius: 1.31em;\n  overflow: hidden;\n}\n.offer-form-personal__input[data-v-5f475676] {\n  color: #333333;\n  font-size: 1.25em;\n  letter-spacing: 0.6px;\n  background-color: transparent;\n  width: 100%;\n  padding: 1.05em;\n}\n.offer-form-personal__checkbox[data-v-5f475676] {\n  margin-bottom: 1.31em;\n}\n.offer-form-personal__checkbox[data-v-5f475676]:last-child {\n  margin-bottom: 0;\n}\n.offer-form-personal-placeholder[data-v-5f475676] {\n  padding: 0.5em 1.31em;\n}\n.offer-form-personal-placeholder__text[data-v-5f475676] {\n  font-size: 1em;\n  letter-spacing: 0.48px;\n  color: #737373;\n}\n.offer-form-personal-checkbox[data-v-5f475676] {\n  display: flex;\n  align-items: center;\n}\n.offer-form-personal-checkbox__input[data-v-5f475676] {\n  position: relative;\n  font-size: 1em;\n  display: block;\n  border: none;\n  outline: none;\n  width: 3.94em;\n  height: 2.625em;\n  cursor: pointer;\n}\n.offer-form-personal-checkbox__input[data-v-5f475676]::before {\n  content: \"\";\n  display: block;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 110%;\n  height: 110%;\n  transform: translate(-50%, -50%);\n  background-color: #FFF;\n  pointer-events: none;\n}\n.offer-form-personal-checkbox__input[data-v-5f475676]::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 2.625em;\n  height: 2.625em;\n  border-radius: 50%;\n  background-color: #F5F6F8;\n  transition: background-color 0.3s;\n}\n.offer-form-personal-checkbox__input[data-v-5f475676]:checked::after {\n  background: #2977B5 url(\"/images/check.png\") no-repeat;\n  background-position: center;\n  background-size: 1.5em 1.5em;\n}\n.offer-form-personal-checkbox__label[data-v-5f475676] {\n  position: relative;\n  display: block;\n  color: #737373;\n  font-size: 1em;\n  letter-spacing: 0.48px;\n  padding-right: 0.69em;\n  z-index: 1;\n  cursor: pointer;\n}\n.offer-form-personal-checkbox__label--has-note[data-v-5f475676]::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  top: -0.375em;\n  right: 0;\n  width: 0.375em;\n  height: 0.375em;\n  background-color: #FCC419;\n  border-radius: 50%;\n}\n.offer-form-personal-checkbox__label--is-required[data-v-5f475676]::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  top: -0.375em;\n  right: 0;\n  width: 0.375em;\n  height: 0.375em;\n  background-color: #FA5252;\n  border-radius: 50%;\n}\n.offer-form-personal-checkbox__link[data-v-5f475676] {\n  color: #2977B5;\n  text-decoration: underline;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".offer-form-personal[data-v-5f475676] {\n  border-radius: 2.125em;\n  padding: 0.81em;\n  background-color: #FFF;\n}\n.offer-form-personal__block[data-v-5f475676], .offer-form-personal__checkbox[data-v-5f475676] {\n  margin-bottom: 1.31em;\n}\n.offer-form-personal__block[data-v-5f475676]:last-child, .offer-form-personal__checkbox[data-v-5f475676]:last-child {\n  margin-bottom: 0;\n}\n.offer-form-personal-checkbox__link[data-v-5f475676] {\n  color: #2977B5;\n  text-decoration: underline;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -32441,6 +32543,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_13_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_13_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_13_use_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CategoryPage_vue_vue_type_style_index_0_id_3f658bd0_scoped_true_lang_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-13.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/CheckboxForm.vue?vue&type=style&index=0&id=43528b92&scoped=true&lang=scss":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-13.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/CheckboxForm.vue?vue&type=style&index=0&id=43528b92&scoped=true&lang=scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_13_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_13_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_13_use_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CheckboxForm_vue_vue_type_style_index_0_id_43528b92_scoped_true_lang_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-13.use[1]!../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13.use[2]!../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13.use[3]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./CheckboxForm.vue?vue&type=style&index=0&id=43528b92&scoped=true&lang=scss */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-13.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/CheckboxForm.vue?vue&type=style&index=0&id=43528b92&scoped=true&lang=scss");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_13_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_13_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_13_use_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CheckboxForm_vue_vue_type_style_index_0_id_43528b92_scoped_true_lang_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_13_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_13_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_13_use_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CheckboxForm_vue_vue_type_style_index_0_id_43528b92_scoped_true_lang_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
@@ -33800,6 +33932,37 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/js/components/CheckboxForm.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/CheckboxForm.vue ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _CheckboxForm_vue_vue_type_template_id_43528b92_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CheckboxForm.vue?vue&type=template&id=43528b92&scoped=true */ "./resources/js/components/CheckboxForm.vue?vue&type=template&id=43528b92&scoped=true");
+/* harmony import */ var _CheckboxForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CheckboxForm.vue?vue&type=script&lang=js */ "./resources/js/components/CheckboxForm.vue?vue&type=script&lang=js");
+/* harmony import */ var _CheckboxForm_vue_vue_type_style_index_0_id_43528b92_scoped_true_lang_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CheckboxForm.vue?vue&type=style&index=0&id=43528b92&scoped=true&lang=scss */ "./resources/js/components/CheckboxForm.vue?vue&type=style&index=0&id=43528b92&scoped=true&lang=scss");
+/* harmony import */ var D_Projects_qrhoreca_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+
+
+const __exports__ = /*#__PURE__*/(0,D_Projects_qrhoreca_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_CheckboxForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_CheckboxForm_vue_vue_type_template_id_43528b92_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-43528b92"],['__file',"resources/js/components/CheckboxForm.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/js/components/Contacts.vue":
 /*!**********************************************!*\
   !*** ./resources/js/components/Contacts.vue ***!
@@ -34905,6 +35068,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/CheckboxForm.vue?vue&type=script&lang=js":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/CheckboxForm.vue?vue&type=script&lang=js ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CheckboxForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CheckboxForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./CheckboxForm.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/CheckboxForm.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/components/Contacts.vue?vue&type=script&lang=js":
 /*!**********************************************************************!*\
   !*** ./resources/js/components/Contacts.vue?vue&type=script&lang=js ***!
@@ -35545,6 +35724,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/CheckboxForm.vue?vue&type=template&id=43528b92&scoped=true":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/CheckboxForm.vue?vue&type=template&id=43528b92&scoped=true ***!
+  \********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CheckboxForm_vue_vue_type_template_id_43528b92_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CheckboxForm_vue_vue_type_template_id_43528b92_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./CheckboxForm.vue?vue&type=template&id=43528b92&scoped=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/CheckboxForm.vue?vue&type=template&id=43528b92&scoped=true");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Contacts.vue?vue&type=template&id=6766143e":
 /*!****************************************************************************!*\
   !*** ./resources/js/components/Contacts.vue?vue&type=template&id=6766143e ***!
@@ -36144,6 +36339,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_13_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_13_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_13_use_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CategoryPage_vue_vue_type_style_index_0_id_3f658bd0_scoped_true_lang_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-13.use[1]!../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13.use[2]!../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13.use[3]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./CategoryPage.vue?vue&type=style&index=0&id=3f658bd0&scoped=true&lang=scss */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-13.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/CategoryPage.vue?vue&type=style&index=0&id=3f658bd0&scoped=true&lang=scss");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/CheckboxForm.vue?vue&type=style&index=0&id=43528b92&scoped=true&lang=scss":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/components/CheckboxForm.vue?vue&type=style&index=0&id=43528b92&scoped=true&lang=scss ***!
+  \***********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_13_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_13_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_13_use_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CheckboxForm_vue_vue_type_style_index_0_id_43528b92_scoped_true_lang_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-13.use[1]!../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13.use[2]!../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13.use[3]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./CheckboxForm.vue?vue&type=style&index=0&id=43528b92&scoped=true&lang=scss */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-13.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/CheckboxForm.vue?vue&type=style&index=0&id=43528b92&scoped=true&lang=scss");
 
 
 /***/ }),
