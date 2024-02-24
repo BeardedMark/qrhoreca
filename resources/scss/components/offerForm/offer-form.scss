@@ -5,36 +5,11 @@
     background-color: $white;
 
     &__block {
-        display: flex;
-        flex-direction: column;
         margin-bottom: 1.31em;
 
         &:last-child {
             margin-bottom: 0;
         }
-
-        &--is-required {
-            #{$self}__placeholder {
-                position: relative;
-                width: fit-content;
-
-                &::after {
-                    content: '';
-                    display: block;
-                    position: absolute;
-                    width: 0.375em;
-                    height: 0.375em;
-                    background-color: $red;
-                    border-radius: 50%;
-                    top: 0.5em;
-                    right: 0.625em;
-                }
-            }
-        }
-    }
-
-    &__placeholder {
-        margin-bottom: 0.5em;
     }
 
     &__field {
@@ -81,16 +56,6 @@
     }
 }
 
-.offer-form-placeholder {
-    padding: 0.5em 1.31em;
-
-    &__text {
-        font-size: $fz_16;
-        letter-spacing: 0.48px;
-        color: $midgray;
-    }
-}
-
 .offer-form-btn {
     background-color: transparent;
 
@@ -98,80 +63,5 @@
         color: $accent;
         font-size: $fz_14;
         white-space: nowrap;
-    }
-}
-
-.offer-form-checkbox {
-    display: flex;
-    align-items: center;
-
-    &__input {
-        position: relative;
-        font-size: $fz_16;
-        display: block;
-        border: none;
-        outline: none;
-        width: 3.94em;
-        height: 2.625em;
-        cursor: pointer;
-
-        &::before {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 110%;
-            height: 110%;
-            transform: translate(-50%, -50%);
-            background-color: $white;
-            pointer-events: none;
-        }
-
-        &::after {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 2.625em;
-            height: 2.625em;
-            border-radius: 50%;
-            background-color: $background;
-            transition: background-color .3s;
-        }
-
-        &:checked {
-            &::after {
-                background: $accent url("/images/check.png") no-repeat;
-                background-position: center;
-                background-size: 1.5em 1.5em;
-            }
-        }
-    }
-
-    &__label {
-        position: relative;
-        display: block;
-        color: $midgray;
-        font-size: $fz_16;
-        letter-spacing: 0.48px;
-        padding-right: 0.69em;
-        z-index: 1;
-        cursor: pointer;
-
-        &--has-note {
-            &::after {
-                content: '';
-                display: block;
-                position: absolute;
-                top: -0.375em;
-                right: 0;
-                width: 0.375em;
-                height: 0.375em;
-                background-color: $yellow;
-                border-radius: 50%;
-            }
-        }
     }
 }
