@@ -1,0 +1,22 @@
+.new-product-form-tags {
+    $self: &;
+    border-radius: 2.125em;
+    padding: 0.81em;
+    background-color: $white;
+
+    &__block {
+        margin-bottom: 1.31em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__checkbox {
+        margin-bottom: 1.31em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
