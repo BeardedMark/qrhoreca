@@ -1,0 +1,102 @@
+.new-product-form {
+    $self: &;
+    border-radius: 2.125em;
+    padding: 0.81em;
+    background-color: $white;
+
+    &__block {
+        margin-bottom: 1.31em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__btns {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -1.06em;
+        margin-right: -1.06em;
+        padding-top: 3.44em;
+    }
+
+    &__cansel,
+    &__save {
+        margin-left: 1.06em;
+        margin-right: 1.06em;
+    }
+
+    &__save {
+        min-width: 10.875em;
+        height: 4em;
+    }
+}
+
+.new-product-form-cansel {
+    &__text {
+        color: $accent;
+        font-size: $fz_20;
+        line-height: 1.1;
+        letter-spacing: 0.6px;
+    }
+}
+
+::v-deep {
+    .cke {
+        border-radius: 2.125em;
+        border: none;
+        overflow: hidden;
+
+        &_top {
+            border-bottom: none;
+            padding: 0.93em 1.06em;
+            font-size: initial;
+            background-color: $background;
+        }
+
+        &_bottom {
+            font-size: initial;
+            padding: 0.65em 1.31em;
+            background-color: $background;
+            border-top: none;
+        }
+
+        &_inner {
+            background: unset;
+        }
+
+        &_toolgroup {
+            margin-bottom: 0;
+        }
+
+        &_resizer {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: auto;
+            height: auto;
+            margin: 0;
+            border: none;
+            padding: 0.65em 1.31em;
+            font-size: initial;
+            color: $midgray;
+
+            &_ltr {
+                margin-right: 0;
+            }
+        }
+
+        &_path_item {
+            color: $midgray;
+        }
+
+        &_contents {
+            border: 1px solid $background;
+        }
+
+        &_reset {
+            box-sizing: border-box;
+        }
+    }
+}

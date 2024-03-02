@@ -100,7 +100,7 @@
                     },
                     {
                         page: 'Новое предложение',
-                        link: '/offer-form',
+                        link: '/new-product',
                         icon: 'add-offer',
                         isLink: true,
                     },
