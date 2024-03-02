@@ -6,11 +6,12 @@
         <input
             @change="updateCheckboxValue"
             v-model="toggleCheckbox"
-            type="checkbox"
-            name="checkbox"
+            :type="inputType"
+            :name="name"
             :id="id"
             :required="required"
             :value="value"
+            :checked="toggleCheckbox"
             class="checkbox-form__input"
         />
         <label
@@ -53,13 +54,22 @@
                 type: Boolean,
                 default: false,
             },
+            isMultiple: {
+                type: Boolean,
+                default: true,
+            },
+            name: {
+                type: String,
+                default: '',
+            },
         },
         setup(props, {emit}) {
             /** Vars */
-            const {required, checked, isNote} = toRefs(props);
+            const {required, checked, isNote, isMultiple} = toRefs(props);
             const toggleCheckbox = ref(unref(checked));
 
             /** Computed */
+            const inputType = computed(() => unref(isMultiple) ? 'checkbox' : 'radio');
             const checkboxClasses = computed(() => ({
                 'checkbox-form--is-required': unref(required),
                 'checkbox-form--is-note': unref(isNote),
@@ -74,6 +84,7 @@
                 checkboxClasses,
                 updateCheckboxValue,
                 toggleCheckbox,
+                inputType,
             };
         },
     });

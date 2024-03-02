@@ -40,26 +40,30 @@
         </FieldForm>
         <div class="offer-form__block">
             <CheckboxForm
-                @updateCheckboxValue="updateCheckboxValue1"
+                @updateCheckboxValue="updateSubmittingOrder"
                 id="check1"
                 value="Pack with you"
                 label="Упаковать с собой"
+                name="submittingOrder"
                 class="offer-form__checkbox"
+                :isMultiple="false"
             />
             <CheckboxForm
-                @updateCheckboxValue="updateCheckboxValue2"
+                @updateCheckboxValue="updateSubmittingOrder"
                 id="check2"
                 value="Take out when ready"
                 label="Выносить по готовности"
+                name="submittingOrder"
+                :checked="true"
+                :isMultiple="false"
                 isNote
-                checked
                 class="offer-form__checkbox"
             />
         </div>
     </div>
 </template>
 <script>
-    import { defineComponent, ref, watch } from "vue";
+    import { defineComponent, ref } from "vue";
     import {placeNum} from "../constants";
     import FieldForm from "./FieldForm.vue";
     import CheckboxForm from "./CheckboxForm.vue";
@@ -74,36 +78,17 @@
             /** Vars */
             const placeValue = ref(placeNum);
             const commentValue = ref('');
-            const packWithYou = ref(false);
-            const takeOutWhenReady = ref(false);
+            const submittingOrder = ref('Take out when ready');
 
             /** Methods */
-            const updateCheckboxValue1 = (value) => {
-                packWithYou.value = value;
+            const updateSubmittingOrder = (value) => {
+                submittingOrder.value = value;
             };
-            const updateCheckboxValue2 = (value) => {
-                takeOutWhenReady.value = value;
-            };
-
-            /** Watchers */
-            watch(packWithYou, (newValue) => {
-                if(newValue) {
-                    takeOutWhenReady.value = false;
-                }
-            });
-
-            watch(takeOutWhenReady, (newValue) => {
-                if(newValue) {
-                    packWithYou.value = false;
-
-                }
-            });
 
             return {
                 placeValue,
                 commentValue,
-                updateCheckboxValue1,
-                updateCheckboxValue2,
+                updateSubmittingOrder,
             };
         },
     });

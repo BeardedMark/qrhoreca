@@ -20555,6 +20555,14 @@ __webpack_require__.r(__webpack_exports__);
     isNote: {
       type: Boolean,
       "default": false
+    },
+    isMultiple: {
+      type: Boolean,
+      "default": true
+    },
+    name: {
+      type: String,
+      "default": ''
     }
   },
   setup: function setup(props, _ref) {
@@ -20563,10 +20571,14 @@ __webpack_require__.r(__webpack_exports__);
     var _toRefs = (0,vue__WEBPACK_IMPORTED_MODULE_0__.toRefs)(props),
       required = _toRefs.required,
       checked = _toRefs.checked,
-      isNote = _toRefs.isNote;
+      isNote = _toRefs.isNote,
+      isMultiple = _toRefs.isMultiple;
     var toggleCheckbox = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(checked));
 
     /** Computed */
+    var inputType = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(function () {
+      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(isMultiple) ? 'checkbox' : 'radio';
+    });
     var checkboxClasses = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(function () {
       return {
         'checkbox-form--is-required': (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(required),
@@ -20581,7 +20593,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       checkboxClasses: checkboxClasses,
       updateCheckboxValue: updateCheckboxValue,
-      toggleCheckbox: toggleCheckbox
+      toggleCheckbox: toggleCheckbox,
+      inputType: inputType
     };
   }
 }));
@@ -21478,33 +21491,16 @@ __webpack_require__.r(__webpack_exports__);
     /** Vars */
     var placeValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(_constants__WEBPACK_IMPORTED_MODULE_1__.placeNum);
     var commentValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
-    var packWithYou = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
-    var takeOutWhenReady = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
+    var submittingOrder = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('Take out when ready');
 
     /** Methods */
-    var updateCheckboxValue1 = function updateCheckboxValue1(value) {
-      packWithYou.value = value;
+    var updateSubmittingOrder = function updateSubmittingOrder(value) {
+      submittingOrder.value = value;
     };
-    var updateCheckboxValue2 = function updateCheckboxValue2(value) {
-      takeOutWhenReady.value = value;
-    };
-
-    /** Watchers */
-    (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(packWithYou, function (newValue) {
-      if (newValue) {
-        takeOutWhenReady.value = false;
-      }
-    });
-    (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(takeOutWhenReady, function (newValue) {
-      if (newValue) {
-        packWithYou.value = false;
-      }
-    });
     return {
       placeValue: placeValue,
       commentValue: commentValue,
-      updateCheckboxValue1: updateCheckboxValue1,
-      updateCheckboxValue2: updateCheckboxValue2
+      updateSubmittingOrder: updateSubmittingOrder
     };
   }
 }));
@@ -22904,7 +22900,7 @@ __webpack_require__.r(__webpack_exports__);
 var _withScopeId = function _withScopeId(n) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-43528b92"), n = n(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)(), n;
 };
-var _hoisted_1 = ["id", "required", "value"];
+var _hoisted_1 = ["type", "name", "id", "required", "value", "checked"];
 var _hoisted_2 = ["for"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
@@ -22916,13 +22912,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return _ctx.toggleCheckbox = $event;
     }),
-    type: "checkbox",
-    name: "checkbox",
+    type: _ctx.inputType,
+    name: _ctx.name,
     id: _ctx.id,
     required: _ctx.required,
     value: _ctx.value,
+    checked: _ctx.toggleCheckbox,
     "class": "checkbox-form__input"
-  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, _ctx.toggleCheckbox]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelDynamic, _ctx.toggleCheckbox]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "for": _ctx.id,
     "class": "checkbox-form__label"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.label) + " ", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default", {}, undefined, true)], 8 /* PROPS */, _hoisted_2)], 2 /* CLASS */);
@@ -23924,18 +23921,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     _: 1 /* STABLE */
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CheckboxForm, {
-    onUpdateCheckboxValue: _ctx.updateCheckboxValue1,
+    onUpdateCheckboxValue: _ctx.updateSubmittingOrder,
     id: "check1",
     value: "Pack with you",
     label: "Упаковать с собой",
-    "class": "offer-form__checkbox"
+    name: "submittingOrder",
+    "class": "offer-form__checkbox",
+    isMultiple: false
   }, null, 8 /* PROPS */, ["onUpdateCheckboxValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CheckboxForm, {
-    onUpdateCheckboxValue: _ctx.updateCheckboxValue2,
+    onUpdateCheckboxValue: _ctx.updateSubmittingOrder,
     id: "check2",
     value: "Take out when ready",
     label: "Выносить по готовности",
+    name: "submittingOrder",
+    checked: true,
+    isMultiple: false,
     isNote: "",
-    checked: "",
     "class": "offer-form__checkbox"
   }, null, 8 /* PROPS */, ["onUpdateCheckboxValue"])])]);
 }
