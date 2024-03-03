@@ -4,7 +4,6 @@
         :class="checkboxClasses"
     >
         <input
-            @change="updateCheckboxValue"
             v-model="toggleCheckbox"
             :type="inputType"
             :name="name"
@@ -25,7 +24,7 @@
 </template>
 
 <script>
-    import {computed, defineComponent, toRefs, unref, ref} from "vue";
+    import {computed, defineComponent, toRefs, unref, ref, watch} from "vue";
 
     export default defineComponent({
         name: 'CheckboxForm',
@@ -60,12 +59,16 @@
             },
             name: {
                 type: String,
-                default: '',
+                default: null,
+            },
+            index: {
+                type: Number,
+                default: null,
             },
         },
         setup(props, {emit}) {
             /** Vars */
-            const {required, checked, isNote, isMultiple} = toRefs(props);
+            const {required, checked, isNote, isMultiple, index} = toRefs(props);
             const toggleCheckbox = ref(unref(checked));
 
             /** Computed */
@@ -75,14 +78,13 @@
                 'checkbox-form--is-note': unref(isNote),
             }));
 
-            /** Methods */
-            const updateCheckboxValue = () => {
-                emit('updateCheckboxValue', toggleCheckbox.value);
-            };
+            /** Watchers */
+            watch(toggleCheckbox, (toggleCheckboxVal) => {
+                emit('updateCheckboxValue', toggleCheckboxVal, unref(index));
+            });
 
             return {
                 checkboxClasses,
-                updateCheckboxValue,
                 toggleCheckbox,
                 inputType,
             };

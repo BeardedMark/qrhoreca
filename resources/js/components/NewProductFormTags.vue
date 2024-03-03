@@ -3,19 +3,19 @@
         <div class="new-product-form-tags__block">
             <CheckboxForm
                 v-for="(tag, tagIndex) in tags"
-                :key="`new-product-form__checkbox-${tagIndex}`"
                 @updateCheckboxValue="updateTags"
+                :key="`new-product-form__checkbox-${tagIndex}`"
                 :id="`check${tagIndex}`"
                 :value="tag"
                 :label="tag"
-                :checked="checkedTags.includes(tag)"
+                :index="tagIndex"
                 class="new-product-form-tags__checkbox"
             />
         </div>
     </form>
 </template>
 <script>
-    import {defineComponent, ref} from "vue";
+    import {defineComponent, ref, unref} from "vue";
     import CheckboxForm from "./CheckboxForm.vue";
 
     export default defineComponent({
@@ -29,22 +29,19 @@
             const checkedTags = ref([]);
 
             /** Methods */
-            const updateTags = (tag, isChecked) => {
-                if (isChecked) {
-                    checkedTags.value.push(tag);
-                } else {
-                    const index = checkedTags.value.indexOf(tag);
-                    if (index !== -1) {
-                        checkedTags.value.splice(index, 1);
-                    }
+            const updateTags = (value, index) => {
+                if(value) {
+                    checkedTags.value[index] = tags[index];
+
+                    return;
                 }
-                console.log(checkedTags.value);
+
+                delete checkedTags.value[index];
             };
 
             return {
                 tags,
                 updateTags,
-                checkedTags,
             };
         },
     });
