@@ -20562,7 +20562,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     name: {
       type: String,
-      "default": ''
+      "default": null
+    },
+    index: {
+      type: Number,
+      "default": null
     }
   },
   setup: function setup(props, _ref) {
@@ -20572,7 +20576,8 @@ __webpack_require__.r(__webpack_exports__);
       required = _toRefs.required,
       checked = _toRefs.checked,
       isNote = _toRefs.isNote,
-      isMultiple = _toRefs.isMultiple;
+      isMultiple = _toRefs.isMultiple,
+      index = _toRefs.index;
     var toggleCheckbox = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)((0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(checked));
 
     /** Computed */
@@ -20586,13 +20591,12 @@ __webpack_require__.r(__webpack_exports__);
       };
     });
 
-    /** Methods */
-    var updateCheckboxValue = function updateCheckboxValue() {
-      emit('updateCheckboxValue', toggleCheckbox.value);
-    };
+    /** Watchers */
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(toggleCheckbox, function (toggleCheckboxVal) {
+      emit('updateCheckboxValue', toggleCheckboxVal, (0,vue__WEBPACK_IMPORTED_MODULE_0__.unref)(index));
+    });
     return {
       checkboxClasses: checkboxClasses,
-      updateCheckboxValue: updateCheckboxValue,
       toggleCheckbox: toggleCheckbox,
       inputType: inputType
     };
@@ -21554,21 +21558,16 @@ __webpack_require__.r(__webpack_exports__);
     var checkedTags = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
 
     /** Methods */
-    var updateTags = function updateTags(tag, isChecked) {
-      if (isChecked) {
-        checkedTags.value.push(tag);
-      } else {
-        var index = checkedTags.value.indexOf(tag);
-        if (index !== -1) {
-          checkedTags.value.splice(index, 1);
-        }
+    var updateTags = function updateTags(value, index) {
+      if (value) {
+        checkedTags.value[index] = tags[index];
+        return;
       }
-      console.log(checkedTags.value);
+      delete checkedTags.value[index];
     };
     return {
       tags: tags,
-      updateTags: updateTags,
-      checkedTags: checkedTags
+      updateTags: updateTags
     };
   }
 }));
@@ -23072,10 +23071,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["checkbox-form", _ctx.checkboxClasses])
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    onChange: _cache[0] || (_cache[0] = function () {
-      return _ctx.updateCheckboxValue && _ctx.updateCheckboxValue.apply(_ctx, arguments);
-    }),
-    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return _ctx.toggleCheckbox = $event;
     }),
     type: _ctx.inputType,
@@ -23085,7 +23081,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     value: _ctx.value,
     checked: _ctx.toggleCheckbox,
     "class": "checkbox-form__input"
-  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelDynamic, _ctx.toggleCheckbox]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  }, null, 8 /* PROPS */, _hoisted_1), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelDynamic, _ctx.toggleCheckbox]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "for": _ctx.id,
     "class": "checkbox-form__label"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.label) + " ", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default", {}, undefined, true)], 8 /* PROPS */, _hoisted_2)], 2 /* CLASS */);
@@ -24121,14 +24117,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_CheckboxForm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("CheckboxForm");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("form", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.tags, function (tag, tagIndex) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_CheckboxForm, {
-      key: "new-product-form__checkbox-".concat(tagIndex),
       onUpdateCheckboxValue: _ctx.updateTags,
+      key: "new-product-form__checkbox-".concat(tagIndex),
       id: "check".concat(tagIndex),
       value: tag,
       label: tag,
-      checked: _ctx.checkedTags.includes(tag),
+      index: tagIndex,
       "class": "new-product-form-tags__checkbox"
-    }, null, 8 /* PROPS */, ["onUpdateCheckboxValue", "id", "value", "label", "checked"]);
+    }, null, 8 /* PROPS */, ["onUpdateCheckboxValue", "id", "value", "label", "index"]);
   }), 128 /* KEYED_FRAGMENT */))])]);
 }
 
