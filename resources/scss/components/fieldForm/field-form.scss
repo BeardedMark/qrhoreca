@@ -22,6 +22,12 @@
         background-color: transparent;
         width: 100%;
         padding: 1.05em;
+
+        &::placeholder {
+            font-size: $fz_20;
+            letter-spacing: 0.03em;
+            color: $frame;
+        }
     }
 
     &--is-required {

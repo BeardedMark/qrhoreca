@@ -108,19 +108,19 @@
                 [
                     {
                         page: 'Данные компании',
-                        link: '/',
+                        link: '/company-data',
                         icon: 'company-data',
                         isLink: true,
                     },
                     {
                         page: 'Метки предложений',
-                        link: '/',
+                        link: '/tags',
                         icon: 'tags',
                         isLink: true,
                     },
                     {
                         page: 'Быстрый поиск',
-                        link: '/',
+                        link: '/quick-search',
                         icon: 'quick-search',
                         isLink: true,
                     },

@@ -1,0 +1,30 @@
+.company-data-contacts-form {
+    &__body {
+        border-radius: 2.125em;
+        padding: 0.81em;
+        background-color: $white;
+    }
+
+    &__block {
+        margin-bottom: 1.31em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__title {
+        margin-bottom: 3.43em;
+    }
+}
+
+.company-data-contacts-form-title {
+    padding-left: 2.125em;
+    padding-right: 2.125em;
+
+    &__text {
+        font-size: $fz_20;
+        letter-spacing: 0.03em;
+        color: $accent;
+    }
+}

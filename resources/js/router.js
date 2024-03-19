@@ -1,22 +1,24 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from "./components/Home.vue";
-import Menu from "./components/Menu.vue";
 import About from "./components/About.vue";
+import Basket from "./components/Basket.vue";
 import Contacts from "./components/Contacts.vue";
+import CompanyData from "./components/CompanyData.vue";
 import Catalog from "./components/Catalog.vue";
 import Categories from "./components/Categories.vue";
 import CategoryPage from "./components/CategoryPage.vue";
-import Search from "./components/Search.vue";
-import Basket from "./components/Basket.vue";
-import ProductPage from "./components/ProductPage.vue";
+import Home from "./components/Home.vue";
+import Login from "./components/Login.vue";
+import Menu from "./components/Menu.vue";
+import NewCategory from "./components/NewCategory.vue";
+import NewProduct from "./components/NewProduct.vue";
 import Offer from "./components/Offer.vue";
 import Order from "./components/Order.vue";
 import Profile from "./components/Profile.vue";
-import Login from "./components/Login.vue";
+import ProductPage from "./components/ProductPage.vue";
 import Registration from "./components/Registration.vue";
-import NewCategory from "./components/NewCategory.vue";
-import NewProduct from "./components/NewProduct.vue";
+import Search from "./components/Search.vue";
 import Tags from "./components/Tags.vue";
+import QuickSearch from "./components/QuickSearch.vue";
 
 const routes = [
     {
@@ -104,6 +106,16 @@ const routes = [
         path: '/tags',
         name: 'tags',
         component: Tags,
+    },
+    {
+        path: '/company-data',
+        name: 'company-data',
+        component: CompanyData,
+    },
+    {
+        path: '/quick-search',
+        name: 'quick-search',
+        component: QuickSearch,
     },
     {
         path: '/product/:id',
