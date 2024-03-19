@@ -16,6 +16,7 @@ import Login from "./components/Login.vue";
 import Registration from "./components/Registration.vue";
 import NewCategory from "./components/NewCategory.vue";
 import NewProduct from "./components/NewProduct.vue";
+import Tags from "./components/Tags.vue";
 
 const routes = [
     {
@@ -98,6 +99,11 @@ const routes = [
         path: '/new-product',
         name: 'new-product',
         component: NewProduct,
+    },
+    {
+        path: '/tags',
+        name: 'tags',
+        component: Tags,
     },
     {
         path: '/product/:id',

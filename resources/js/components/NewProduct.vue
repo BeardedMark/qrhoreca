@@ -24,7 +24,7 @@
                     <span class="new-product-subtitle__text">
                         При необходимости можете
                         <router-link
-                            to=""
+                            to="/tags"
                             class="new-product-subtitle__link"
                         >
                             редактировать

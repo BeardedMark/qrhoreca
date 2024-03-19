@@ -1,5 +1,11 @@
 <template>
     <div class="app">
+        <Transition>
+            <component
+                :is="modalName"
+                v-if="modalName"
+            ></component>
+        </Transition>
         <div class="app__layout">
             <Header class="app__header" />
             <main class="app__main">
@@ -18,20 +24,23 @@
         unref,
         watch,
     } from "vue";
+    import {siteStore} from "../constants/store";
+    import {getOrder, modal} from "../constants/storeGetters";
     import Footer from "./Footer.vue";
     import Header from "./Header.vue";
-    import {siteStore} from "../constants/store";
-    import {getOrder} from "../constants/storeGetters";
+    import Modal from "./Modal.vue";
 
     export default defineComponent({
         name: 'AppComponent',
         components: {
             Footer,
             Header,
+            Modal,
         },
         setup() {
             /** Computed */
             const currentOrder = computed(() => unref(getOrder));
+            const modalName = computed(() => unref(modal) || null);
 
             /** Watchers */
             watch(currentOrder, (newValue) => {
@@ -44,6 +53,10 @@
                     unref(siteStore).setOrder(JSON.parse(localStorage.getItem('order')));
                 }
             });
+
+            return {
+                modalName,
+            };
         },
     });
 </script>

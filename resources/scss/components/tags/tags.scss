@@ -1,0 +1,103 @@
+.tags {
+    &__top {
+        margin-bottom: 3.44em;
+        padding-left: 2.125em;
+        padding-right: 2.125em;
+    }
+
+    &__title {
+        margin-bottom: 0.625em;
+    }
+
+    &__subtitle {
+        margin-bottom: 0.625em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__list {
+        padding: 1.375em;
+        border-radius: 2.125em;
+        background-color: $white;
+        margin-bottom: 3.44em;
+    }
+
+    &__item {
+        margin-bottom: 2.44em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__separator {
+        @include separatorStyles;
+    }
+
+    &__btns {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -1.06em;
+        margin-right: -1.06em;
+    }
+
+    &__back,
+    &__add {
+        margin-left: 1.06em;
+        margin-right: 1.06em;
+    }
+
+    &__add {
+        min-width: 10.31em;
+        height: 4em;
+    }
+}
+
+.tags-title {
+    &__text {
+        font-size: $fz_20;
+        letter-spacing: 0.6px;
+        color: $accent;
+    }
+}
+
+.tags-subtitle {
+    &__text {
+        font-size: $fz_14;
+        color: $midgray;
+    }
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+
+    &__picture {
+        width: 1.5em;
+        height: 1.5em;
+        margin-right: 1.375em;
+    }
+
+    &__img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    &__name {
+        font-size: $fz_20;
+        letter-spacing: 0.03em;
+    }
+}
+
+.tags-back {
+    &__text {
+        color: $accent;
+        font-size: $fz_20;
+        line-height: 1.1;
+        letter-spacing: 0.6px;
+    }
+}
