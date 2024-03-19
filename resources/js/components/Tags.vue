@@ -79,7 +79,7 @@ export default {
     },
     setup() {
         const addTag = () => {
-            siteStore.openModal();
+            siteStore.openModal('ModalAddTags');
         };
 
         return {

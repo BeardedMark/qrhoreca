@@ -9,7 +9,7 @@
                 @click="hideModal"
                 class="modal__close modal-close"
             ></div>
-            писька
+            <slot></slot>
         </div>
     </div>
 </template>

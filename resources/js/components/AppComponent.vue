@@ -28,14 +28,14 @@
     import {getOrder, modal} from "../constants/storeGetters";
     import Footer from "./Footer.vue";
     import Header from "./Header.vue";
-    import Modal from "./Modal.vue";
+    import ModalAddTags from "./ModalAddTags.vue";
 
     export default defineComponent({
         name: 'AppComponent',
         components: {
             Footer,
             Header,
-            Modal,
+            ModalAddTags,
         },
         setup() {
             /** Computed */

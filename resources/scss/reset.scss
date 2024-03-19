@@ -62,6 +62,7 @@ button {
   font-size: inherit;
   cursor: pointer;
   user-select: none;
+  background-color: transparent;
 
   &::-moz-focus-inner {
     padding: 0;
