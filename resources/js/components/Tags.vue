@@ -31,14 +31,15 @@
             </div>
         </div>
         <div class="tags__btns">
-            <router-link
-                to="/new-product"
+            <button
+                @click="backPage"
+                type="button"
                 class="tags__back tags-back"
             >
                 <span class="tags-back__text">
                     Назад
                 </span>
-            </router-link>
+            </button>
             <Button
                 @click="addTag"
                 theme="light"
@@ -68,26 +69,36 @@
     import {siteStore} from "../constants/store.js";
     import Separator from "./Separator.vue";
     import Info from "./Info.vue";
-    import Button from "./Button";
+    import Button from "./Button.vue";
+    import {defineComponent} from "vue";
+    import {useRouter} from "vue-router";
 
-export default {
-    name: "Tags",
-    components: {
-        Separator,
-        Info,
-        Button,
-    },
-    setup() {
-        const addTag = () => {
-            siteStore.openModal('ModalAddTags');
-        };
+    export default defineComponent({
+        name: "Tags",
+        components: {
+            Separator,
+            Info,
+            Button,
+        },
+        setup() {
+            /** Features */
+            const router = useRouter();
 
-        return {
-            indicators,
-            addTag,
-        };
-    },
-}
+            /** Mthods */
+            const backPage = () => {
+                router.back();
+            };
+            const addTag = () => {
+                siteStore.openModal('ModalAddTags');
+            };
+
+            return {
+                indicators,
+                addTag,
+                backPage,
+            };
+        },
+    });
 </script>
 
 <style scoped lang="scss">

@@ -43,7 +43,7 @@
 <script>
     import {defineComponent, ref, onMounted, unref} from "vue";
     import {siteStore} from "../constants/store.js";
-    import Button from "./Button";
+    import Button from "./Button.vue";
     import FieldForm from "./FieldForm.vue";
 
     export default defineComponent({

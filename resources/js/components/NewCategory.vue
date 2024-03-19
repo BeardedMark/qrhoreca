@@ -33,8 +33,8 @@
 <script>
     import {defineComponent} from "vue";
     import NewCategoryForm from "./NewCategoryForm.vue";
-    import Separator from "./Separator";
-    import Info from "./Info";
+    import Separator from "./Separator.vue";
+    import Info from "./Info.vue";
 
     export default defineComponent({
         name: "NewCategory",

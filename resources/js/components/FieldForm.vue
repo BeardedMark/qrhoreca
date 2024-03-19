@@ -24,6 +24,7 @@
                 v-model="inputValue"
                 :type="type"
                 :required="required"
+                :placeholder="placeholder"
                 class="field-form__input"
             >
         </div>
@@ -51,6 +52,10 @@
             noSpaces: {
                 type: Boolean,
                 default: false,
+            },
+            placeholder: {
+                type: String,
+                default: '',
             },
         },
         setup(props, {emit}) {

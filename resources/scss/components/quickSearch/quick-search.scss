@@ -1,0 +1,59 @@
+.quick-search {
+    &__top {
+        margin-bottom: 3.44em;
+        padding-left: 2.125em;
+        padding-right: 2.125em;
+    }
+
+    &__title {
+        margin-bottom: 0.625em;
+    }
+
+    &__subtitle {
+        margin-bottom: 0.625em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__separator {
+        @include separatorStyles;
+    }
+
+    &__list {
+        border-radius: 2.125em;
+        padding: 0.81em;
+        background-color: $white;
+        margin-bottom: 3.44em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.quick-search-title {
+    &__text {
+        font-size: $fz_20;
+        letter-spacing: 0.6px;
+        color: $accent;
+    }
+}
+
+.quick-search-subtitle {
+    &__text {
+        font-size: $fz_14;
+        color: $midgray;
+    }
+}
+
+.quick-search-item {
+    &__name {
+
+    }
+
+    &__btn {
+
+    }
+}
