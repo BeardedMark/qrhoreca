@@ -13,6 +13,7 @@ const state = reactive({
         },
     ],
     categories: [],
+    modal: '',
 });
 
 const setOrder = (value) => {
@@ -44,10 +45,22 @@ const setNewCategory = (name, imageUrl, description) => {
     }
 };
 
+const openModal = () => {
+    state.modal = 'Modal';
+    document.body.style.overflow = 'hidden';
+};
+
+const closeModal = () => {
+    state.modal = null;
+    document.body.style.overflow = 'scroll';
+};
+
 export const siteStore = readonly({
     setOrder,
     state,
     logOut,
     setAdminData,
     setNewCategory,
+    openModal,
+    closeModal,
 });
