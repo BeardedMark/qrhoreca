@@ -45,8 +45,8 @@ const setNewCategory = (name, imageUrl, description) => {
     }
 };
 
-const openModal = () => {
-    state.modal = 'Modal';
+const openModal = (modal) => {
+    state.modal = modal;
     document.body.style.overflow = 'hidden';
 };
 

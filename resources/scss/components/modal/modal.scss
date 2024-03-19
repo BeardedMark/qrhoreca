@@ -21,13 +21,15 @@
 
     &__content {
         position: relative;
-        padding: 1.625em 0.81em 0.81em;
+        padding: 0.81em;
         border-radius: 2.125em;
         background-color: $white;
         min-width: 33.5em;
         max-width: 100%;
-        height: 40em;
+        height: 40.2em;
         max-height: 100%;
+        display: flex;
+        flex-direction: column;
     }
 
     &__close {

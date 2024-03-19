@@ -1,0 +1,85 @@
+.modal-add-tags {
+    &__title {
+        margin-bottom: 0.625em;
+    }
+
+    &__top {
+        padding: 0.81em 2.625em 0.81em 1.31em;
+        margin-bottom: 1.31em;
+    }
+
+    &__scroll {
+        flex-grow: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    &__btns {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -1.06em;
+        margin-right: -1.06em;
+        margin-top: 1.31em;
+    }
+
+    &__back,
+    &__save {
+        margin-left: 1.06em;
+        margin-right: 1.06em;
+    }
+
+    &__save {
+        min-width: 10.875em;
+        height: 4em;
+    }
+
+    &__block {
+        margin-bottom: 0.81em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__field {
+        background-color: $background;
+        border-radius: 1.31em;
+        overflow: hidden;
+        height: 9.5em;
+    }
+
+    &__input {
+        resize: none;
+        color: $dark;
+        font-size: $fz_20;
+        letter-spacing: 0.6px;
+        background-color: transparent;
+        width: 100%;
+        padding: 1.05em;
+    }
+}
+
+.modal-add-tags-title {
+    &__text {
+        font-size: $fz_20;
+        letter-spacing: 0.03em;
+        color: $accent;
+    }
+}
+
+.modal-add-tags-subtitle {
+    &__text {
+        font-size: $fz_14;
+        color: $midgray;
+    }
+}
+
+
+.modal-add-tags-back {
+    &__text {
+        color: $accent;
+        font-size: $fz_20;
+        letter-spacing: 0.6px;
+    }
+}
