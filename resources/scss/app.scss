@@ -8,6 +8,7 @@
     display: flex;
     justify-content: center;
     background-color: $background;
+    color: $dark;
 
     @media (min-width: 1921px) {
         font-size: calc(16 / 1921 * 100vw);

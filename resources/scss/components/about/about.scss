@@ -1,0 +1,53 @@
+.about {
+    &__top {
+        margin-bottom: 3.44em;
+        padding-left: 2.125em;
+        padding-right: 2.125em;
+    }
+
+    &__title {
+        margin-bottom: 0.625em;
+    }
+
+    &__subtitle {
+        margin-bottom: 0.625em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__separator {
+        @include separatorStyles;
+    }
+
+    &__content {
+        padding: 1.31em 2.125em;
+        margin-bottom: 3.44em;
+    }
+
+    &__text {
+        font-size: $fz_20;
+        letter-spacing: 0.03em;
+        margin-bottom: 2.125em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.about-title {
+    &__text {
+        font-size: $fz_20;
+        letter-spacing: 0.6px;
+        color: $accent;
+    }
+}
+
+.about-subtitle {
+    &__text {
+        font-size: $fz_14;
+        color: $midgray;
+    }
+}
