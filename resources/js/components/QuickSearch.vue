@@ -12,32 +12,33 @@
                 </span>
             </p>
         </div>
-        <div class="quick-search__list">
-            <div
+        <ul class="quick-search__list">
+            <li
                 v-for="(listItem, listItemIndex) in quickSearchList"
                 :key="`quick-search__item-${listItemIndex}`"
                 class="quick-search__item quick-search-item"
             >
-                <span class="quick-search-item__name">
-                    {{ listItem }}
-                </span>
+                <p class="quick-search-item__name quick-search-item-name">
+                        <span class="quick-search-item-name__label">
+                            {{ listItem }}
+                        </span>
+                </p>
                 <span
                     @click="onDeleteClick(listItem)"
                     class="quick-search-item__btn"
                 >
-                    удалить
-                </span>
-            </div>
-            <div class="quick-search__item quick-search-item">
+                        удалить
+                    </span>
+            </li>
+            <li class="quick-search__item quick-search-field">
                 <input
-                    @change="newItemChange"
                     v-model="newItem"
                     type="text"
                     placeholder="Добавить"
-                    class="quick-search-item__input"
+                    class="quick-search-field__input"
                 >
-            </div>
-        </div>
+            </li>
+        </ul>
         <div class="quick-search__btns">
             <router-link
                 to="/profile"
@@ -99,15 +100,18 @@
             const onDeleteClick = (listItem) => {
                 quickSearchList.value = unref(quickSearchList).filter((item) => item !== listItem);
             };
-            const newItemChange = () => {
-
+            const onSaveClick = () => {
+                if (unref(newItem).trim()) {
+                    quickSearchList.value.push(unref(newItem))
+                    newItem.value = '';
+                }
             };
 
             return {
                 quickSearchList,
                 onDeleteClick,
-                newItemChange,
                 newItem,
+                onSaveClick,
             };
         },
     });

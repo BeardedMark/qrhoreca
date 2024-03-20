@@ -31,6 +31,33 @@
             margin-bottom: 0;
         }
     }
+
+    &__item {
+        margin-bottom: 1.31em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__btns {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -1.06em;
+        margin-right: -1.06em;
+    }
+
+    &__cansel,
+    &__save {
+        margin-left: 1.06em;
+        margin-right: 1.06em;
+    }
+
+    &__save {
+        min-width: 10.31em;
+        height: 4em;
+    }
 }
 
 .quick-search-title {
@@ -49,11 +76,50 @@
 }
 
 .quick-search-item {
-    &__name {
-
-    }
+    background-color: $background;
+    border-radius: 1.31em;
+    padding: 1.31em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     &__btn {
+        font-size: $fz_14;
+        text-align: right;
+        color: $accent;
+        cursor: pointer;
+    }
+}
 
+.quick-search-item-name {
+    padding-right: 0.625em;
+
+    &__label {
+        font-size: $fz_20;
+        letter-spacing: 0.03em;
+    }
+}
+
+.quick-search-field {
+    &__input {
+        background-color: $background;
+        border-radius: 1.31em;
+        padding: 1.31em;
+        width: 100%;
+        font-size: $fz_20;
+        letter-spacing: 0.03em;
+
+        &::placeholder {
+            color: $frame;
+        }
+    }
+}
+
+.quick-search-cansel {
+    &__text {
+        color: $accent;
+        font-size: $fz_20;
+        line-height: 1.1;
+        letter-spacing: 0.6px;
     }
 }

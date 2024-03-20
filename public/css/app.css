@@ -6,6 +6,7 @@
   display: flex;
   justify-content: center;
   background-color: #F5F6F8;
+  color: #333333;
 }
 @media (min-width: 1921px) {
   .app {
