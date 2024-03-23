@@ -12,6 +12,10 @@
         flex-grow: 1;
         overflow-y: auto;
         overflow-x: hidden;
+        padding-right: 0.375em;
+        margin-right: -0.1875em;
+
+        @include scrollbarStyles;
     }
 
     &__btns {

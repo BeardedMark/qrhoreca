@@ -14,10 +14,15 @@ const state = reactive({
     ],
     categories: [],
     modal: '',
+    newProductCategory: '', //хранилище значений для выбора категории нового продукта
 });
 
 const setOrder = (value) => {
     state.order = value;
+};
+
+const setNewProductCategory = (value) => {
+    state.newProductCategory = value;
 };
 
 const logOut = () => {
@@ -63,4 +68,5 @@ export const siteStore = readonly({
     setNewCategory,
     openModal,
     closeModal,
+    setNewProductCategory,
 });

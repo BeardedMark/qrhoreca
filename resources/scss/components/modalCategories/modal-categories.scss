@@ -1,0 +1,136 @@
+.modal-categories {
+    &__title {
+        margin-bottom: 0.625em;
+    }
+
+    &__top {
+        position: relative;
+        padding: 0.81em 2.625em 1.625em 1.31em;
+        margin-bottom: 0.81em;
+
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 1px;
+            width: 100%;
+            background-color: $lightgray;
+        }
+    }
+
+    &__list {
+        flex-grow: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+
+        @include scrollbarStyles;
+    }
+
+    &__category {
+        margin-bottom: 0.81em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__btns {
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 1.68em;
+
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0.81em;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 1px;
+            width: 100%;
+            background-color: $lightgray;
+        }
+    }
+
+    &__save {
+        min-width: 10.875em;
+        height: 4em;
+    }
+
+    &__block {
+        margin-bottom: 0.81em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__field {
+        background-color: $background;
+        border-radius: 1.31em;
+        overflow: hidden;
+        height: 9.5em;
+    }
+
+    &__input {
+        resize: none;
+        color: $dark;
+        font-size: $fz_20;
+        letter-spacing: 0.6px;
+        background-color: transparent;
+        width: 100%;
+        padding: 1.05em;
+    }
+}
+
+.modal-categories-title {
+    &__text {
+        font-size: $fz_20;
+        letter-spacing: 0.03em;
+        color: $accent;
+    }
+}
+
+.modal-categories-subtitle {
+    &__text {
+        font-size: $fz_14;
+        color: $midgray;
+    }
+}
+
+.modal-category {
+    $self: &;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.81em 0.69em 0.81em 1.31em;
+    cursor: pointer;
+
+    &__name {
+        font-size: $fz_20;
+        letter-spacing: 0.03em;
+        transition: .3s;
+    }
+
+    &__amount {
+        font-size: $fz_14;
+        color: $midgray;
+        padding-left: 0.81em;
+        flex-shrink: 0;
+    }
+
+    &--is-selected {
+        #{$self} {
+            &__name {
+                color: $accent;
+            }
+        }
+    }
+}

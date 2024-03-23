@@ -29,6 +29,7 @@
     import Footer from "./Footer.vue";
     import Header from "./Header.vue";
     import ModalAddTags from "./ModalAddTags.vue";
+    import ModalCategories from "./ModalCategories.vue";
 
     export default defineComponent({
         name: 'AppComponent',
@@ -36,6 +37,7 @@
             Footer,
             Header,
             ModalAddTags,
+            ModalCategories,
         },
         setup() {
             /** Computed */

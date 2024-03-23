@@ -2,3 +2,17 @@
     width: calc(100% - 4.25em);
     margin: 3.44em auto;
 }
+
+@mixin scrollbarStyles {
+    &::-webkit-scrollbar {
+        width: 0.375em;
+    }
+    &::-webkit-scrollbar-track {
+        background: white;
+        border-radius: 3px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: $midgray;
+        border-radius: 3px;
+    }
+}

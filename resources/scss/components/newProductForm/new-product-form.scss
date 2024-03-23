@@ -12,6 +12,13 @@
         }
     }
 
+    &__field {
+        display: flex;
+        background-color: $background;
+        border-radius: 1.31em;
+        overflow: hidden;
+    }
+
     &__btns {
         display: flex;
         justify-content: center;
@@ -98,5 +105,37 @@
         &_reset {
             box-sizing: border-box;
         }
+    }
+}
+
+.new-product-form-field {
+    &__input {
+        color: $dark;
+        font-size: $fz_20;
+        letter-spacing: 0.6px;
+        background-color: transparent;
+        width: 100%;
+        padding: 1.05em;
+
+        &::placeholder {
+            font-size: $fz_20;
+            letter-spacing: 0.03em;
+            color: $frame;
+        }
+    }
+
+    &__btn {
+        padding-right: 1.05em;
+        padding-left: 1.05em;
+    }
+}
+
+.new-product-form-field-btn {
+    background-color: transparent;
+
+    &__text {
+        color: $accent;
+        font-size: $fz_14;
+        white-space: nowrap;
     }
 }
