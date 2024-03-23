@@ -35,14 +35,15 @@
             </div>
             <NewProductFormTags class="new-product__form"/>
             <div class="new-product__btns">
-                <router-link
-                    to="/profile"
+                <button
+                    @click="backPage"
+                    type="button"
                     class="new-product__cansel new-product-cansel"
                 >
                     <span class="new-product-cansel__text">
                         Отмена
                     </span>
-                </router-link>
+                </button>
                 <Button
                     @click="onSaveClick"
                     theme="light"
@@ -57,10 +58,11 @@
 </template>
 <script>
     import {defineComponent} from "vue";
+    import {useRouter} from "vue-router";
     import NewProductForm from "./NewProductForm.vue";
     import NewProductFormTags from "./NewProductFormTags.vue";
-    import Separator from "./Separator";
-    import Button from "./Button";
+    import Separator from "./Separator.vue";
+    import Button from "./Button.vue";
 
     export default defineComponent({
         name: "NewProduct",
@@ -71,13 +73,21 @@
             Button,
         },
         setup() {
+            /** Features */
+            const router = useRouter();
+
             /** Methods */
             const onSaveClick = () => {
                 alert('Сохранить');
             };
+            const backPage = () => {
+                router.back();
+            };
+
 
             return {
                 onSaveClick,
+                backPage,
             };
         },
     });

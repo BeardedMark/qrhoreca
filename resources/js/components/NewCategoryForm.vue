@@ -22,14 +22,15 @@
             </FieldForm>
         </div>
         <div class="new-category-form__btns">
-            <router-link
-                to="/profile"
+            <button
+                @click="backPage"
+                type="button"
                 class="new-category-form__cansel new-category-form-cansel"
             >
-                    <span class="new-category-form-cansel__text">
-                        Отмена
-                    </span>
-            </router-link>
+                <span class="new-category-form-cansel__text">
+                    Отмена
+                </span>
+            </button>
             <Button
                 @click="onSaveClick"
                 theme="light"
@@ -43,6 +44,7 @@
 <script>
     import {defineComponent, ref, onMounted, unref} from "vue";
     import {siteStore} from "../constants/store.js";
+    import {useRouter} from "vue-router";
     import Button from "./Button.vue";
     import FieldForm from "./FieldForm.vue";
 
@@ -59,6 +61,9 @@
             const editorData = ref('');
             const editor = ref(null);
 
+            /** Features */
+            const router = useRouter();
+
             /** Methods */
             const updateCategoryName = (value) => {
                 categoryName.value = value;
@@ -69,6 +74,9 @@
             const onSaveClick = () => {
                 alert('Сохранить');
                 siteStore.setNewCategory(unref(categoryName), unref(imageLink), unref(editorData));
+            };
+            const backPage = () => {
+                router.back();
             };
 
             /** life cycles */
@@ -97,6 +105,7 @@
                 onSaveClick,
                 updateCategoryName,
                 updateImageLink,
+                backPage,
 
             };
         },
