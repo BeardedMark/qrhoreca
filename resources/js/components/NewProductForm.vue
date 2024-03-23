@@ -7,6 +7,32 @@
             class="new-product-form__block"
         />
         <FieldForm
+            label="Категория"
+            class="new-product-form__block"
+        >
+            <template #customInput>
+                <div
+                    class="new-product-form__field new-product-form-field"
+                >
+                    <input
+                        type="text"
+                        v-model="category"
+                        :placeholder="`не выбрано`"
+                        class="new-product-form-field__input"
+                    >
+                    <button
+                        @click="openCategorySelection"
+                        type="button"
+                        class="new-product-form-field__btn new-product-form-field-btn"
+                    >
+                        <span class="new-product-form-field-btn__text">
+                            выбрать
+                        </span>
+                    </button>
+                </div>
+            </template>
+        </FieldForm>
+        <FieldForm
             @updateInputValue="updatePrice"
             label="Стоимость"
             class="new-product-form__block"
@@ -37,8 +63,10 @@
     </form>
 </template>
 <script>
-    import {defineComponent, ref, onMounted} from "vue";
-    import Button from "./Button";
+    import {defineComponent, ref, onMounted, watch} from "vue";
+    import {siteStore} from "../constants/store";
+    import {newProductCategory} from "../constants/storeGetters";
+    import Button from "./Button.vue";
     import FieldForm from "./FieldForm.vue";
 
     export default defineComponent({
@@ -50,6 +78,7 @@
         setup() {
             /** Vars */
             const productName = ref('');
+            const category = ref('');
             const price = ref('');
             const quantity = ref('');
             const cookingTime = ref('');
@@ -73,6 +102,14 @@
             const updateImageLink = (value) => {
                 imageLink.value = value;
             };
+            const openCategorySelection = () => {
+                siteStore.openModal('ModalCategories');
+            };
+
+            /** Watchers */
+            watch(newProductCategory, (val) => {
+                category.value = val;
+            });
 
             /** life cycles */
             onMounted(() => {
@@ -102,6 +139,8 @@
                 updateQuantity,
                 updateCookingTime,
                 updateImageLink,
+                category,
+                openCategorySelection,
             };
         },
     });
