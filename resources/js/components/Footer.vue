@@ -101,7 +101,7 @@
     import IconButtonInnerLink from "./IconButtonInnerLink.vue";
     import IconButtonOuterLink from "./IconButtonOuterLink.vue";
     import IconButtonAction from "./IconButtonAction.vue";
-    import {userId} from "../constants/storeGetters";
+    import {isАuthorizedUser} from "../constants/storeGetters";
     import {useRouter} from "vue-router";
     import Button from "./Button";
 
@@ -127,7 +127,7 @@
             const getPhoneLink = (tel) => tel.link ? 'tel:' + tel.text.replace(/[\s()-]/g, '') : null;
             const getEmailLink = (email) => email.link ? `mailto:${email.text}` : '';
             const onAdminClick = () => {
-                if(unref(userId)) {
+                if(unref(isАuthorizedUser)) {
                     router.push('/profile');
                     return;
                 }
@@ -146,6 +146,7 @@
         },
     });
 </script>
+
 <style scoped lang="scss">
     @import "resources/scss/components/footer/component";
 </style>

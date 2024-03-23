@@ -51,6 +51,7 @@
         },
     });
 </script>
+
 <style scoped lang="scss">
     @import "resources/scss/components/iconButton/component";
 </style>

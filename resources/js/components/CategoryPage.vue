@@ -12,6 +12,18 @@
                 </span>
             </p>
         </div>
+        <AdminPanel
+            v-if="isАuthorizedUser"
+            class="category-page__admin category-page-admin"
+        >
+            <AdminButton
+                v-for="(btn, btnIndex) in adminButtons"
+                :key="`category-page-admin__btn-${btnIndex}`"
+                @click="onAdminBtnClick(btnIndex)"
+                :btnSettings="btn"
+                class="category-page-admin__btn"
+            />
+        </AdminPanel>
         <div class="category-page__cards">
             <Product
                 v-for="(product, productIndex) in productsList"
@@ -44,11 +56,14 @@
     } from "vue";
     import {categoriesListData, products} from "../constants/categoriesListData";
     import {indicators} from "./../constants/indicators";
+    import {useRouter} from "vue-router";
+    import {isАuthorizedUser} from "../constants/storeGetters";
     import Product from "./Product.vue";
     import Button from "./Button.vue";
     import Descriptions from "./Descriptions.vue";
     import Separator from "./Separator.vue";
-    import {useRouter} from "vue-router";
+    import AdminPanel from "./AdminPanel.vue";
+    import AdminButton from "./AdminButton.vue";
 
     export default defineComponent({
         name: "CategoryPage",
@@ -57,6 +72,8 @@
             Button,
             Descriptions,
             Separator,
+            AdminButton,
+            AdminPanel,
         },
         props: {
             id: {
@@ -79,16 +96,75 @@
             const redirectToCategories = () => {
                 router.push('/categories');
             };
+            const addNewProduct = () => {
+                alert('Новое предложение');
+                router.push('/new-product');
+            };
+            const changeVisibility = () => {
+                alert('Скрыть категорию');
+            };
+            const edit = () => {
+                alert('Редактировать категорию');
+                router.push('/new-category');
+            };
+            const duplicate = () => {
+                alert('Дублировать категорию');
+                router.push('/new-category');
+            };
+            const deleteCategory = () => {
+                alert('Удалить категорию');
+                router.back();
+            };
+            const onAdminBtnClick = (idx) => {
+                adminButtons[idx].handler();
+            };
+
+            const adminButtons = [
+                {
+                    text: 'Новое предложение',
+                    icon: 'add-offer.png',
+                    classMod: '',
+                    handler: addNewProduct,
+                },
+                {
+                    text: 'Скрыть категорию',
+                    icon: 'turn-off-visibility.png',
+                    classMod: '',
+                    handler: changeVisibility,
+                },
+                {
+                    text: 'Редактировать категорию',
+                    icon: 'edit.png',
+                    classMod: '',
+                    handler: edit,
+                },
+                {
+                    text: 'Дублировать категорию',
+                    icon: 'add.png',
+                    classMod: '',
+                    handler: duplicate,
+                },
+                {
+                    text: 'Удалить категорию',
+                    icon: 'delete.png',
+                    classMod: 'accent',
+                    handler: deleteCategory,
+                },
+            ];
 
             return {
                 category,
                 productsList,
                 redirectToCategories,
                 indicators,
+                isАuthorizedUser,
+                adminButtons,
+                onAdminBtnClick,
             };
         },
     });
 </script>
+
 <style scoped lang="scss">
     @import "resources/scss/components/categoryPage/component";
 </style>

@@ -32,6 +32,18 @@
                 </p>
             </div>
         </div>
+        <AdminPanel
+            v-if="isАuthorizedUser"
+            class="product-page__admin product-page-admin"
+        >
+            <AdminButton
+                v-for="(btn, btnIndex) in adminButtons"
+                :key="`product-page-admin__btn-${btnIndex}`"
+                @click="onAdminBtnClick(btnIndex)"
+                :btnSettings="btn"
+                class="product-page-admin__btn"
+            />
+        </AdminPanel>
         <div
             v-if="product.description.length"
             class="product-page__descr product-page-descr"
@@ -79,17 +91,23 @@
     import {computed, ref, toRefs, unref, watch} from "vue";
     import {products} from "../constants/categoriesListData";
     import {indicators} from "../constants/indicators";
-    import Button from "./Button";
-    import Separator from "./Separator";
-    import Info from "./Info";
-    import Indicators from "./Indicators";
-    import ProductQuantity from "./ProductQuantity.vue";
     import {getOrder} from "../constants/storeGetters";
     import {changeOrderFunc} from "../constants/changeOrderFunc";
+    import {isАuthorizedUser} from "../constants/storeGetters";
+    import {useRouter} from "vue-router";
+    import Button from "./Button.vue";
+    import Separator from "./Separator.vue";
+    import Info from "./Info.vue";
+    import Indicators from "./Indicators.vue";
+    import ProductQuantity from "./ProductQuantity.vue";
+    import AdminPanel from "./AdminPanel.vue";
+    import AdminButton from "./AdminButton.vue";
 
     export default {
         name: "ProductPage",
         components: {
+            AdminButton,
+            AdminPanel,
             Indicators,
             Info,
             Button,
@@ -107,6 +125,9 @@
             const {id} = toRefs(props);
             const productQuantity = ref(unref(getOrder).find((item) => item.id === Number(unref(id)))?.quantity || 0);
 
+            /** Features */
+            const router = useRouter();
+
             /** Computed */
             const showQuantitySelection = computed(() => unref(productQuantity) >= 1);
             const product = computed(() => products.find((item) => item.id === Number(unref(id))));
@@ -122,6 +143,51 @@
             const hideQuantitySelection = () => {
                 updateOrder(0);
             };
+            const edit = () => {
+                alert('Редактировать предложение');
+                router.push('/new-product');
+            };
+            const changeVisibility = () => {
+                alert('Раскрыть предложение');
+            };
+            const duplicate = () => {
+                alert('Дублировать предложение');
+                router.push('/new-product');
+            };
+            const deleteProduct = () => {
+                alert('Удалить предложение');
+                router.back();
+            };
+            const onAdminBtnClick = (idx) => {
+                adminButtons[idx].handler();
+            };
+
+            const adminButtons = [
+                {
+                    text: 'Редактировать предложение',
+                    icon: 'edit.png',
+                    classMod: '',
+                    handler: edit,
+                },
+                {
+                    text: 'Раскрыть предложение',
+                    icon: 'visibility-enable.png',
+                    classMod: '',
+                    handler: changeVisibility,
+                },
+                {
+                    text: 'Дублировать предложение',
+                    icon: 'add.png',
+                    classMod: '',
+                    handler: duplicate,
+                },
+                {
+                    text: 'Удалить предложение',
+                    icon: 'delete.png',
+                    classMod: 'accent',
+                    handler: deleteProduct,
+                },
+            ];
 
             /** Wathers */
             watch(productQuantity, (newValue) => {
@@ -129,17 +195,21 @@
             });
 
             return {
-              product,
-              getIndicatorImage,
-              buttonHandler,
-              showQuantitySelection,
-              hideQuantitySelection,
-              productQuantity,
-              updateOrder,
+                product,
+                getIndicatorImage,
+                buttonHandler,
+                showQuantitySelection,
+                hideQuantitySelection,
+                productQuantity,
+                updateOrder,
+                isАuthorizedUser,
+                adminButtons,
+                onAdminBtnClick,
             };
         },
     }
 </script>
+
 <style scoped lang="scss">
-@import "../../scss/components/productPage/component";
+    @import "resources/scss/components/productPage/component";
 </style>

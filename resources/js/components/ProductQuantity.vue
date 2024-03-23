@@ -79,6 +79,7 @@
         },
     });
 </script>
+
 <style scoped lang="scss">
-@import "resources/scss/components/productQuantity/component";
+    @import "resources/scss/components/productQuantity/component";
 </style>

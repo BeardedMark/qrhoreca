@@ -88,5 +88,5 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-@import "../../scss/components/offerFormPersonal/component";
+    @import "resources/scss/components/offerFormPersonal/component";
 </style>

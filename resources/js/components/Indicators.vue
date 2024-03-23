@@ -36,6 +36,7 @@
         },
     });
 </script>
+
 <style scoped lang="scss">
-@import "resources/scss/components/indicators/component";
+    @import "resources/scss/components/indicators/component";
 </style>

@@ -55,6 +55,7 @@
         },
     });
 </script>
+
 <style scoped lang="scss">
-@import "resources/scss/components/searchPanel/component";
+    @import "resources/scss/components/searchPanel/component";
 </style>

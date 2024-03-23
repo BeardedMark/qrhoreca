@@ -40,6 +40,7 @@
         },
     });
 </script>
+
 <style scoped lang="scss">
-@import "resources/scss/components/button/component";
+    @import "resources/scss/components/button/component";
 </style>

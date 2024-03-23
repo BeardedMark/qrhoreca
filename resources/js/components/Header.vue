@@ -126,6 +126,7 @@
         },
     });
 </script>
+
 <style scoped lang="scss">
     @import "resources/scss/components/header/component";
 </style>

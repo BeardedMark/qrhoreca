@@ -115,6 +115,7 @@
         },
     });
 </script>
+
 <style scoped lang="scss">
-@import "../../scss/components/product/component";
+    @import "resources/scss/components/product/component";
 </style>

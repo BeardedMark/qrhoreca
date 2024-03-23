@@ -63,5 +63,5 @@
 </script>
 
 <style scoped lang="scss">
-@import "resources/scss/components/companyDataContactsForm/component";
+    @import "resources/scss/components/companyDataContactsForm/component";
 </style>

@@ -104,5 +104,5 @@
 </script>
 
 <style scoped lang="scss">
-@import "resources/scss/components/newCategoryForm/component";
+    @import "resources/scss/components/newCategoryForm/component";
 </style>

@@ -51,5 +51,5 @@
 </script>
 
 <style scoped lang="scss">
-@import "resources/scss/components/about/component";
+    @import "resources/scss/components/about/component";
 </style>

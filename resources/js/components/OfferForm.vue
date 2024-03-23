@@ -95,5 +95,5 @@
 </script>
 
 <style scoped lang="scss">
-@import "../../scss/components/offerForm/component";
+    @import "resources/scss/components/offerForm/component";
 </style>

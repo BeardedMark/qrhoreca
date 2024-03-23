@@ -55,6 +55,7 @@ import FieldForm from "./FieldForm.vue";
         },
     });
 </script>
+
 <style scoped lang="scss">
-@import "resources/scss/components/loginForm/component";
+    @import "resources/scss/components/loginForm/component";
 </style>

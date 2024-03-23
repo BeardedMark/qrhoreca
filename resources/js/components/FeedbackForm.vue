@@ -124,5 +124,5 @@
 </script>
 
 <style scoped lang="scss">
-@import "resources/scss/components/feedbackForm/component";
+    @import "resources/scss/components/feedbackForm/component";
 </style>

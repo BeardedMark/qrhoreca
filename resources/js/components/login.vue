@@ -66,7 +66,7 @@
     import Info from "./Info.vue";
     import Button from "./Button";
     import {useRouter} from "vue-router";
-    import {userId} from "../constants/storeGetters";
+    import {isАuthorizedUser} from "../constants/storeGetters";
 
     export default defineComponent({
         name: "Login",
@@ -98,7 +98,7 @@
 
             /** Life cycles */
             onBeforeMount(() => {
-                if(unref(userId)) {
+                if(unref(isАuthorizedUser)) {
                     router.push('/profile');
                 }
             });
@@ -112,6 +112,7 @@
         },
     });
 </script>
+
 <style scoped lang="scss">
-@import "resources/scss/components/login/component";
+    @import "resources/scss/components/login/component";
 </style>

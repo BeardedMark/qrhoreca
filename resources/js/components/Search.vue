@@ -4,7 +4,7 @@
             @searchRequest="searchRequest"
             class="search__panel"
         />
-        <div class="search__order">
+        <div class="search__top">
             <h1 class="search__title search-title">
                 <span class="search-title__text">
                     Наши предложения
@@ -16,6 +16,18 @@
                 </span>
             </p>
         </div>
+        <AdminPanel
+            v-if="isАuthorizedUser"
+            class="search__admin search-admin"
+        >
+            <AdminButton
+                v-for="(btn, btnIndex) in adminButtons"
+                :key="`search-admin__btn-${btnIndex}`"
+                @click="onAdminBtnClick(btnIndex)"
+                :btnSettings="btn"
+                class="search-admin__btn"
+            />
+        </AdminPanel>
         <div class="search__list search-list">
             <Product
                 v-for="(searchItem, searchItemIndex) in searchList"
@@ -49,12 +61,16 @@
 </template>
 <script>
     import { defineComponent, computed, ref, unref } from "vue";
-    import SearchPanel from "./SearchPanel";
-    import Product from "./Product";
-    import Separator from "./Separator.vue";
-    import Info from "./Info";
     import {products} from "../constants/categoriesListData";
     import {searchBlanks} from "../constants/searchBlanks";
+    import {isАuthorizedUser} from "../constants/storeGetters.js";
+    import {useRouter} from "vue-router";
+    import SearchPanel from "./SearchPanel.vue";
+    import Product from "./Product.vue";
+    import Separator from "./Separator.vue";
+    import Info from "./Info.vue";
+    import AdminButton from "./AdminButton.vue";
+    import AdminPanel from "./AdminPanel.vue";
 
     export default defineComponent({
         name: "Search",
@@ -63,11 +79,16 @@
             SearchPanel,
             Separator,
             Info,
+            AdminButton,
+            AdminPanel,
         },
         setup() {
             /** Vars */
             const searchRequestText = ref('');
             const selectedBlank = ref(null);
+
+            /** Features */
+            const router = useRouter();
 
             /** Computed */
             const searchList = computed(() => {
@@ -85,16 +106,46 @@
             const searchBlank = (blank) => {
                 selectedBlank.value = blank;
             };
+            const addNewProduct = () => {
+                alert('Новое предложение');
+                router.push('/new-product');
+            };
+            const editQuickSearch = () => {
+                alert('Редактировать быстрый поиск');
+                router.push('/quick-search');
+            };
+            const onAdminBtnClick = (idx) => {
+                adminButtons[idx].handler();
+            };
+
+            const adminButtons = [
+                {
+                    text: 'Новое предложение',
+                    icon: 'add-offer.png',
+                    classMod: '',
+                    handler: addNewProduct,
+                },
+                {
+                    text: 'Редактировать быстрый поиск',
+                    icon: 'edit-options.png',
+                    classMod: '',
+                    handler: editQuickSearch,
+                },
+            ];
 
             return {
                 searchRequest,
                 searchList,
                 searchBlanks,
                 searchBlank,
+                isАuthorizedUser,
+                adminButtons,
+                onAdminBtnClick,
             };
         },
     });
 </script>
+
 <style scoped lang="scss">
-@import "resources/scss/components/search/component";
+    @import "resources/scss/components/search/component";
 </style>

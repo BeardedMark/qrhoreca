@@ -164,5 +164,5 @@
 </script>
 
 <style scoped lang="scss">
-@import "../../scss/components/order/component";
+    @import "resources/scss/components/order/component";
 </style>

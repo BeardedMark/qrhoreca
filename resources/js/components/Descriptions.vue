@@ -58,6 +58,7 @@ import {computed, defineComponent, toRefs, unref} from "vue";
         },
     });
 </script>
+
 <style scoped lang="scss">
-@import "../../scss/components/descriptions/component";
+    @import "resources/scss/components/descriptions/component";
 </style>

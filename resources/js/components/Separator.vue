@@ -1,6 +1,7 @@
 <template>
     <div class="separator"></div>
 </template>
+
 <script>
     import { defineComponent } from "vue";
 
@@ -8,6 +9,7 @@
         name: "Separator",
     });
 </script>
+
 <style scoped lang="scss">
-@import "resources/scss/components/separator/component";
+    @import "resources/scss/components/separator/component";
 </style>

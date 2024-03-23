@@ -90,5 +90,5 @@ import {defineComponent, unref} from "vue";
 </script>
 
 <style scoped lang="scss">
-@import "../../scss/components/offer/component";
+    @import "resources/scss/components/offer/component";
 </style>

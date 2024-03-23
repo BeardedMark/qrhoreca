@@ -93,5 +93,5 @@
 </script>
 
 <style scoped lang="scss">
-@import "resources/scss/components/checkboxForm/component";
+    @import "resources/scss/components/checkboxForm/component";
 </style>

@@ -179,5 +179,5 @@
 </script>
 
 <style scoped lang="scss">
-@import "resources/scss/components/contacts/component";
+    @import "resources/scss/components/contacts/component";
 </style>

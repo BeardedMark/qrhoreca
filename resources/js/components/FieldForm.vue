@@ -87,5 +87,5 @@
 </script>
 
 <style scoped lang="scss">
-@import "resources/scss/components/fieldForm/component";
+    @import "resources/scss/components/fieldForm/component";
 </style>

@@ -13,6 +13,18 @@
                     </span>
                 </p>
             </div>
+            <AdminPanel
+                v-if="isАuthorizedUser"
+                class="catalog__admin catalog-admin"
+            >
+                <AdminButton
+                    v-for="(btn, btnIndex) in adminButtons"
+                    :key="`catalog-admin__btn-${btnIndex}`"
+                    @click="onAdminBtnClick(btnIndex)"
+                    :btnSettings="btn"
+                    class="catalog-admin__btn"
+                />
+            </AdminPanel>
             <div class="catalog__list catalog-list">
                 <div
                     v-for="(item, itemIndex) in catalogList"
@@ -66,12 +78,15 @@
     } from "vue";
     import {categoriesListData, products} from "../constants/categoriesListData";
     import {useRouter} from "vue-router";
+    import {indicators} from "./../constants/indicators";
+    import {isАuthorizedUser} from "../constants/storeGetters.js";
+    import IconButtonInnerLink from "./IconButtonInnerLink.vue";
+    import AdminButton from "./AdminButton.vue";
+    import AdminPanel from "./AdminPanel.vue";
     import Product from "./Product.vue";
     import Button from "./Button.vue";
     import Descriptions from "./Descriptions.vue";
     import Separator from "./Separator.vue";
-    import IconButtonInnerLink from "./IconButtonInnerLink";
-    import {indicators} from "./../constants/indicators";
 
     export default defineComponent({
         name: "Catalog",
@@ -81,6 +96,8 @@
             Button,
             Descriptions,
             Separator,
+            AdminButton,
+            AdminPanel,
         },
         setup() {
             /** Vars */
@@ -102,20 +119,49 @@
             const toggleDropDown = (index) => {
                catalogList.value[index].isOpen = !catalogList.value[index].isOpen;
             };
-
             const redirectToBasket = () => {
                 router.push('/basket');
             };
+            const addNewProduct = () => {
+                alert('Новое предложение');
+                router.push('/new-product');
+            };
+            const addNewCategory = () => {
+                alert('Новая категория');
+                router.push('/new-category');
+            };
+            const onAdminBtnClick = (idx) => {
+                adminButtons[idx].handler();
+            };
+
+            const adminButtons = [
+                {
+                    text: 'Новое предложение',
+                    icon: 'add-offer.png',
+                    classMod: '',
+                    handler: addNewProduct,
+                },
+                {
+                    text: 'Новая категория',
+                    icon: 'add-category.png',
+                    classMod: '',
+                    handler: addNewCategory,
+                },
+            ];
 
             return {
                 catalogList,
                 toggleDropDown,
                 redirectToBasket,
                 indicators,
+                isАuthorizedUser,
+                adminButtons,
+                onAdminBtnClick,
             };
         },
     });
 </script>
+
 <style scoped lang="scss">
-@import "resources/scss/components/catalog/component";
+    @import "resources/scss/components/catalog/component";
 </style>
