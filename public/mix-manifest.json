@@ -31,6 +31,8 @@
     "/images/indicators/spicy.png": "/images/indicators/spicy.png",
     "/images/indicators/veg.png": "/images/indicators/veg.png",
     "/images/info.png": "/images/info.png",
+    "/images/inst.png": "/images/inst.png",
+    "/images/location.png": "/images/location.png",
     "/images/menu-dark.png": "/images/menu-dark.png",
     "/images/menu-light.png": "/images/menu-light.png",
     "/images/more.png": "/images/more.png",
@@ -44,12 +46,10 @@
     "/images/search-light.png": "/images/search-light.png",
     "/images/tags.png": "/images/tags.png",
     "/images/telegram.png": "/images/telegram.png",
-    "/images/vtoroe.jpg": "/images/vtoroe.jpg",
-    "/images/whatsapp.png": "/images/whatsapp.png",
-    "/images/inst.png": "/images/inst.png",
     "/images/tg.png": "/images/tg.png",
     "/images/vk.png": "/images/vk.png",
+    "/images/vtoroe.jpg": "/images/vtoroe.jpg",
     "/images/wa.png": "/images/wa.png",
     "/images/web.png": "/images/web.png",
-    "/images/location.png": "/images/location.png"
+    "/images/whatsapp.png": "/images/whatsapp.png"
 }
