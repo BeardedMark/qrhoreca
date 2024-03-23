@@ -40,14 +40,15 @@
             </li>
         </ul>
         <div class="quick-search__btns">
-            <router-link
-                to="/profile"
+            <button
+                @click="backPage"
+                type="button"
                 class="quick-search__cansel quick-search-cansel"
             >
                 <span class="quick-search-cansel__text">
                     Отмена
                 </span>
-            </router-link>
+            </button>
             <Button
                 @click="onSaveClick"
                 theme="light"
@@ -74,6 +75,7 @@
 
 <script>
     import {defineComponent, ref, unref} from "vue";
+    import {useRouter} from "vue-router";
     import Button from "./Button.vue";
     import Separator from "./Separator.vue";
     import Info from "./Info.vue";
@@ -96,6 +98,9 @@
             ]);
             const newItem = ref('');
 
+            /** Features */
+            const router = useRouter();
+
             /** Methods */
             const onDeleteClick = (listItem) => {
                 quickSearchList.value = unref(quickSearchList).filter((item) => item !== listItem);
@@ -106,12 +111,16 @@
                     newItem.value = '';
                 }
             };
+            const backPage = () => {
+                router.back();
+            };
 
             return {
                 quickSearchList,
                 onDeleteClick,
                 newItem,
                 onSaveClick,
+                backPage,
             };
         },
     });

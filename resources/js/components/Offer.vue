@@ -28,14 +28,15 @@
             </div>
             <OfferFormPersonal class="offer__form"/>
             <div class="offer__btns">
-                <router-link
-                    to="/basket"
+                <button
+                    @click="backPage"
+                    type="button"
                     class="offer__cansel offer-cansel"
                 >
                     <span class="offer-cansel__text">
                         Отмена
                     </span>
-                </router-link>
+                </button>
                 <Button
                     @click="sendOrder"
                     class="offer__order"
@@ -54,14 +55,14 @@
 </template>
 
 <script>
-import {defineComponent, unref} from "vue";
+    import {defineComponent} from "vue";
     import {useRouter} from "vue-router";
-    import OfferForm from "./OfferForm";
-    import OfferFormPersonal from "./OfferFormPersonal";
-    import Button from "./Button";
-    import Separator from "./Separator";
-    import Descriptions from "./Descriptions.vue";
     import {notes} from "../constants/nots";
+    import OfferForm from "./OfferForm.vue";
+    import OfferFormPersonal from "./OfferFormPersonal.vue";
+    import Button from "./Button.vue";
+    import Separator from "./Separator.vue";
+    import Descriptions from "./Descriptions.vue";
 
     export default defineComponent({
         name: "Offer",
@@ -80,10 +81,14 @@ import {defineComponent, unref} from "vue";
             const sendOrder = () => {
                 router.push('/order');
             };
+            const backPage = () => {
+                router.back();
+            };
 
             return {
                 sendOrder,
                 notes,
+                backPage,
             };
         },
     });

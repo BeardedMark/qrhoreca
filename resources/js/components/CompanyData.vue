@@ -16,14 +16,15 @@
         <CompanyDataContactsForm class="company-data__form" />
         <CompanyDataSocialForm class="company-data__form" />
         <div class="company-data__btns">
-            <router-link
-                to="/profile"
+            <button
+                @click="backPage"
+                type="button"
                 class="company-data__cansel company-data-cansel"
             >
                 <span class="company-data-cansel__text">
                     Отмена
                 </span>
-            </router-link>
+            </button>
             <Button
                 @click="onSaveClick"
                 theme="light"
@@ -50,12 +51,13 @@
 
 <script>
     import {defineComponent} from "vue";
+    import {useRouter} from "vue-router";
     import CompanyDataMainForm from "./CompanyDataMainForm.vue";
     import CompanyDataContactsForm from "./CompanyDataContactsForm.vue";
     import CompanyDataSocialForm from "./CompanyDataSocialForm.vue";
     import Button from "./Button.vue";
     import Separator from "./Separator.vue";
-    import Info from "./Info";
+    import Info from "./Info.vue";
 
     export default defineComponent({
         name: "CompanyData",
@@ -68,12 +70,20 @@
             Info,
         },
         setup() {
+            /** Features */
+            const router = useRouter();
+
+            /** Methods */
             const onSaveClick = () => {
                 alert('Сохранить');
+            };
+            const backPage = () => {
+                router.back();
             };
 
             return {
                 onSaveClick,
+                backPage,
             };
         },
     });
