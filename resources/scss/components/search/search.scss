@@ -1,10 +1,11 @@
 .search {
     &__panel,
-    &__order {
+    &__top,
+    &__admin {
         margin-bottom: 3.44em;
     }
 
-    &__order {
+    &__top {
         padding-left: 2.125em;
         padding-right: 2.125em;
     }
@@ -70,5 +71,15 @@
         letter-spacing: 0.6px;
         color: $dark;
         white-space: nowrap;
+    }
+}
+
+.search-admin {
+    &__btn {
+        margin-bottom: 0.81em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 }

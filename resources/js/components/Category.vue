@@ -47,6 +47,7 @@
         },
     });
 </script>
+
 <style scoped lang="scss">
     @import "resources/scss/components/category/component";
 </style>

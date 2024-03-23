@@ -118,5 +118,5 @@
 </script>
 
 <style scoped lang="scss">
-@import "resources/scss/components/quickSearch/component";
+    @import "resources/scss/components/quickSearch/component";
 </style>

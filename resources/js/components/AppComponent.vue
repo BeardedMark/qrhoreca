@@ -62,5 +62,5 @@
 </script>
 
 <style scoped lang="scss">
-    @import "resources/scss/app.scss";
+    @import "resources/scss/app";
 </style>

@@ -1,7 +1,8 @@
 .product-page {
     &__image,
     &__data,
-    &__descr {
+    &__descr,
+    &__admin {
         margin-bottom: 3.44em;
     }
 
@@ -95,6 +96,16 @@
         letter-spacing: 0.6px;
         color: $dark;
         margin-bottom: 1.7em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.product-page-admin {
+    &__btn {
+        margin-bottom: 0.81em;
 
         &:last-child {
             margin-bottom: 0;

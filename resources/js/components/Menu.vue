@@ -54,8 +54,8 @@
 </template>
 <script>
     import { defineComponent } from "vue";
-    import Separator from "./Separator";
-    import Info from "./Info";
+    import Separator from "./Separator.vue";
+    import Info from "./Info.vue";
 
     export default defineComponent({
         name: "Menu",
@@ -64,6 +64,7 @@
             Separator,
         },
         setup() {
+            /** Vars */
             const menuLinksLists = [
                 [
                     {
@@ -112,6 +113,7 @@
         },
     });
 </script>
+
 <style scoped lang="scss">
-@import "resources/scss/components/menu/component";
+    @import "resources/scss/components/menu/component";
 </style>

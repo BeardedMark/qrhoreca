@@ -75,5 +75,5 @@
 </script>
 
 <style scoped lang="scss">
-@import "resources/scss/components/companyDataMainForm/component";
+    @import "resources/scss/components/companyDataMainForm/component";
 </style>

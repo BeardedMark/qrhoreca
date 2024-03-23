@@ -51,5 +51,11 @@
     "/images/vtoroe.jpg": "/images/vtoroe.jpg",
     "/images/wa.png": "/images/wa.png",
     "/images/web.png": "/images/web.png",
-    "/images/whatsapp.png": "/images/whatsapp.png"
+    "/images/whatsapp.png": "/images/whatsapp.png",
+    "/images/add.png": "/images/add.png",
+    "/images/delete.png": "/images/delete.png",
+    "/images/edit.png": "/images/edit.png",
+    "/images/visibility-enable.png": "/images/visibility-enable.png",
+    "/images/turn-off-visibility.png": "/images/turn-off-visibility.png",
+    "/images/edit-options.png": "/images/edit-options.png"
 }

@@ -50,5 +50,5 @@
 </script>
 
 <style scoped lang="scss">
-@import "../../scss/components/orderList/component";
+    @import "resources/scss/components/orderList/component";
 </style>

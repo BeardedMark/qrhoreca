@@ -76,7 +76,7 @@
     import Separator from "./Separator";
     import Info from "./Info";
     import Button from "./Button";
-    import {userId} from "../constants/storeGetters";
+    import {isАuthorizedUser} from "../constants/storeGetters";
     import {useRouter} from "vue-router";
 
     export default defineComponent({
@@ -109,7 +109,7 @@
 
             /** Life cycles */
             onBeforeMount(() => {
-                if(unref(userId)) {
+                if(unref(isАuthorizedUser)) {
                     router.push('/profile');
                 }
             });
@@ -123,6 +123,7 @@
         },
     });
 </script>
+
 <style scoped lang="scss">
-@import "resources/scss/components/registration/component";
+    @import "resources/scss/components/registration/component";
 </style>

@@ -108,5 +108,5 @@
 </script>
 
 <style scoped lang="scss">
-@import "resources/scss/components/newProductForm/component";
+    @import "resources/scss/components/newProductForm/component";
 </style>

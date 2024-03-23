@@ -67,7 +67,7 @@
 <script>
     import {defineComponent, onBeforeMount, unref} from "vue";
     import {useRouter} from "vue-router";
-    import {userId} from "../constants/storeGetters";
+    import {isАuthorizedUser} from "../constants/storeGetters";
     import Separator from "./Separator";
     import Info from "./Info";
     import {siteStore} from "../constants/store";
@@ -155,7 +155,7 @@
 
             /** Life cycles */
             onBeforeMount(() => {
-                if(!unref(userId)) {
+                if(!unref(isАuthorizedUser)) {
                     router.push('/login');
                 }
             });
@@ -167,6 +167,7 @@
         },
     });
 </script>
+
 <style scoped lang="scss">
-@import "../../scss/components/profile/component";
+    @import "resources/scss/components/profile/component";
 </style>

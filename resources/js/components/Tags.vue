@@ -102,5 +102,5 @@
 </script>
 
 <style scoped lang="scss">
-@import "resources/scss/components/tags/component";
+    @import "resources/scss/components/tags/component";
 </style>

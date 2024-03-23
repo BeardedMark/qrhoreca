@@ -32,5 +32,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "resources/scss/components/modal/component";
+    @import "resources/scss/components/modal/component";
 </style>

@@ -92,5 +92,5 @@
 </script>
 
 <style scoped lang="scss">
-@import "../../scss/components/basket/component";
+    @import "resources/scss/components/basket/component";
 </style>

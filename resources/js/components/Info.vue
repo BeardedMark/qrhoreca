@@ -49,6 +49,7 @@
         },
     });
 </script>
+
 <style scoped lang="scss">
-@import "resources/scss/components/info/component";
+    @import "resources/scss/components/info/component";
 </style>

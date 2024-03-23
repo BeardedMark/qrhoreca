@@ -48,6 +48,7 @@
         },
     });
 </script>
+
 <style scoped lang="scss">
-@import "resources/scss/components/newCategory/component";
+    @import "resources/scss/components/newCategory/component";
 </style>

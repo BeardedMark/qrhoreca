@@ -48,5 +48,5 @@
 </script>
 
 <style scoped lang="scss">
-@import "resources/scss/components/feedback/component";
+    @import "resources/scss/components/feedback/component";
 </style>

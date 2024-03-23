@@ -48,5 +48,5 @@
 </script>
 
 <style scoped lang="scss">
-@import "resources/scss/components/newProductFormTags/component";
+    @import "resources/scss/components/newProductFormTags/component";
 </style>

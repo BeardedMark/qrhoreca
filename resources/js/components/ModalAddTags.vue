@@ -112,5 +112,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "resources/scss/components/modalAddTags/component";
+    @import "resources/scss/components/modalAddTags/component";
 </style>

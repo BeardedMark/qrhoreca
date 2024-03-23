@@ -24,6 +24,10 @@
     &__separator {
         @include separatorStyles;
     }
+
+    &__admin {
+        margin-bottom: 3.44em;
+    }
 }
 
 .catalog-title {
@@ -124,6 +128,16 @@
             &__arrow {
                 transform: rotate(-90deg);
             }
+        }
+    }
+}
+
+.catalog-admin {
+    &__btn {
+        margin-bottom: 0.81em;
+
+        &:last-child {
+            margin-bottom: 0;
         }
     }
 }
