@@ -1,0 +1,72 @@
+.feedback-form {
+    $self: &;
+
+    &__body {
+        border-radius: 2.125em;
+        padding: 0.81em;
+        background-color: $white;
+        margin-bottom: 3.44em;
+    }
+
+    &__block,
+    &__checkbox {
+        margin-bottom: 1.31em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__field {
+        display: flex;
+        background-color: $background;
+        border-radius: 1.31em;
+        overflow: hidden;
+        height: 9.5em;
+    }
+
+    &__input {
+        resize: none;
+        color: $dark;
+        font-size: $fz_20;
+        letter-spacing: 0.6px;
+        background-color: transparent;
+        width: 100%;
+        padding: 1.05em;
+    }
+
+    &__btns {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -1.06em;
+        margin-right: -1.06em;
+    }
+
+    &__back,
+    &__send {
+        margin-left: 1.06em;
+        margin-right: 1.06em;
+    }
+
+    &__send {
+        min-width: 10.94em;
+        height: 4em;
+    }
+}
+
+.feedback-form-checkbox {
+    &__link {
+        color: $accent;
+        text-decoration: underline;
+    }
+}
+
+.feedback-form-back {
+    &__text {
+        color: $accent;
+        font-size: $fz_20;
+        line-height: 1.1;
+        letter-spacing: 0.6px;
+    }
+}

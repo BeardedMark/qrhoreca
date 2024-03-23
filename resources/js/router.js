@@ -6,6 +6,7 @@ import CompanyData from "./components/CompanyData.vue";
 import Catalog from "./components/Catalog.vue";
 import Categories from "./components/Categories.vue";
 import CategoryPage from "./components/CategoryPage.vue";
+import Feedback from "./components/Feedback.vue";
 import Home from "./components/Home.vue";
 import Login from "./components/Login.vue";
 import Menu from "./components/Menu.vue";
@@ -40,6 +41,11 @@ const routes = [
         path: '/contacts',
         name: 'contacts',
         component: Contacts,
+    },
+    {
+        path: '/feedback',
+        name: 'feedback',
+        component: Feedback,
     },
     {
         path: '/catalog',

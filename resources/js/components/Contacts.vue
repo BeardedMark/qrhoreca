@@ -33,7 +33,27 @@
             </a>
         </div>
         <div class="contacts__block">
-            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Acb020bb0367e3f893fdfcbea9961c6e64042b4a6bd9d9641fbf3d57c19e464ad&amp;source=constructor" width="484" height="300" frameborder="0"></iframe>
+            <div class="contacts__map contacts-map">
+                <iframe
+                    class="contacts-map__frame"
+                    :src="address.map"
+                    frameborder="0"
+                ></iframe>
+            </div>
+            <div class="contacts__address contacts-address">
+                <picture class="contacts-address__image">
+                    <img
+                        :src="`images/${address.icon}.png`"
+                        alt="icon"
+                        class="contacts-address__icon"
+                    >
+                </picture>
+                <p class="contacts-address__location contacts-address-location">
+                    <span class="contacts-address-location__text">
+                        {{ address.text }}
+                    </span>
+                </p>
+            </div>
         </div>
         <div class="contacts__block">
             <a
@@ -108,6 +128,7 @@
                 address: {
                     text: 'Новосибирск, ул. Выборная 158/1',
                     icon: 'location',
+                    map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Acb020bb0367e3f893fdfcbea9961c6e64042b4a6bd9d9641fbf3d57c19e464ad&amp;source=constructor',
                 },
                 wa: {
                     text: 'WhatsApp',
